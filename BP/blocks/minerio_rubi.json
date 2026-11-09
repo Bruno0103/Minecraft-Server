@@ -1,0 +1,25 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:block": {
+    "description": {
+      "identifier": "custom:minerio_rubi",
+      "menu_category": {
+        "category": "nature"
+      }
+    },
+    "components": {
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 3.0
+      },
+      "minecraft:friction": 0.6,
+      "minecraft:light_emission": 2,
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "custom_minerio_rubi_tex",
+          "render_method": "opaque"
+        }
+      }
+    }
+  }
+}
+

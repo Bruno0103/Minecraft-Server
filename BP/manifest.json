@@ -1,0 +1,41 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Never Land Custom Content BP",
+    "description": "Behavior Pack de Itens, Blocos e Scripts para Never Land BDS",
+    "uuid": "8b5f3a14-41d2-4e92-91f1-9457a82b9e01",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 60]
+  },
+  "modules": [
+    {
+      "description": "Módulo de Dados e Comportamentos",
+      "type": "data",
+      "uuid": "3a7b9c12-88f4-4d2a-bc93-112233445566",
+      "version": [1, 0, 0]
+    },
+    {
+      "description": "Módulo de Script API TypeScript",
+      "type": "script",
+      "language": "javascript",
+      "uuid": "7a942b10-e2b5-4a6c-9c7d-304918e745f2",
+      "version": [1, 0, 0],
+      "entry": "scripts/main.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "9c12e847-5a33-4f19-a1b8-223344556677",
+      "version": [1, 0, 0]
+    },
+    {
+      "module_name": "@minecraft/server",
+      "version": "2.11.0"
+    },
+    {
+      "module_name": "@minecraft/server-ui",
+      "version": "2.3.0"
+    }
+  ]
+}
+

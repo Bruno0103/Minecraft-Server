@@ -1,0 +1,46 @@
+# ==============================================================================
+# .github/workflows/regolith.yml — Esteira de CI/CD para Addon Bedrock
+# ==============================================================================
+# Executa testes de tipagem TypeScript estrita e compila automaticamente o artefato
+# oficial .mcaddon via ação oficial Bedrock-OSS/regolith-action em cada push.
+name: Regolith Addon CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-package:
+    name: Build & Package Addon (.mcaddon)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies & Type Check
+        run: |
+          npm ci
+          npx tsc --noEmit
+
+      - name: Compile Addon via Regolith
+        uses: Bedrock-OSS/regolith-action@v1
+        with:
+          profile: production
+          regolith-version: latest
+
+      - name: Upload Compiled .mcaddon Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: NeverLand-Bedrock-Addon
+          path: builds/production/*.mcaddon
+          retention-days: 14
+

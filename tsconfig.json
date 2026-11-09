@@ -1,0 +1,40 @@
+{
+  // ==============================================================================
+  // tsconfig.json — Configuração Estrita do Compilador TypeScript para Bedrock
+  // ==============================================================================
+  // Configuração alinhada ao runtime QuickJS/V8 embutido no Minecraft Bedrock 1.21+
+  // e compilação de alta performance via esbuild.
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "lib": ["ES2022"],
+    // Checagem estrita de tipos
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    // Qualidade de código e prevenção de código morto
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleDetection": "force",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "BP/scripts",
+    "behavior_pack/scripts"
+  ]
+}
+

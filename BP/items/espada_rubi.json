@@ -1,0 +1,22 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:item": {
+    "description": {
+      "identifier": "custom:espada_rubi",
+      "menu_category": {
+        "category": "equipment",
+        "group": "itemGroup.name.sword"
+      }
+    },
+    "components": {
+      "minecraft:icon": "custom_espada_rubi",
+      "minecraft:max_stack_size": 1,
+      "minecraft:damage": 9,
+      "minecraft:durability": {
+        "max_durability": 1561
+      },
+      "minecraft:hand_equipped": true
+    }
+  }
+}
+

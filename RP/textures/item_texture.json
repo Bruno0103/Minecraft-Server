@@ -1,0 +1,10 @@
+{
+  "resource_pack_name": "neverland_rp",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "custom_espada_rubi": {
+      "textures": "textures/items/espada_rubi"
+    }
+  }
+}
+

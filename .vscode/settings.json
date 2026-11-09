@@ -1,0 +1,76 @@
+{
+  // ==============================================================================
+  // .vscode/settings.json — Mapeamento Estático de Schemas Blockception
+  // ==============================================================================
+  // Fornece autocompletion, validação estrutural de manifestos, blocos, itens,
+  // entidades e partículas no VS Code, impedindo alucinações e erros de sintaxe.
+  "json.schemas": [
+    {
+      "description": "Validação de Manifestos de Pacotes Bedrock (Behavior e Resource Packs)",
+      "fileMatch": [
+        "BP/manifest.json",
+        "RP/manifest.json",
+        "behavior_pack/manifest.json",
+        "resource_pack/manifest.json",
+        "behavior_packs/*/manifest.json",
+        "resource_packs/*/manifest.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/general/manifest.json"
+    },
+    {
+      "description": "Validação de Entidades de Behavior Pack",
+      "fileMatch": [
+        "BP/entities/*.json",
+        "behavior_pack/entities/*.json",
+        "behavior_packs/*/entities/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/entities/entities.json"
+    },
+    {
+      "description": "Validação de Blocos Customizados (Behavior Pack)",
+      "fileMatch": [
+        "BP/blocks/*.json",
+        "behavior_pack/blocks/*.json",
+        "behavior_packs/*/blocks/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/blocks/blocks.json"
+    },
+    {
+      "description": "Validação de Itens Customizados (Behavior Pack)",
+      "fileMatch": [
+        "BP/items/*.json",
+        "behavior_pack/items/*.json",
+        "behavior_packs/*/items/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/items/items.json"
+    },
+    {
+      "description": "Validação de Efeitos de Partículas Bedrock (Resource Pack)",
+      "fileMatch": [
+        "RP/particles/*.json",
+        "resource_pack/particles/*.json",
+        "resource_packs/*/particles/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/particles/particles.json"
+    },
+    {
+      "description": "Validação de Animações Bedrock (Resource Pack)",
+      "fileMatch": [
+        "RP/animations/*.json",
+        "resource_pack/animations/*.json",
+        "resource_packs/*/animations/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/animations/animations.json"
+    },
+    {
+      "description": "Validação de Controladores de Renderização (Resource Pack)",
+      "fileMatch": [
+        "RP/render_controllers/*.json",
+        "resource_pack/render_controllers/*.json",
+        "resource_packs/*/render_controllers/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/render_controllers/render_controllers.json"
+    }
+  ]
+}
+

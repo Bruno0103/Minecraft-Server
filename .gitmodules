@@ -1,0 +1,18 @@
+[submodule "tools/aseprite-mcp-studio"]
+	path = tools/aseprite-mcp-studio
+	url = https://github.com/mhpm/aseprite-mcp-studio.git
+[submodule "tools/blockbench-mcp"]
+	path = tools/blockbench-mcp
+	url = https://github.com/sosadly/blockbench-mcp.git
+[submodule "tools/minecraft-bedrock-mcp"]
+	path = tools/minecraft-bedrock-mcp
+	url = https://github.com/Mming-Lab/minecraft-bedrock-education-mcp.git
+[submodule "tools/minecraft-structure-mcp"]
+	path = tools/minecraft-structure-mcp
+	url = https://github.com/WebitroHQ/minecraft-structure-mcp.git
+[submodule "tools/pixel-mcp"]
+	path = tools/pixel-mcp
+	url = https://github.com/willibrandon/pixel-mcp.git
+[submodule "tools/regolith"]
+	path = tools/regolith
+	url = https://github.com/Bedrock-OSS/regolith.git

@@ -1,0 +1,43 @@
+# =============================================================================
+# /etc/systemd/system/bedrock.socket
+# -----------------------------------------------------------------------------
+# CONSOLE DO SERVIDOR MINECRAFT BEDROCK VIA FIFO (named pipe)
+#
+# Por que isso existe?
+#   O bedrock_server roda em segundo plano pelo systemd, sem terminal. Sem um
+#   canal de entrada, seria impossível enviar comandos de console como
+#   "list", "say", "kick" ou "stop" pelo SSH.
+#
+# Como funciona?
+#   1. O systemd cria o arquivo especial FIFO /run/bedrock.console.
+#   2. Esse FIFO é conectado à entrada padrão (stdin) do bedrock_server
+#      (ver "Sockets=" e "StandardInput=socket" no bedrock.service).
+#   3. Tudo que for escrito no FIFO chega ao console do servidor como se
+#      alguém tivesse digitado. Exemplo:
+#          echo "list" > /run/bedrock.console
+#   4. A resposta do servidor aparece no journal (journalctl -u bedrock).
+#
+#   O próprio systemd mantém o FIFO aberto, então o servidor NUNCA recebe
+#   "fim de arquivo" (EOF) quando um comando termina de ser escrito.
+# =============================================================================
+
+[Unit]
+Description=Console FIFO do Minecraft Bedrock - Never Land
+# PartOf: parar/reiniciar o bedrock.service também para/reinicia este socket.
+# Isso garante um FIFO limpo a cada reinício e evita que uma escrita no FIFO
+# religue o servidor sozinho depois de um "systemctl stop bedrock".
+PartOf=bedrock.service
+
+[Socket]
+# Caminho do FIFO. /run é um tmpfs (memória), recriado limpo a cada boot.
+ListenFIFO=/run/bedrock.console
+# Apenas o usuário opc (dono do servidor) pode escrever comandos no console.
+SocketUser=opc
+SocketGroup=opc
+SocketMode=0660
+# Remove o arquivo FIFO quando o socket é parado.
+RemoveOnStop=true
+
+# Observação: este socket NÃO tem seção [Install] de propósito.
+# Ele é iniciado automaticamente pelo bedrock.service (Requires=bedrock.socket).
+

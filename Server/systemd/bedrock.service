@@ -1,0 +1,97 @@
+# =============================================================================
+# /etc/systemd/system/bedrock.service
+# -----------------------------------------------------------------------------
+# SERVIÇO DO SERVIDOR MINECRAFT BEDROCK DEDICATED SERVER (BDS) - NEVER LAND
+#
+# Garantias deste arquivo:
+#   - INICIA AUTOMATICAMENTE A CADA BOOT/REBOOT DA VM (WantedBy=multi-user.target
+#     + "systemctl enable bedrock").
+#   - Só sobe depois que a rede está realmente pronta (network-online.target)
+#     e depois que o swap de 5 GB está ativo (swap.target).
+#   - Reinicia sozinho em caso de crash, SEM NUNCA DESISTIR (StartLimitIntervalSec=0).
+#   - Desligamento gracioso: envia "stop" pelo console, espera o mundo ser salvo.
+#   - Console acessível via FIFO /run/bedrock.console (ver bedrock.socket).
+#
+# Instalação na VM:
+#   sudo cp bedrock.service bedrock.socket /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable bedrock.service
+# =============================================================================
+
+[Unit]
+Description=Servidor Minecraft Bedrock Dedicated Server - Never Land
+
+# --- Ordem de boot -----------------------------------------------------------
+# network-online.target: espera IP + rota configurados. Necessário para o
+# servidor fazer login nos serviços da Microsoft/Xbox (signaling) no boot.
+# (exige NetworkManager-wait-online.service habilitado na VM)
+Wants=network-online.target
+After=network-online.target
+# swap.target: garante que o /swapfile de 5 GB já está ativo antes de o
+# servidor alocar memória (evita OOM durante a carga inicial do mundo).
+# local-fs.target: garante que todos os sistemas de arquivos estão montados.
+After=swap.target local-fs.target
+
+# --- Console FIFO ------------------------------------------------------------
+# O socket do console precisa existir antes do servidor iniciar.
+Requires=bedrock.socket
+After=bedrock.socket
+
+# --- Política anti-desistência -------------------------------------------------
+# Por padrão o systemd desiste de reiniciar após 5 falhas em 10 segundos.
+# Com 0, o limite é desativado: o servidor tenta voltar para sempre.
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+
+# Usuário/grupo sem privilégios de root (isolamento de segurança)
+User=opc
+Group=opc
+
+# Pasta de trabalho do binário (onde ficam server.properties, worlds/, etc.)
+WorkingDirectory=/home/opc/minecraft/server
+
+# O BDS carrega bibliotecas .so que vêm na própria pasta do servidor
+Environment="LD_LIBRARY_PATH=/home/opc/minecraft/server"
+
+# Executável principal
+ExecStart=/home/opc/minecraft/server/bedrock_server
+
+# --- Entrada/saída -------------------------------------------------------------
+# stdin = FIFO do bedrock.socket (permite enviar comandos de console)
+Sockets=bedrock.socket
+StandardInput=socket
+# stdout/stderr = journal do sistema (journalctl -u bedrock)
+StandardOutput=journal
+StandardError=journal
+
+# --- Desligamento gracioso -------------------------------------------------------
+# 1º passo: o script envia "stop" pelo console e espera o processo terminar
+#           (o BDS salva o mundo antes de sair). ${MAINPID} = PID do servidor.
+ExecStop=/home/opc/minecraft/bedrock_stop.sh ${MAINPID}
+# 2º passo (só se o 1º não resolver): SIGINT, que o BDS também trata salvando o mundo.
+KillSignal=SIGINT
+# Tempo máximo total para o desligamento antes do SIGKILL forçado.
+TimeoutStopSec=60s
+
+# --- Reinício automático ----------------------------------------------------------
+# always = reinicia em crash, em OOM e até em saída limpa inesperada.
+Restart=always
+RestartSec=10s
+
+# --- Limites de recursos ------------------------------------------------------------
+# Arquivos abertos (sockets de rede + arquivos do banco LevelDB do mundo)
+LimitNOFILE=65535
+# Prioridade de CPU mais baixa que o SSH, para o acesso administrativo nunca travar
+Nice=10
+# Cgroups v2: acima de 600M o kernel começa a empurrar memória para o swap;
+# 750M é o teto de RAM física (o excedente vai para o swap de 5 GB).
+MemoryHigh=600M
+MemoryMax=750M
+
+[Install]
+# multi-user.target = estado normal de boot do servidor (sem interface gráfica).
+# É ESTA LINHA que faz o servidor subir automaticamente em todo boot/reboot.
+WantedBy=multi-user.target
+

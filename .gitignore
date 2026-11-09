@@ -1,0 +1,177 @@
+# ==============================================================================
+# .gitignore — Projeto Minecraft Server & Addon
+# ==============================================================================
+# Este arquivo impede o versionamento acidental de chaves, credenciais privadas,
+# artefatos gerados por IAs/agentes, ambientes virtuais e compilações temporárias.
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. SEGREDOS, CHAVES PRIVADAS E CREDENCIAIS CRÍTICAS
+# ------------------------------------------------------------------------------
+# Chaves e tokens salvos localmente na pasta Keys
+Keys/
+keys/
+[Kk]eys/
+
+# Chaves SSH e informações sensíveis da máquina virtual (Oracle Cloud / BDS)
+Server/VM/SSH keys/
+Server/VM/Instance/
+*.key
+*.key.pub
+*.pem
+*.ppk
+*.id_rsa*
+*.id_ed25519*
+
+# Configurações de MCP locais contendo tokens pessoais, senhas RCON e API Keys
+mcp_config.json
+mcp_config.local.json
+
+# Arquivos de variáveis de ambiente com segredos
+.env
+.env.*
+!.env.example
+*.env
+
+# Certificados digitais e keystores
+*.pfx
+*.p12
+*.keystore
+*.jks
+*.cer
+*.crt
+
+# Credenciais de nuvem e autenticação externa
+.oci/
+oci_api_key*
+credentials.json
+client_secret*.json
+service_account*.json
+token.json
+*.secret
+*.token
+
+# Configurações de conexão local geradas em runtime (ex: IP e chaves da VM)
+Server/dist/mc-gui.json
+
+
+# ------------------------------------------------------------------------------
+# 2. ARTEFATOS, AGENTES E CACHES DE INTELIGÊNCIA ARTIFICIAL (IA)
+# ------------------------------------------------------------------------------
+# Subagentes e dados de auditoria/teamwork do Antigravity
+.agents/
+_agents/
+.agent/
+_agent/
+
+# Metadados e artefatos de sessões do Google Gemini / Antigravity
+.gemini/
+.system_generated/
+extracted_gemini_report.txt
+gemini_share.html
+*.transcript.jsonl
+*.transcript_full.jsonl
+
+# Anotações temporárias e investigações geradas por fluxos de IA
+DEAD_ENDS.md
+
+# Configurações e diretórios de outros assistentes de IA (Cursor, Claude, Windsurf)
+.cursor/
+.claude/
+.windsurf/
+.copilot/
+*.ai.log
+*.prompt.md
+*.agent.md
+
+
+# ------------------------------------------------------------------------------
+# 3. AMBIENTES VIRTUAIS, COMPILAÇÕES E CACHES PYTHON
+# ------------------------------------------------------------------------------
+# Ambientes virtuais locais
+.venv/
+.venv_build/
+venv/
+env/
+ENV/
+
+# Bytecode Python e diretórios de cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+*.pyo
+
+# Caches de testes e linters
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Diretórios de build de executáveis (PyInstaller / mc_gui)
+Server/build/
+Server/dist/
+build/
+dist/
+*.egg-info/
+*.egg
+
+
+# ------------------------------------------------------------------------------
+# 4. DEPENDÊNCIAS JAVASCRIPT / TYPESCRIPT / NODE.JS
+# ------------------------------------------------------------------------------
+# Módulos instalados via npm / yarn / pnpm
+node_modules/
+
+# Logs de debug e erros dos gerenciadores de pacote
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Saída de bundling de scripts TS/JS se gerada fora dos pacotes
+BP/scripts/**/*.js.map
+
+
+# ------------------------------------------------------------------------------
+# 5. COMPILAÇÃO E ARTEFATOS MINECRAFT / REGOLITH
+# ------------------------------------------------------------------------------
+# Pastas de saída de compilação contínua e pacotes de release (.mcaddon, .mcpack)
+builds/
+*.mcaddon
+*.mcpack
+*.mcworld
+*.mctemplate
+
+# Diretórios internos e cache de compilação do Regolith
+.regolith/
+
+
+# ------------------------------------------------------------------------------
+# 6. ARQUIVOS TEMPORÁRIOS DE SISTEMA OPERACIONAL E EDITORES
+# ------------------------------------------------------------------------------
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# VS Code — Ignora dados de workspace local, mas preserva configurações compartilhadas
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+*.sublime-project
+*.sublime-workspace
+.idea/
+

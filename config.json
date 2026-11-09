@@ -1,0 +1,89 @@
+{
+  // ==============================================================================
+  // config.json — Arquivo de Configuração do Compilador Regolith
+  // ==============================================================================
+  // Define os perfis de compilação contínua (development) e de release (production)
+  // com esteira de filtros automatizada.
+  "format_version": "1.2.0",
+  "name": "NeverLandAddon",
+  "author": "Never Land Engineering Team",
+  "packs": {
+    "behaviorPack": "BP",
+    "resourcePack": "RP",
+    "dataPath": "data"
+  },
+  "profiles": {
+    // ------------------------------------------------------------------------
+    // Perfil de Desenvolvimento: Saída rápida para testes locais ou BDS
+    // ------------------------------------------------------------------------
+    "development": {
+      "export": {
+        "target": "development",
+        "readOnly": false
+      },
+      "filters": [
+        {
+          "filter": "rolldown",
+          "settings": {
+            "entryPoints": [
+              "BP/scripts/main.ts"
+            ],
+            "sourceMap": true
+          }
+        },
+        {
+          "filter": "texture_list"
+        },
+        {
+          "filter": "name_ninja",
+          "settings": {
+            "defaultLanguage": "pt_BR.lang"
+          }
+        }
+      ]
+    },
+    // ------------------------------------------------------------------------
+    // Perfil de Produção: Otimização profunda, minificação e pacote .mcaddon
+    // ------------------------------------------------------------------------
+    "production": {
+      "export": {
+        "target": "exact",
+        "build": "builds/production"
+      },
+      "filters": [
+        {
+          "filter": "bump_manifest",
+          "settings": {
+            "type": "patch"
+          }
+        },
+        {
+          "filter": "rolldown",
+          "settings": {
+            "entryPoints": [
+              "BP/scripts/main.ts"
+            ],
+            "minify": true,
+            "sourceMap": false
+          }
+        },
+        {
+          "filter": "optipng",
+          "settings": {
+            "optimizationLevel": 5
+          }
+        },
+        {
+          "filter": "json_cleaner"
+        },
+        {
+          "filter": "mcaddon",
+          "settings": {
+            "outputName": "NeverLand_Addon_v1.0.0"
+          }
+        }
+      ]
+    }
+  }
+}
+
