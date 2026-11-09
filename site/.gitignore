@@ -1,0 +1,43 @@
+# ==============================================================================
+# .gitignore — Never Land Web Portal (site/)
+# Proteção estrita contra vazamento de segredos, credenciais e metadados de deploy
+# ==============================================================================
+
+# Vercel Project Metadata, Builds & Outputs
+.vercel/
+**/.vercel/
+.vercelignore
+.output/
+.turbo/
+
+# Variáveis de Ambiente e Segredos Locais
+.env
+.env.*
+*.env
+!.env.example
+*.secret
+*.token
+
+# Chaves Privadas, Certificados e Credenciais
+*.key
+*.key.pub
+*.pem
+*.ppk
+*.id_rsa*
+*.id_ed25519*
+credentials.json
+client_secret*.json
+
+# Dependências Node.js e Logs de Erro
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Arquivos Temporários de Sistema Operacional e IDEs
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

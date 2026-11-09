@@ -1,0 +1,1595 @@
+<!--
+================================================================================
+  ⚔️ NEVER LAND — PORTAL OFICIAL DO SERVIDOR MINECRAFT BEDROCK
+================================================================================
+  • Projeto Original: Stitch (Neverland - Portal Oficial)
+  • Servidor Bedrock: BDS Dedicado na Oracle Cloud Infrastructure (OCI Always Free)
+  • Endereço: never-land.rocks:19132
+  • Estilo: Neo-Brutalism & Gamified Cyber-Fantasy (Obsidian Voxel Dark Theme)
+  • Recursos:
+      - Cópia com 1 clique do IP/Porta e teste interativo de ping/latência
+      - Catálogo de 10 Addons e Texturas com busca em tempo real e filtros
+      - Modais detalhados com informações técnicas e links oficiais do CurseForge
+      - Guia visual passo a passo de conexão com imagens e zoom ampliado
+================================================================================
+-->
+<!DOCTYPE html><html lang="pt-BR" class="dark"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Never Land — Portal do Servidor Minecraft Bedrock</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config" data-stitch-original-src="311b7ced7b3b98e9===../../tailwind.config.js">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'accent': '#00E5FF',
+        'on-accent': '#00363D',
+        'success': '#22C55E',
+        'on-success': '#052E16',
+        'warning': '#F59E0B',
+        'on-warning': '#451A03',
+        'error': '#EF4444',
+        'on-error': '#3C0909',
+        'gold': '#FBBF24',
+        'on-gold': '#451A03',
+        'light-primary': '#15803D',
+        'light-on-primary': '#FFFFFF',
+        'light-secondary': '#B45309',
+        'light-on-secondary': '#FFFFFF',
+        'light-surface': '#1E293B',
+        'light-on-surface': '#F8FAFC',
+        'light-surface-container': '#0F172A',
+        'light-on-surface-container': '#E2E8F0',
+        'light-outline': '#334155',
+        'dark-primary': '#4ADE80',
+        'dark-on-primary': '#052E16',
+        'dark-secondary': '#FCD34D',
+        'dark-on-secondary': '#451A03',
+        'dark-surface': '#0B0F17',
+        'dark-on-surface': '#F1F5F9',
+        'dark-surface-container': '#151C28',
+        'dark-on-surface-container': '#E2E8F0',
+        'dark-outline': '#283548',
+      },
+      borderRadius: {
+        'sm': '4px',
+        'DEFAULT': '8px',
+        'md': '12px',
+        'lg': '16px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '40px',
+        'page-margin': '16px',
+      },
+      fontFamily: {
+        'display': ['"Silkscreen"', 'sans-serif'],
+        'headline': ['"Silkscreen"', 'sans-serif'],
+        'body': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'label': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'code': ['"JetBrains Mono"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['40px', { lineHeight: '48px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'display-lg-mobile': ['28px', { lineHeight: '36px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg': ['34px', { lineHeight: '42px', fontWeight: '700' }],
+        'headline-lg-mobile': ['24px', { lineHeight: '32px', fontWeight: '700' }],
+        'headline-md': ['20px', { lineHeight: '28px', fontWeight: '700' }],
+        'headline-sm': ['16px', { lineHeight: '24px', fontWeight: '700' }],
+        'body-lg': ['18px', { lineHeight: '28px', fontWeight: '400' }],
+        'body-md': ['15px', { lineHeight: '24px', fontWeight: '400' }],
+        'body-sm': ['13px', { lineHeight: '20px', fontWeight: '400' }],
+        'label-lg': ['15px', { lineHeight: '22px', fontWeight: '600' }],
+        'label-md': ['13px', { lineHeight: '18px', fontWeight: '600' }],
+        'label-sm': ['11px', { lineHeight: '16px', fontWeight: '600' }],
+        'code-md': ['14px', { lineHeight: '20px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '100ms',
+        'surface-enter': '200ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.16, 1, 0.3, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+  <style>
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0B0F17;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #283548;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-dark-surface text-dark-on-surface font-body min-h-screen flex flex-col antialiased selection:bg-dark-primary selection:text-dark-on-primary">
+
+  <!-- TOP NAVIGATION HEADER -->
+  <header class="sticky top-0 z-40 bg-dark-surface/95 backdrop-blur-md border-b border-dark-outline px-4 sm:px-6 lg:px-8 py-3.5">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2.5 sm:gap-3">
+        <img src="assets/images/minecraft_realm_icon.jpg" data-fallback-src="https://lh3.googleusercontent.com/aida/ALJJyrAFi1pnevD_6PdlsOpFCvF4LrfYNCi-VbAsRiMHC-pRknIJ-MkYw7FTTBIpVqYjWaZW5DOVr-7L65w4w-lvn9VK7LmHV71I6OyFBW8HsxUTxJg6CqGVCDAHymtTOp6QvD6u-ubMGdLMHos5O1WqTCLNbUO0ImuuH7bLzOanQuVW7lyDEoqX9i1PNp6JYpI9c_FGC4g2olAeyvRzJ40U8mSbdCXyViJjGWLWMBINkrNeeeQQwLAIgXP9mqox9Id7N8YXShDml_1lvRs" alt="Never Land Realm" class="w-9 h-9 sm:w-10 sm:h-10 rounded border border-dark-outline object-cover shadow-md" data-stitch-original-src="07ded880f8d66d83===../../images/minecraft_realm_icon.jpg">
+        <div>
+          <span class="font-headline text-headline-sm sm:text-headline-sm text-dark-primary tracking-wider block leading-none">NEVER LAND</span>
+          <span class="font-code text-[11px] sm:text-xs text-dark-on-surface-container/70 flex items-center gap-1.5 mt-0.5">
+            <span id="header-status-dot" class="w-2 h-2 rounded-full bg-warning animate-pulse"></span>
+            <span class="hidden sm:inline">Minecraft Bedrock Dedicated Server (BDS)</span>
+            <span id="header-status-mobile" class="sm:hidden">Verificando BDS...</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center gap-6 xl:gap-8 font-label text-label-md">
+        <button onclick="scrollToSection(&#39;inicio&#39;)" id="nav-link-inicio" class="desktop-nav-link text-dark-primary font-bold hover:text-dark-primary transition-colors cursor-pointer">Início</button>
+        <button onclick="scrollToSection(&#39;addons&#39;)" id="nav-link-addons" class="desktop-nav-link text-dark-on-surface-container hover:text-dark-on-surface transition-colors cursor-pointer">Addons &amp; Texturas</button>
+        <button onclick="scrollToSection(&#39;reino&#39;)" id="nav-link-reino" class="desktop-nav-link text-dark-on-surface-container hover:text-dark-on-surface transition-colors cursor-pointer">Regras do Reino</button>
+        <button onclick="scrollToSection(&#39;como-entrar&#39;)" id="nav-link-como-entrar" class="desktop-nav-link text-dark-on-surface-container hover:text-dark-on-surface transition-colors cursor-pointer">Como Conectar</button>
+      </nav>
+
+      <!-- Quick Actions Header (Help & Copy) -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button onclick="openDesktopHelpModal()" class="inline-flex items-center gap-1 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-DEFAULT bg-dark-surface-container border border-dark-primary/60 text-dark-primary hover:bg-dark-primary/10 font-label text-xs sm:text-label-md font-bold transition-all cursor-pointer">
+          <span class="material-symbols-outlined text-[16px] sm:text-[18px]">help</span>
+          <span>Ajuda</span>
+        </button>
+
+        <div class="hidden xl:flex items-center gap-2 bg-dark-surface-container border border-dark-outline rounded-md px-3 py-1.5 font-code text-xs">
+          <span class="text-dark-on-surface-container/60">IP:</span>
+          <span class="text-accent font-bold">never-land.rocks</span>
+          <span class="text-dark-outline">|</span>
+          <span class="text-dark-on-surface-container/60">Porta:</span>
+          <span class="text-gold font-bold">19132</span>
+        </div>
+
+        <button onclick="copyServerDetails()" class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-DEFAULT bg-dark-primary text-dark-on-primary font-label text-xs sm:text-label-md font-bold shadow hover:brightness-110 active:scale-95 transition-all">
+          <span class="material-symbols-outlined text-[16px] sm:text-[18px]">content_copy</span>
+          <span id="header-copy-label">Copiar IP</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Sub-navigation Pills -->
+    <div class="flex lg:hidden items-center justify-between gap-1.5 mt-2.5 pt-2 border-t border-dark-outline/50 overflow-x-auto text-xs font-label">
+      <button onclick="scrollToSection(&#39;inicio&#39;)" class="px-2.5 py-1 rounded bg-dark-surface-container text-dark-primary font-bold whitespace-nowrap">Início</button>
+      <button onclick="scrollToSection(&#39;addons&#39;)" class="px-2.5 py-1 rounded text-dark-on-surface-container hover:text-dark-on-surface whitespace-nowrap">Addons (10)</button>
+      <button onclick="scrollToSection(&#39;reino&#39;)" class="px-2.5 py-1 rounded text-dark-on-surface-container hover:text-dark-on-surface whitespace-nowrap">Regras</button>
+      <button onclick="scrollToSection(&#39;como-entrar&#39;)" class="px-2.5 py-1 rounded text-dark-on-surface-container hover:text-dark-on-surface whitespace-nowrap">Tutorial</button>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="inicio" class="relative border-b border-dark-outline overflow-hidden bg-dark-surface-container">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div class="lg:col-span-7 space-y-4 sm:space-y-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-dark-surface border border-dark-outline font-code text-xs">
+          <span class="w-2 h-2 rounded-full bg-success"></span>
+          <span class="text-dark-on-surface font-semibold">Oracle Cloud Host</span>
+          <span class="text-dark-outline">•</span>
+          <span class="text-gold font-bold">Conquistas Xbox Ativas</span>
+        </div>
+
+        <h1 class="font-headline text-display-lg-mobile sm:text-display-lg text-dark-on-surface leading-tight">
+          CONSTRUA UM <span class="text-dark-primary">REINO RICO</span> E DIVERSO
+        </h1>
+
+        <p class="font-body text-body-md sm:text-body-lg text-dark-on-surface-container max-w-xl">
+          Um servidor comunitário focado no survival puro, onde jogadores colaboram para erguer castelos, fazendas automatizadas e vilarejos interligados. Aprimorado com 10 addons balanceados que não quebram o jogo.
+        </p>
+
+        <!-- Connection Card no Hero com Verificação de Status em Tempo Real -->
+        <div class="p-4 sm:p-5 rounded-md bg-dark-surface border border-dark-outline space-y-3 sm:space-y-4 max-w-lg shadow-xl" id="server-status-card">
+          <!-- Cabeçalho do Card: Rótulo e Indicadores Dinâmicos -->
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <span class="font-label text-label-xs sm:text-label-sm text-dark-on-surface-container uppercase tracking-wider">Status do Servidor</span>
+            <div class="flex items-center gap-2">
+              <!-- Botão interativo para forçar nova verificação de latência e telemetria -->
+              <button onclick="testServerPing()" id="ping-refresh-btn" class="inline-flex items-center gap-1 text-[11px] font-code text-dark-on-surface-container hover:text-accent transition-colors cursor-pointer" title="Clique para testar a conexão com o servidor Bedrock agora">
+                <span id="ping-icon" class="material-symbols-outlined text-[14px]">sync</span>
+                <span id="ping-latency">Verificando...</span>
+              </button>
+              <!-- Badge reativo com indicação luminosa (Online / Offline / Indisponível) -->
+              <span id="server-status-pill" class="px-2 py-0.5 rounded bg-warning/15 border border-warning/30 text-warning text-xs font-code font-bold inline-flex items-center gap-1.5">
+                <span id="server-status-dot" class="w-1.5 h-1.5 rounded-full bg-warning animate-pulse"></span>
+                <span id="server-status-text">Checando</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Telemetria em tempo real: Jogadores conectados e Versão do BDS -->
+          <div class="grid grid-cols-2 gap-2 bg-dark-surface-container/60 rounded border border-dark-outline/50 p-2 text-xs font-code">
+            <div class="flex items-center gap-1.5 text-dark-on-surface">
+              <span class="material-symbols-outlined text-accent text-[16px]">group</span>
+              <span>Jogadores:</span>
+              <span id="server-players-count" class="font-bold text-accent">-- / --</span>
+            </div>
+            <div class="flex items-center gap-1.5 text-dark-on-surface justify-end">
+              <span class="material-symbols-outlined text-gold text-[16px]">tag</span>
+              <span id="server-version" class="text-gold font-bold truncate">Bedrock 1.21+</span>
+            </div>
+          </div>
+
+          <!-- Bloco com IP e Porta para conexão direta no Minecraft Bedrock -->
+          <div class="grid grid-cols-3 gap-2 sm:gap-3">
+            <div class="col-span-2 bg-dark-surface-container rounded border border-dark-outline px-3 sm:px-4 py-2 sm:py-2.5">
+              <span class="text-[10px] sm:text-[11px] text-dark-on-surface-container/60 uppercase font-label block">Endereço IP</span>
+              <span class="font-code text-xs sm:text-code-md text-accent font-bold truncate block">never-land.rocks</span>
+            </div>
+            <div class="col-span-1 bg-dark-surface-container rounded border border-dark-outline px-3 sm:px-4 py-2 sm:py-2.5">
+              <span class="text-[10px] sm:text-[11px] text-dark-on-surface-container/60 uppercase font-label block">Porta</span>
+              <span class="font-code text-xs sm:text-code-md text-gold font-bold block">19132</span>
+            </div>
+          </div>
+
+          <!-- Botões de Ação Rápida: Copiar Dados e Abrir Tutorial -->
+          <div class="flex items-center gap-2 sm:gap-3">
+            <button onclick="copyServerDetails()" class="flex-1 inline-flex items-center justify-center gap-1.5 sm:gap-2 py-2.5 sm:py-3 px-3 sm:px-5 rounded-DEFAULT bg-dark-primary text-dark-on-primary font-label text-xs sm:text-label-md font-bold hover:brightness-110 active:scale-95 transition-all shadow-md cursor-pointer">
+              <span class="material-symbols-outlined text-[18px] sm:text-[20px]">content_copy</span>
+              <span>Copiar Endereço Completo</span>
+            </button>
+            <button onclick="scrollToSection(&#39;como-entrar&#39;)" class="inline-flex items-center justify-center gap-1 sm:gap-1.5 py-2.5 sm:py-3 px-3 sm:px-4 rounded-DEFAULT bg-dark-surface-container border border-dark-outline text-dark-on-surface font-label text-xs sm:text-label-md hover:border-gold hover:text-gold transition-colors cursor-pointer">
+              <span>Tutorial</span>
+              <span class="material-symbols-outlined text-[16px] sm:text-[18px]">help_outline</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Metric highlights -->
+        <div class="grid grid-cols-3 gap-3 sm:gap-4 pt-2 max-w-lg border-t border-dark-outline/50">
+          <div>
+            <span class="font-headline text-headline-sm text-dark-primary block">10</span>
+            <span class="font-body text-xs sm:text-body-sm text-dark-on-surface-container/70">Addons Ativos</span>
+          </div>
+          <div>
+            <span class="font-headline text-headline-sm text-gold block">100%</span>
+            <span class="font-body text-xs sm:text-body-sm text-dark-on-surface-container/70">Conquistas ON</span>
+          </div>
+          <div>
+            <span class="font-headline text-headline-sm text-accent block">Bedrock</span>
+            <span class="font-body text-xs sm:text-body-sm text-dark-on-surface-container/70">BDS Dedicado</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5">
+        <div class="relative rounded-lg overflow-hidden border border-dark-outline shadow-2xl">
+          <img src="assets/images/never_land_hero.jpg" data-fallback-src="https://lh3.googleusercontent.com/aida/ALJJyrBB_velk4DAdEQSgoh3RN2MDctqfnR3hKEcdBT1dht7TnC6hlgywjk8hHw7dO6TIPdhXJtxg0nDOxGyLuId0S97yLhsolbtkZVOIHBY1h7r243iR1qaGQ2p6wNisyJl9U6PmeuCF24s0SEuMlZ0eX-BlMdpvIDB019YR_X3BWQFTWUVIZUFBxvf6mXOZs-TZDLRfoUIoekbGwpqEHxlu_7nCvYKMVJnenKfybZXCJrxIFvmCbz7wrv6uL4joBj1O0X-yiYn" alt="Never Land Reino" class="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-500" data-stitch-original-src="7076564ddaee790c===../../images/never_land_hero.jpg">
+          <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-surface-container via-dark-surface-container/80 to-transparent p-4 sm:p-6">
+            <span class="font-headline text-headline-sm text-gold block">Spawn Comunitário</span>
+            <span class="font-body text-xs sm:text-body-sm text-dark-on-surface-container">Construído em conjunto para acolher novos aventureiros.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADDONS DIRECTORY SECTION -->
+  <section id="addons" class="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full space-y-6 sm:space-y-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div>
+        <div class="flex items-center gap-2 text-dark-primary font-code text-xs font-bold uppercase tracking-wider">
+          <span class="material-symbols-outlined text-[16px]">extension</span>
+          <span>Recursos &amp; Modificações</span>
+        </div>
+        <h2 class="font-headline text-headline-sm sm:text-headline-lg text-dark-on-surface mt-1">Addons Instalados no Servidor</h2>
+        <p class="font-body text-body-sm sm:text-body-md text-dark-on-surface-container mt-1">
+          Todos os addons foram testados e configurados no BDS para máxima performance em nuvem.
+        </p>
+      </div>
+
+      <!-- Addon Filters & Live Search -->
+      <div class="flex flex-col sm:flex-row sm:items-center gap-3 w-full lg:w-auto">
+        <div class="relative flex-1 sm:w-64">
+          <span class="material-symbols-outlined absolute left-3 top-2.5 text-dark-on-surface-container/60 text-[18px]">search</span>
+          <input id="desktop-addon-search" type="text" placeholder="Pesquisar por addon..." oninput="searchDesktopAddons()" class="w-full bg-dark-surface border border-dark-outline rounded-DEFAULT pl-9 pr-3 py-2 text-body-sm text-dark-on-surface placeholder-dark-on-surface-container/50 focus:outline-none focus:border-dark-primary transition-colors">
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="filterDesktopAddons(&#39;all&#39;)" id="d-btn-all" class="d-filter-btn px-4 py-2 rounded text-xs font-label bg-dark-primary text-dark-on-primary font-bold transition-all">Todos (<span id="count-all">10</span>)</button>
+          <button onclick="filterDesktopAddons(&#39;util&#39;)" id="d-btn-util" class="d-filter-btn px-4 py-2 rounded text-xs font-label bg-dark-surface-container border border-dark-outline text-dark-on-surface-container font-semibold hover:text-dark-on-surface transition-all">Sobrevivência &amp; Obras</button>
+          <button onclick="filterDesktopAddons(&#39;ui&#39;)" id="d-btn-ui" class="d-filter-btn px-4 py-2 rounded text-xs font-label bg-dark-surface-container border border-dark-outline text-dark-on-surface-container font-semibold hover:text-dark-on-surface transition-all">UI &amp; Texturas</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 Addons Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="desktop-addons-grid">
+
+      <!-- 1 -->
+      <div data-cat="ui" class="d-addon bg-dark-surface-container border border-dark-outline rounded-md p-5 flex flex-col justify-between hover:border-dark-primary/60 transition-all">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="px-2 py-0.5 rounded text-[10px] font-code bg-dark-surface border border-dark-outline text-accent">HUD Java</span>
+            <span class="text-success text-xs font-code flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-success"></span> Ativo</span>
+          </div>
+          <h3 class="font-label text-label-lg text-dark-on-surface font-bold">F3 Panel</h3>
+          <p class="font-body text-body-sm text-dark-on-surface-container mt-2">
+            Adiciona painel completo estilo Java com coordenadas, FPS, bioma e direção cardeal na tela.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-dark-outline/50 mt-4 flex items-center justify-between">
+          <button onclick="openAddonModal(&#39;f3-panel&#39;)" class="font-label text-label-sm text-dark-primary hover:underline flex items-center gap-1">
+            <span class="material-symbols-outlined text-[16px]">info</span>
+            <span>Guia no Servidor</span>
+          </button>
+          <a href="https://www.curseforge.com/minecraft-bedrock/addons/f3-panel" target="_blank" rel="noopener noreferrer" class="font-label text-label-sm text-gold hover:underline flex items-center gap-1">
+            <span>CurseForge</span>
+            <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div data-cat="util" class="d-addon bg-dark-surface-container border border-dark-outline rounded-md p-5 flex flex-col justify-between hover:border-dark-primary/60 transition-all">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="px-2 py-0.5 rounded text-[10px] font-code bg-dark-surface border border-dark-outline text-gold">Navegação</span>
+            <span class="text-success text-xs font-code flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-success"></span> Ativo</span>
+          </div>
+          <h3 class="font-label text-label-lg text-dark-on-surface font-bold">Advanced Minimap</h3>
+          <p class="font-body text-body-sm text-dark-on-surface-container mt-2">
+            Minimapa dinâmico com waypoints para marcar o Castelo do Reino, minas e portais do Nether.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-dark-outline/50 mt-4 flex items-center justify-between">
+          <button onclick="openAddonModal(&#39;advanced-minimap&#39;)" class="font-label text-label-sm text-dark-primary hover:underline flex items-center gap-1">
+            <span class="material-symbols-outlined text-[16px]">info</span>
+            <span>Guia no Servidor</span>
+          </button>
+          <a href="https://www.curseforge.com/minecraft-bedrock/addons/advanced-minimap" target="_blank" rel="noopener noreferrer" class="font-label text-label-sm text-gold hover:underline flex items-center gap-1">
+            <span>CurseForge</span>
+            <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div data-cat="util" class="d-addon bg-dark-surface-container border border-dark-outline rounded-md p-5 flex flex-col justify-between hover:border-dark-primary/60 transition-all">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="px-2 py-0.5 rounded text-[10px] font-code bg-dark-surface border border-dark-outline text-dark-primary">Mineração</span>
+            <span class="text-success text-xs font-code flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-success"></span> Ativo</span>
+          </div>
+          <h3 class="font-label text-label-lg text-dark-on-surface font-bold">DLS Vein Miner &amp; Tree Capitator</h3>
+          <p class="font-body text-body-sm text-dark-on-surface-container mt-2">
+            Derrube troncos completos e quebre blocos de minério interligados agachando. Muito mais dinamismo.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-dark-outline/50 mt-4 flex items-center justify-between">
+          <button onclick="openAddonModal(&#39;dls-vein-miner-tree-capitator&#39;)" class="font-label text-label-sm text-dark-primary hover:underline flex items-center gap-1">
+            <span class="material-symbols-outlined text-[16px]">info</span>
+            <span>Guia no Servidor</span>
+          </button>
+          <a href="https://www.curseforge.com/minecraft-bedrock/addons/dls-vein-miner-tree-capitator" target="_blank" rel="noopener noreferrer" class="font-label text-label-sm text-gold hover:underline flex items-center gap-1">
+            <span>CurseForge</span>
+            <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div data-cat="util" class="d-addon bg-dark-surface-container border border-dark-outline rounded-md p-5 flex flex-col justify-between hover:border-dark-primary/60 transition-all">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="px-2 py-0.5 rounded text-[10px] font-code bg-dark-surface border border-dark-outline text-success">Fazendas</span>
+            <span class="text-success text-xs font-code flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-success"></span> Ativo</span>
+          </div>
+          <h3 class="font-label text-label-lg text-dark-on-surface font-bold">Auto Replant Exterleo</h3>
+          <p class="font-body text-body-sm text-dark-on-surface-container mt-2">
+            Replantio automático imediato ao colher plantações adultas. Mantém a despensa comunitária cheia.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-dark-outline/50 mt-4 flex items-center justify-between">
+          <button onclick="openAddonModal(&#39;auto-replant-exterleo&#39;)" class="font-label text-label-sm text-dark-primary hover:underline flex items-center gap-1">
+            <span class="material-symbols-outlined text-[16px]">info</span>
+            <span>Guia no Servidor</span>
+          </button>
+          <a href="https://www.curseforge.com/minecraft-bedrock/addons/auto-replant-exterleo" target="_blank" rel="noopener noreferrer" class="font-label text-label-sm text-gold hover:underline flex items-center gap-1">
+            <span>CurseForge</span>
+            <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div data-cat="util" class="d-addon bg-dark-surface-container border border-dark-outline rounded-md p-5 flex flex-col justify-between hover:border-dark-primary/60 transition-all">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="px-2 py-0.5 rounded text-[10px] font-code bg-dark-surface border border-dark-outline text-warning">Construção</span>
+            <span class="text-success text-xs font-code flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-success"></span> Ativo</span>
+          </div>
+          <h3 class="font-label text-label-lg text-dark-on-surface font-bold">Effortless Building</h3>
+          <p class="font-body text-body-sm text-dark-on-surface-container mt-2">
+            Ferramentas para erigir paredes, pisos e pontes no reino com velocidade e economia de cliques.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-dark-outline/50 mt-4 flex items-center justify-between">
+          <button onclick="openAddonModal(&#39;effortless-building&#39;)" class="font-label text-label-sm text-dark-primary hover:underline flex items-center gap-1">
+            <span class="material-symbols-outlined text-[16px]">info</span>
+            <span>Guia no Servidor</span>
+          </button>
+          <a href="https://www.curseforge.com/minecraft-bedrock/addons/effortless-building" target="_blank" rel="noopener noreferrer" class="font-label text-label-sm text-gold hover:underline flex items-center gap-1">
+            <span>CurseForge</span>
+            <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div data-cat="ui" class="d-addon bg-dark-surface-container border border-dark-outline rounded-md p-5 flex flex-col justify-between hover:border-dark-primary/60 transition-all">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="px-2 py-0.5 rounded text-[10px] font-code bg-dark-surface border border-dark-outline text-gold">Iluminação</span>
+            <span class="text-success text-xs font-code flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-success"></span> Ativo</span>
+          </div>
+          <h3 class="font-label text-label-lg text-dark-on-surface font-bold">Advanced Dynamic Lighting</h3>
+          <p class="font-body text-body-sm text-dark-on-surface-container mt-2">
+            Tochas e lanternas na mão emitem luz em tempo real enquanto você anda no escuro.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-dark-outline/50 mt-4 flex items-center justify-between">
+          <button onclick="openAddonModal(&#39;advanced-dynamic-lighting&#39;)" class="font-label text-label-sm text-dark-primary hover:underline flex items-center gap-1">
+            <span class="material-symbols-outlined text-[16px]">info</span>
+            <span>Guia no Servidor</span>
+          </button>
+          <a href="https://www.curseforge.com/minecraft-bedrock/addons/advanced-dynamic-lighting" target="_blank" rel="noopener noreferrer" class="font-label text-label-sm text-gold hover:underline flex items-center gap-1">
+            <span>CurseForge</span>
+            <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div data-cat="ui" class="d-addon bg-dark-surface-container border border-dark-outline rounded-md p-5 flex flex-col justify-between hover:border-dark-primary/60 transition-all">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="px-2 py-0.5 rounded text-[10px] font-code bg-dark-surface border border-dark-outline text-dark-on-surface-container">Atmosfera</span>
+            <span class="text-success text-xs font-code flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-success"></span> Ativo</span>
+          </div>
+          <h3 class="font-label text-label-lg text-dark-on-surface font-bold">Improved Campfire Smoke</h3>
+          <p class="font-body text-body-sm text-dark-on-surface-container mt-2">
+            Fumaça mais alta e realista para fogueiras de descanso, lareiras e sinalizadores distantes.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-dark-outline/50 mt-4 flex items-center justify-between">
+          <button onclick="openAddonModal(&#39;improved-campfire-smoke&#39;)" class="font-label text-label-sm text-dark-primary hover:underline flex items-center gap-1">
+            <span class="material-symbols-outlined text-[16px]">info</span>
+            <span>Guia no Servidor</span>
+          </button>
+          <a href="https://www.curseforge.com/minecraft-bedrock/addons/improved-campfire-smoke" target="_blank" rel="noopener noreferrer" class="font-label text-label-sm text-gold hover:underline flex items-center gap-1">
+            <span>CurseForge</span>
+            <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div data-cat="ui" class="d-addon bg-dark-surface-container border border-dark-outline rounded-md p-5 flex flex-col justify-between hover:border-dark-primary/60 transition-all">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="px-2 py-0.5 rounded text-[10px] font-code bg-dark-surface border border-dark-outline text-accent">Textura</span>
+            <span class="text-success text-xs font-code flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-success"></span> Ativo</span>
+          </div>
+          <h3 class="font-label text-label-lg text-dark-on-surface font-bold">Colourful Containers BE Mixed</h3>
+          <p class="font-body text-body-sm text-dark-on-surface-container mt-2">
+            Interfaces belíssimas e coloridas para cada tipo de madeira de baús, barris e shulkers.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-dark-outline/50 mt-4 flex items-center justify-between">
+          <button onclick="openAddonModal(&#39;colourful-containers-be-mixed&#39;)" class="font-label text-label-sm text-dark-primary hover:underline flex items-center gap-1">
+            <span class="material-symbols-outlined text-[16px]">info</span>
+            <span>Guia no Servidor</span>
+          </button>
+          <a href="https://www.curseforge.com/minecraft-bedrock/texture-packs/colourful-containers-be-mixed" target="_blank" rel="noopener noreferrer" class="font-label text-label-sm text-gold hover:underline flex items-center gap-1">
+            <span>CurseForge</span>
+            <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 9 -->
+      <div data-cat="ui" class="d-addon bg-dark-surface-container border border-dark-outline rounded-md p-5 flex flex-col justify-between hover:border-dark-primary/60 transition-all">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="px-2 py-0.5 rounded text-[10px] font-code bg-dark-surface border border-dark-outline text-warning">Alquimia</span>
+            <span class="text-success text-xs font-code flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-success"></span> Ativo</span>
+          </div>
+          <h3 class="font-label text-label-lg text-dark-on-surface font-bold">Brewing Guide UI</h3>
+          <p class="font-body text-body-sm text-dark-on-surface-container mt-2">
+            Guia completo de receitas integrado no Suporte de Poções do jogo para fácil consulta.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-dark-outline/50 mt-4 flex items-center justify-between">
+          <button onclick="openAddonModal(&#39;brewing-guide-ui&#39;)" class="font-label text-label-sm text-dark-primary hover:underline flex items-center gap-1">
+            <span class="material-symbols-outlined text-[16px]">info</span>
+            <span>Guia no Servidor</span>
+          </button>
+          <a href="https://www.curseforge.com/minecraft-bedrock/addons/brewing-guide-ui" target="_blank" rel="noopener noreferrer" class="font-label text-label-sm text-gold hover:underline flex items-center gap-1">
+            <span>CurseForge</span>
+            <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 10 -->
+      <div data-cat="ui" class="d-addon bg-dark-surface-container border border-dark-outline rounded-md p-5 flex flex-col justify-between hover:border-dark-primary/60 transition-all">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="px-2 py-0.5 rounded text-[10px] font-code bg-dark-surface border border-dark-outline text-dark-primary">Interface</span>
+            <span class="text-success text-xs font-code flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-success"></span> Ativo</span>
+          </div>
+          <h3 class="font-label text-label-lg text-dark-on-surface font-bold">The Ty-el&#39;s UI Pack</h3>
+          <p class="font-body text-body-sm text-dark-on-surface-container mt-2">
+            Pacote estético completo para Bedrock com visual limpo, botões intuitivos e menus ágeis.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-dark-outline/50 mt-4 flex items-center justify-between">
+          <button onclick="openAddonModal(&#39;the-ty-els-ui-pack&#39;)" class="font-label text-label-sm text-dark-primary hover:underline flex items-center gap-1">
+            <span class="material-symbols-outlined text-[16px]">info</span>
+            <span>Guia no Servidor</span>
+          </button>
+          <a href="https://www.curseforge.com/minecraft-bedrock/texture-packs/the-ty-els-ui-pack" target="_blank" rel="noopener noreferrer" class="font-label text-label-sm text-gold hover:underline flex items-center gap-1">
+            <span>CurseForge</span>
+            <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COMMUNITY RULES & CODE OF HONOR -->
+  <section id="reino" class="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8 bg-dark-surface-container border-y border-dark-outline">
+    <div class="max-w-7xl mx-auto space-y-6 sm:space-y-8">
+      <div class="max-w-2xl">
+        <span class="font-code text-xs text-accent uppercase tracking-wider font-bold">Convivência Saudável</span>
+        <h2 class="font-headline text-headline-sm sm:text-headline-md text-dark-on-surface mt-1">Código de Honra de Never Land</h2>
+        <p class="font-body text-body-sm sm:text-body-md text-dark-on-surface-container mt-2">
+          Mantemos um ambiente cooperativo e acolhedor para construir, minerar e relaxar em comunidade.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        <div class="p-4 sm:p-5 rounded bg-dark-surface border border-dark-outline space-y-2">
+          <span class="material-symbols-outlined text-success text-[24px]">handshake</span>
+          <h4 class="font-label text-label-md font-bold text-dark-on-surface">Ajuda Mútua</h4>
+          <p class="font-body text-body-sm text-dark-on-surface-container">Doe itens sobressalentes nos baús do Spawn e colabore com os novatos que acabaram de chegar.</p>
+        </div>
+
+        <div class="p-4 sm:p-5 rounded bg-dark-surface border border-dark-outline space-y-2">
+          <span class="material-symbols-outlined text-success text-[24px]">shield</span>
+          <h4 class="font-label text-label-md font-bold text-dark-on-surface">Respeito ao Próximo</h4>
+          <p class="font-body text-body-sm text-dark-on-surface-container">Não há roubos de baús marcados nem PvP sem consentimento. Construções pessoais são respeitadas.</p>
+        </div>
+
+        <div class="p-4 sm:p-5 rounded bg-dark-surface border border-dark-outline space-y-2">
+          <span class="material-symbols-outlined text-success text-[24px]">eco</span>
+          <h4 class="font-label text-label-md font-bold text-dark-on-surface">Plante o que Colher</h4>
+          <p class="font-body text-body-sm text-dark-on-surface-container">O addon replanta com 1 clique, então mantenha os campos agrícolas do reino sempre férteis e cuidados.</p>
+        </div>
+
+        <div class="p-4 sm:p-5 rounded bg-dark-surface border border-dark-outline space-y-2">
+          <span class="material-symbols-outlined text-error text-[24px]">block</span>
+          <h4 class="font-label text-label-md font-bold text-dark-on-surface">Griefing Tolerância Zero</h4>
+          <p class="font-body text-body-sm text-dark-on-surface-container">Uso de hacks, dupers destrutivos ou destruição de construções comunitárias resulta em ban imediato.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO CONNECT STEP-BY-STEP -->
+  <section id="como-entrar" class="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full space-y-6 sm:space-y-8">
+    <div class="text-center max-w-2xl mx-auto">
+      <span class="font-code text-xs text-dark-primary uppercase tracking-wider font-bold">Tutorial de Conexão</span>
+      <h2 class="font-headline text-headline-sm sm:text-headline-lg text-dark-on-surface mt-1">Como Entrar no Servidor</h2>
+      <p class="font-body text-body-sm sm:text-body-md text-dark-on-surface-container mt-2">
+        Siga as instruções para conectar pelo celular, tablet, console ou PC Windows.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      <div class="p-4 sm:p-5 rounded-md bg-dark-surface-container border border-dark-outline space-y-2 sm:space-y-3">
+        <span class="w-8 h-8 rounded-full bg-dark-primary text-dark-on-primary inline-flex items-center justify-center font-bold font-code">1</span>
+        <h3 class="font-label text-label-md sm:text-label-lg font-bold text-dark-on-surface">Abra o Bedrock</h3>
+        <p class="font-body text-body-sm text-dark-on-surface-container">
+          Inicie o Minecraft Bedrock atualizado no seu celular, Windows 10/11 ou console.
+        </p>
+      </div>
+
+      <div class="p-4 sm:p-5 rounded-md bg-dark-surface-container border border-dark-outline space-y-2 sm:space-y-3">
+        <span class="w-8 h-8 rounded-full bg-dark-primary text-dark-on-primary inline-flex items-center justify-center font-bold font-code">2</span>
+        <h3 class="font-label text-label-md sm:text-label-lg font-bold text-dark-on-surface">Aba Servidores</h3>
+        <p class="font-body text-body-sm text-dark-on-surface-container">
+          Clique em <strong>Jogar</strong>, selecione a aba <strong>Servidores</strong> e role até <strong>Adicionar Servidor</strong>.
+        </p>
+      </div>
+
+      <div class="p-4 sm:p-5 rounded-md bg-dark-surface-container border border-dark-outline space-y-2 sm:space-y-3">
+        <span class="w-8 h-8 rounded-full bg-dark-primary text-dark-on-primary inline-flex items-center justify-center font-bold font-code">3</span>
+        <h3 class="font-label text-label-md sm:text-label-lg font-bold text-dark-on-surface">Insira os Dados</h3>
+        <div class="p-2 rounded bg-dark-surface font-code text-xs space-y-1">
+          <div class="text-accent font-bold">never-land.rocks</div>
+          <div class="text-gold font-bold">Porta: 19132</div>
+        </div>
+      </div>
+
+      <div class="p-4 sm:p-5 rounded-md bg-dark-surface-container border border-dark-outline space-y-2 sm:space-y-3">
+        <span class="w-8 h-8 rounded-full bg-dark-primary text-dark-on-primary inline-flex items-center justify-center font-bold font-code">4</span>
+        <h3 class="font-label text-label-md sm:text-label-lg font-bold text-dark-on-surface">Jogar e Baixar</h3>
+        <p class="font-body text-body-sm text-dark-on-surface-container">
+          Clique em Jogar! O jogo baixa automaticamente os addons e texturas do servidor.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       RODAPÉ OFICIAL (FOOTER MODULAR EM 3 COLUNAS)
+       Inclui: Identidade do Servidor, Links Oficiais & Código e Dados do Autor
+       ========================================================================== -->
+  <footer class="mt-auto border-t border-dark-outline bg-dark-surface-container py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto space-y-8">
+      <!-- Grid Principal em 3 Colunas Responsivas -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start pb-8 border-b border-dark-outline/60">
+
+        <!-- Coluna 1: Identidade do Servidor Never Land BDS -->
+        <div class="md:col-span-5 space-y-3">
+          <div class="flex items-center gap-3">
+            <img src="assets/images/minecraft_realm_icon.jpg" data-fallback-src="https://lh3.googleusercontent.com/aida/ALJJyrAFi1pnevD_6PdlsOpFCvF4LrfYNCi-VbAsRiMHC-pRknIJ-MkYw7FTTBIpVqYjWaZW5DOVr-7L65w4w-lvn9VK7LmHV71I6OyFBW8HsxUTxJg6CqGVCDAHymtTOp6QvD6u-ubMGdLMHos5O1WqTCLNbUO0ImuuH7bLzOanQuVW7lyDEoqX9i1PNp6JYpI9c_FGC4g2olAeyvRzJ40U8mSbdCXyViJjGWLWMBINkrNeeeQQwLAIgXP9mqox9Id7N8YXShDml_1lvRs" alt="Never Land" class="w-8 h-8 rounded border border-dark-outline object-cover" data-stitch-original-src="07ded880f8d66d83===../../images/minecraft_realm_icon.jpg">
+            <div>
+              <span class="font-headline text-headline-sm text-dark-primary block leading-none">NEVER LAND BDS</span>
+              <span class="font-code text-xs text-accent mt-0.5 block">never-land.rocks:19132</span>
+            </div>
+          </div>
+          <p class="font-body text-xs sm:text-body-sm text-dark-on-surface-container/70 max-w-sm">
+            Portal oficial e informações técnicas do reino comunitário Minecraft Bedrock, mantido com alta disponibilidade e governança transparente.
+          </p>
+          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-dark-surface border border-dark-outline font-code text-xs text-accent">
+            <span>IP: never-land.rocks</span>
+            <span class="text-dark-outline">|</span>
+            <span class="text-gold">Porta: 19132</span>
+          </div>
+          <div class="font-body text-[11px] text-dark-on-surface-container/50 pt-1">
+            Não afiliado à Mojang Studios ou Microsoft. Servidor comunitário hospedado na Oracle Cloud Infrastructure (Always Free).
+          </div>
+        </div>
+
+        <!-- Coluna 2: Recursos Oficiais, BDS Mojang e Código Aberto -->
+        <div class="md:col-span-3 space-y-3">
+          <span class="font-label text-label-sm uppercase tracking-wider text-dark-on-surface font-bold flex items-center gap-2">
+            <span class="material-symbols-outlined text-gold text-[18px]">verified</span>
+            <span>Recursos &amp; Software</span>
+          </span>
+          <ul class="space-y-2.5 text-xs font-body">
+            <li>
+              <!-- Link oficial para o repositório GitHub do projeto -->
+              <a href="https://github.com/Bruno0103/Minecraft-Server" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-dark-on-surface-container hover:text-dark-primary transition-colors">
+                <span class="material-symbols-outlined text-[16px] text-accent">code</span>
+                <span>Repositório GitHub</span>
+                <span class="material-symbols-outlined text-[12px] opacity-70">open_in_new</span>
+              </a>
+            </li>
+            <li>
+              <!-- Link oficial de download do Bedrock Dedicated Server da Mojang -->
+              <a href="https://www.minecraft.net/en-us/download/server/bedrock" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-dark-on-surface-container hover:text-gold transition-colors">
+                <span class="material-symbols-outlined text-[16px] text-gold">download</span>
+                <span>BDS Oficial Mojang</span>
+                <span class="material-symbols-outlined text-[12px] opacity-70">open_in_new</span>
+              </a>
+            </li>
+            <li>
+              <!-- Atalho para navegação até a seção de addons do portal -->
+              <a href="#addons" onclick="scrollToSection(&#39;addons&#39;)" class="inline-flex items-center gap-1.5 text-dark-on-surface-container hover:text-dark-primary transition-colors cursor-pointer">
+                <span class="material-symbols-outlined text-[16px] text-dark-primary">extension</span>
+                <span>Addons &amp; Texturas (10)</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Coluna 3: Desenvolvimento, Autor e Contato -->
+        <div class="md:col-span-4 space-y-3">
+          <span class="font-label text-label-sm uppercase tracking-wider text-dark-on-surface font-bold flex items-center gap-2">
+            <span class="material-symbols-outlined text-accent text-[18px]">person</span>
+            <span>Desenvolvimento &amp; Contato</span>
+          </span>
+          <div class="p-3.5 rounded bg-dark-surface border border-dark-outline space-y-2.5 shadow-sm">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-dark-primary text-[18px]">engineering</span>
+              <span class="font-label text-xs sm:text-label-md font-bold text-dark-on-surface">Bruno Soares Rodrigues</span>
+            </div>
+            <div class="space-y-1.5 text-xs font-code">
+              <div>
+                <!-- E-mail de contato direto do autor -->
+                <a href="mailto:brunosoaresrodriguesr@gmail.com" class="inline-flex items-center gap-1.5 text-dark-on-surface-container/80 hover:text-accent transition-colors break-all">
+                  <span class="material-symbols-outlined text-[14px] text-accent">mail</span>
+                  <span>brunosoaresrodriguesr@gmail.com</span>
+                </a>
+              </div>
+              <div>
+                <!-- Perfil do Instagram oficial do autor -->
+                <a href="https://www.instagram.com/bruno.s0103/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-dark-on-surface-container/80 hover:text-gold transition-colors">
+                  <span class="material-symbols-outlined text-[14px] text-gold">photo_camera</span>
+                  <span>Instagram: <strong>@bruno.s0103</strong></span>
+                  <span class="material-symbols-outlined text-[12px] opacity-70">open_in_new</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Barra de Copyright e Indicador de Produção -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-code text-dark-on-surface-container/60">
+        <div>
+          © 2026 Never Land Bedrock. Todos os direitos reservados.
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-success"></span>
+          <span>Deploy via Vercel (Produção)</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="desktop-copy-toast" role="alert" class="fixed bottom-8 right-8 z-50 bg-dark-surface-container border border-dark-primary text-dark-on-surface px-5 py-3 rounded-md shadow-2xl flex items-center gap-3 opacity-0 pointer-events-none transition-all duration-200 transform translate-y-3">
+    <span class="material-symbols-outlined text-dark-primary text-[20px]">check_circle</span>
+    <div>
+      <span class="font-label text-label-md font-bold block">IP e Porta Copiados!</span>
+      <span class="font-code text-xs text-accent">never-land.rocks:19132</span>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE ADDON DETAIL MODAL -->
+  <div id="addon-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-200">
+    <div class="bg-dark-surface-container border border-dark-outline rounded-lg max-w-lg w-full p-6 space-y-4 shadow-2xl relative">
+      <button onclick="closeAddonModal()" class="absolute top-4 right-4 text-dark-on-surface-container hover:text-dark-on-surface">
+        <span class="material-symbols-outlined text-[20px]">close</span>
+      </button>
+
+      <div class="flex items-center gap-3">
+        <div id="modal-icon-wrapper" class="w-12 h-12 rounded bg-dark-surface border border-dark-outline flex items-center justify-center text-dark-primary text-[28px]">
+          <span id="modal-icon" class="material-symbols-outlined">extension</span>
+        </div>
+        <div>
+          <span id="modal-tag" class="px-2 py-0.5 rounded text-[10px] font-code bg-dark-surface border border-dark-outline text-accent font-bold">Categoria</span>
+          <h3 id="modal-title" class="font-headline text-headline-sm text-dark-on-surface mt-1">Nome do Addon</h3>
+        </div>
+      </div>
+
+      <div class="space-y-3 border-y border-dark-outline/50 py-3">
+        <div>
+          <span class="text-xs font-label uppercase text-gold font-bold block mb-1">Como Funciona no Servidor:</span>
+          <p id="modal-desc" class="font-body text-body-sm text-dark-on-surface-container">Descrição completa</p>
+        </div>
+
+        <div class="bg-dark-surface rounded p-3 border border-dark-outline text-xs font-code space-y-1">
+          <div class="flex justify-between">
+            <span class="text-dark-on-surface-container/60">Compatibilidade:</span>
+            <span class="text-success font-bold">Bedrock 1.21+ (BDS)</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-dark-on-surface-container/60">Conquistas:</span>
+            <span class="text-gold font-bold">100% Compatível (Sem cheats)</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-dark-on-surface-container/60">Download:</span>
+            <span class="text-dark-on-surface">Automático ao entrar</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between pt-1">
+        <span class="text-xs font-body text-dark-on-surface-container/60">Instalado no host Never Land</span>
+        <a id="modal-link" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 rounded bg-dark-surface border border-gold/40 text-gold hover:bg-gold/10 font-label text-label-sm font-semibold transition-colors">
+          <span>Ver no CurseForge</span>
+          <span class="material-symbols-outlined text-[16px]">open_in_new</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE UNIFIED HELP MODAL (RESPONSIVE FOR MOBILE, TABLET & PC) -->
+  <div id="desktop-help-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 lg:p-6 opacity-0 pointer-events-none transition-all duration-300">
+    <div class="bg-dark-surface-container border border-dark-outline rounded-xl max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+      <!-- Modal Header -->
+      <div class="p-3.5 sm:p-5 border-b border-dark-outline flex items-center justify-between bg-dark-surface/50">
+        <div class="flex items-center gap-2.5 sm:gap-3">
+          <span class="w-8 h-8 sm:w-10 sm:h-10 rounded bg-dark-surface border border-dark-outline flex items-center justify-center text-dark-primary flex-shrink-0">
+            <span class="material-symbols-outlined text-[20px] sm:text-[24px]">help_center</span>
+          </span>
+          <div class="min-w-0">
+            <h3 class="font-headline text-headline-sm text-dark-on-surface truncate">Guia Visual de Conexão</h3>
+            <span class="text-[10px] sm:text-xs font-code text-dark-on-surface-container/70 truncate block">Minecraft Bedrock (Celular, Tablet, PC &amp; Console)</span>
+          </div>
+        </div>
+
+        <button onclick="closeDesktopHelpModal()" class="w-8 h-8 sm:w-9 sm:h-9 rounded bg-dark-surface border border-dark-outline flex items-center justify-center text-dark-on-surface hover:text-dark-primary transition-colors cursor-pointer flex-shrink-0">
+          <span class="material-symbols-outlined text-[18px] sm:text-[20px]">close</span>
+        </button>
+      </div>
+
+      <!-- Modal Body with Step-by-Step Focus, Zoom & Indicator Arrows -->
+      <div class="p-3.5 sm:p-6 overflow-y-auto space-y-4 sm:space-y-6">
+        <!-- Quick Copy Action Bar in Modal -->
+        <div class="p-3 sm:p-4 rounded-lg bg-dark-surface border border-dark-primary/40 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+          <div class="space-y-0.5">
+            <span class="text-[10px] sm:text-xs font-label uppercase text-gold font-bold">Endereço Oficial Never Land</span>
+            <div class="font-code text-xs sm:text-sm text-dark-on-surface flex items-center gap-2 sm:gap-3">
+              <span>IP: <strong class="text-accent">never-land.rocks</strong></span>
+              <span class="text-dark-outline">|</span>
+              <span>Porta: <strong class="text-gold">19132</strong></span>
+            </div>
+          </div>
+          <button onclick="copyServerDetails()" class="inline-flex items-center justify-center gap-1.5 px-3 sm:px-4 py-2 rounded bg-dark-primary text-dark-on-primary font-label text-xs sm:text-label-sm font-bold shadow hover:brightness-110 active:scale-95 transition-all">
+            <span class="material-symbols-outlined text-[16px]">content_copy</span>
+            <span>Copiar IP e Porta</span>
+          </button>
+        </div>
+
+        <!-- Desktop Step Selector Tabs -->
+        <div class="flex items-center justify-between gap-2 border-b border-dark-outline pb-2">
+          <div class="flex items-center gap-2 overflow-x-auto">
+            <button onclick="setDesktopHelpStep(1)" id="d-step-pill-1" class="d-step-btn px-4 py-2 rounded-md font-label text-xs font-bold bg-dark-primary text-dark-on-primary">Passo 1: Início</button>
+            <button onclick="setDesktopHelpStep(2)" id="d-step-pill-2" class="d-step-btn px-4 py-2 rounded-md font-label text-xs font-semibold bg-dark-surface border border-dark-outline text-dark-on-surface-container hover:text-dark-on-surface">Passo 2: Aba Servidores</button>
+            <button onclick="setDesktopHelpStep(3)" id="d-step-pill-3" class="d-step-btn px-4 py-2 rounded-md font-label text-xs font-semibold bg-dark-surface border border-dark-outline text-dark-on-surface-container hover:text-dark-on-surface">Passo 3: Adicionar Servidor</button>
+            <button onclick="setDesktopHelpStep(4)" id="d-step-pill-4" class="d-step-btn px-4 py-2 rounded-md font-label text-xs font-semibold bg-dark-surface border border-dark-outline text-dark-on-surface-container hover:text-dark-on-surface">Passo 4: Preencher Dados</button>
+            <button onclick="setDesktopHelpStep(5)" id="d-step-pill-5" class="d-step-btn px-4 py-2 rounded-md font-label text-xs font-semibold bg-dark-surface border border-dark-outline text-dark-on-surface-container hover:text-dark-on-surface">Passo 5: Salvar e Jogar</button>
+          </div>
+          <span id="d-step-indicator" class="text-xs font-code text-gold font-bold whitespace-nowrap">Passo 1 de 5</span>
+        </div>
+
+        <!-- MAIN ENLARGED VIEW CONTAINER WITH ARROWS -->
+        <div id="desktop-step-slides" class="space-y-4">
+
+          <!-- Desktop Step 1 -->
+          <div id="d-slide-1" class="d-step-view space-y-3">
+            <div class="relative rounded-lg border-2 border-dark-primary/70 overflow-hidden bg-black shadow-2xl group cursor-zoom-in" onclick="zoomImage(&#39;../../uploads/captura-de-tela-2026-11-09-123553-4eeddc.png&#39;, &#39;Passo 1: Clicar no botão Jogar no menu principal&#39;)">
+              <img src="assets/images/tutorial/passo1_menu_jogar.png" data-fallback-src="https://lh3.googleusercontent.com/aida/ALJJyrAJV-8buC6BmljR6DTupeMBARI4VlK4rrKpV-yMuXehhwkzweJwgwIUz_y1tNYxynRsJmd1voKz6ECf67LO8d8KcemvhXGZRUWOPbbeaAHgHtIIECeKXKAYmmGM5SRcOXrr86evhQhPoypSKsKGUCNB6VBwbkKoM2DqRpKfUpU_g2OofbqBCFaZ_fY8jNwDh_eeSnkQyeYS-1TjSO1HRkl1cZpM81j7yiCOrZfVvlu4WGQpWRFUMM4546lyk30_nX6aGylIrA" alt="Passo 1" class="w-full h-44 sm:h-72 lg:h-[380px] object-contain" data-stitch-original-src="95b8c4692f0e9002===../../uploads/captura-de-tela-2026-11-09-123553-4eeddc.png">
+              <!-- Visual Indicator Arrow pointing to 'Jogar' button -->
+              <div class="absolute inset-x-0 bottom-4 sm:bottom-8 flex justify-center pointer-events-none">
+                <div class="bg-dark-primary text-dark-on-primary px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-label text-xs sm:text-sm font-bold flex items-center gap-1.5 sm:gap-2 shadow-2xl border border-white/20 animate-bounce">
+                  <span class="material-symbols-outlined text-[16px] sm:text-[20px]">touch_app</span>
+                  <span>1. Clique no botão &#34;Jogar&#34; no menu</span>
+                  <span class="material-symbols-outlined text-[16px] sm:text-[20px]">arrow_downward</span>
+                </div>
+              </div>
+              <div class="absolute top-2 sm:top-3 right-2 sm:right-3 bg-black/75 text-white px-2 py-0.5 sm:px-2.5 sm:py-1 rounded text-[10px] sm:text-xs font-code flex items-center gap-1 opacity-90 group-hover:opacity-100 transition-opacity">
+                <span class="material-symbols-outlined text-[14px]">zoom_in</span>
+                <span>Ampliar</span>
+              </div>
+            </div>
+            <div class="p-3 sm:p-4 bg-dark-surface rounded-lg border border-dark-outline flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <h4 class="font-label text-label-sm sm:text-label-md font-bold text-dark-on-surface">Passo 1: Tela Principal do Minecraft</h4>
+                <p class="font-body text-xs sm:text-body-sm text-dark-on-surface-container mt-0.5">
+                  Inicie seu Minecraft Bedrock (com ou sem pacotes visuais) e clique em <strong>Jogar</strong> para acessar a lista de mundos e servidores.
+                </p>
+              </div>
+              <button onclick="setDesktopHelpStep(2)" class="px-3.5 sm:px-4 py-2 rounded bg-dark-primary text-dark-on-primary font-label text-xs font-bold flex items-center gap-1.5 shadow whitespace-nowrap self-start sm:self-center">
+                <span>Passo 2</span>
+                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Desktop Step 2 -->
+          <div id="d-slide-2" class="d-step-view space-y-3 hidden">
+            <div class="relative rounded-lg border-2 border-gold/70 overflow-hidden bg-black shadow-2xl group cursor-zoom-in" onclick="zoomImage(&#39;../../uploads/captura-de-tela-2026-11-09-123614-2cab90.png&#39;, &#39;Passo 2: Aba Servidores no topo da tela&#39;)">
+              <img src="assets/images/tutorial/passo2_aba_servidores.png" data-fallback-src="https://lh3.googleusercontent.com/aida/ALJJyrCzVsGkAi5WCgbDPdHYiypbKFcBAUH8SWodJANxuiQk6Y5ARYbyPAO-k6xLjWTiN811QX-Fa4ZkZzQJTKyxe0qKdNs7VJ4k9I4HB115rceqiA7pIkPzRsI3mKHvutGAOQKE4dD_pafCfPBMD3mUc9uNN9qeRWeC555P7-ZFdelFJq1kNA8xptKJx6W9V-swukmvPPiqaqwDz-oP5lVJVrDBQsscpNw_hdFq_ufOBrmKJN16_4cnkS5FZKk1v1VcM0W_1rKO" alt="Passo 2" class="w-full h-44 sm:h-72 lg:h-[380px] object-contain" data-stitch-original-src="1216d60e8db76710===../../uploads/captura-de-tela-2026-11-09-123614-2cab90.png">
+              <!-- Visual Indicator Arrow pointing to Servers tab -->
+              <div class="absolute top-3 sm:top-5 right-12 sm:right-24 pointer-events-none">
+                <div class="bg-gold text-on-gold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-label text-xs sm:text-sm font-bold flex items-center gap-1.5 sm:gap-2 shadow-2xl border border-white/20 animate-pulse">
+                  <span class="material-symbols-outlined text-[16px] sm:text-[20px]">arrow_upward</span>
+                  <span>2. Clique na aba &#34;Servidores&#34; no topo</span>
+                </div>
+              </div>
+              <div class="absolute top-2 sm:top-3 right-2 sm:right-3 bg-black/75 text-white px-2 py-0.5 sm:px-2.5 sm:py-1 rounded text-[10px] sm:text-xs font-code flex items-center gap-1 opacity-90 group-hover:opacity-100 transition-opacity">
+                <span class="material-symbols-outlined text-[14px]">zoom_in</span>
+                <span>Ampliar</span>
+              </div>
+            </div>
+            <div class="p-3 sm:p-4 bg-dark-surface rounded-lg border border-dark-outline flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <h4 class="font-label text-label-sm sm:text-label-md font-bold text-dark-on-surface">Passo 2: Navegar até a aba Servidores</h4>
+                <p class="font-body text-xs sm:text-body-sm text-dark-on-surface-container mt-0.5">
+                  No menu superior com abas (Mundos, Realms e Servidores), clique na terceira opção para visualizar a lista de servidores dedicados.
+                </p>
+              </div>
+              <div class="flex items-center gap-2 self-start sm:self-center">
+                <button onclick="setDesktopHelpStep(1)" class="px-3 py-2 rounded bg-dark-surface border border-dark-outline font-label text-xs text-dark-on-surface-container">Voltar</button>
+                <button onclick="setDesktopHelpStep(3)" class="px-3.5 sm:px-4 py-2 rounded bg-dark-primary text-dark-on-primary font-label text-xs font-bold flex items-center gap-1.5 shadow">
+                  <span>Passo 3</span>
+                  <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Desktop Step 3 -->
+          <div id="d-slide-3" class="d-step-view space-y-3 hidden">
+            <div class="relative rounded-lg border-2 border-accent/70 overflow-hidden bg-black shadow-2xl group cursor-zoom-in" onclick="zoomImage(&#39;../../uploads/captura-de-tela-2026-11-09-123621-b83d2c.png&#39;, &#39;Passo 3: Botão + Adicionar servidor&#39;)">
+              <img src="assets/images/tutorial/passo3_adicionar_servidor.png" data-fallback-src="https://lh3.googleusercontent.com/aida/ALJJyrDljYnN-X-TkRHErN7he45uKyvSQ-mcdCYbnucVRXVo0H6CCb5uP2lhxlzqmt48desWF2oRQMJwq43GVeUpgeX2gzlh_Dld325sRf3O3UBiy29UKME021lrfshYqluvkciIqyymniyhkoycqtND_bTJmNB2U0FooseONSY-8zwXekI2zQfsHlZTnu3eNEjpGa1yeavE-DkDKPpvG8D28WJK83lUIueKNLMDSGs0t8_WRxR0L9nKc5-nQJ3FouzyKaJL7Ky-1Q" alt="Passo 3" class="w-full h-44 sm:h-72 lg:h-[380px] object-contain" data-stitch-original-src="ea5f55fb21792e1e===../../uploads/captura-de-tela-2026-11-09-123621-b83d2c.png">
+              <!-- Visual Indicator Arrow pointing to Add server button -->
+              <div class="absolute top-6 sm:top-10 left-6 sm:left-12 pointer-events-none">
+                <div class="bg-accent text-on-accent px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-label text-xs sm:text-sm font-bold flex items-center gap-1.5 sm:gap-2 shadow-2xl border border-white/20 animate-bounce">
+                  <span class="material-symbols-outlined text-[16px] sm:text-[20px]">arrow_downward</span>
+                  <span>3. Clique em &#34;+ Adicionar servidor&#34;</span>
+                </div>
+              </div>
+              <div class="absolute top-2 sm:top-3 right-2 sm:right-3 bg-black/75 text-white px-2 py-0.5 sm:px-2.5 sm:py-1 rounded text-[10px] sm:text-xs font-code flex items-center gap-1 opacity-90 group-hover:opacity-100 transition-opacity">
+                <span class="material-symbols-outlined text-[14px]">zoom_in</span>
+                <span>Ampliar</span>
+              </div>
+            </div>
+            <div class="p-3 sm:p-4 bg-dark-surface rounded-lg border border-dark-outline flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <h4 class="font-label text-label-sm sm:text-label-md font-bold text-dark-on-surface">Passo 3: Adicionar Servidor Personalizado</h4>
+                <p class="font-body text-xs sm:text-body-sm text-dark-on-surface-container mt-0.5">
+                  No canto superior esquerdo da lista, clique no botão destacado <strong>+ Adicionar servidor</strong> para abrir a tela de configuração.
+                </p>
+              </div>
+              <div class="flex items-center gap-2 self-start sm:self-center">
+                <button onclick="setDesktopHelpStep(2)" class="px-3 py-2 rounded bg-dark-surface border border-dark-outline font-label text-xs text-dark-on-surface-container">Voltar</button>
+                <button onclick="setDesktopHelpStep(4)" class="px-3.5 sm:px-4 py-2 rounded bg-dark-primary text-dark-on-primary font-label text-xs font-bold flex items-center gap-1.5 shadow">
+                  <span>Passo 4</span>
+                  <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Desktop Step 4 -->
+          <div id="d-slide-4" class="d-step-view space-y-3 hidden">
+            <div class="relative rounded-lg border-2 border-dark-primary/70 overflow-hidden bg-black shadow-2xl group cursor-zoom-in" onclick="zoomImage(&#39;../../uploads/captura-de-tela-2026-11-09-123626-298960.png&#39;, &#39;Passo 4: Preencher Nome, Endereço never-land.rocks e Porta 19132&#39;)">
+              <img src="assets/images/tutorial/passo4_preencher_dados.png" data-fallback-src="https://lh3.googleusercontent.com/aida/ALJJyrDimQ07cc_HZ7nxzp0-TmCwerORrIaNHiVMJpTjlJjSYQRtEUN1fpfalC4onr4ufd6GEDbMSzWyVU0nfZhmrNgLp30y_KJi3C4RPM7Nby6XCaEIW7MDmPP5fqu3BZQZE0WkE_Mz7A-A_cn6PEEt3HCy1IY-B1tcJRSbsVrbCdp2zsUXC1FF_C5USlaIZ4Pq1O1jShPX7_V_jH8UQ6JtUnqUlPUU9wdcp7QJyFTOgp6FxZoOWGa-s5M0iOPwnX918Kd9SyJP" alt="Passo 4" class="w-full h-44 sm:h-72 lg:h-[380px] object-contain" data-stitch-original-src="7aa4f9ee4489999f===../../uploads/captura-de-tela-2026-11-09-123626-298960.png">
+              <!-- Visual Indicator Arrow pointing to fields -->
+              <div class="absolute bottom-6 sm:bottom-12 right-6 sm:right-12 pointer-events-none">
+                <div class="bg-dark-primary text-dark-on-primary px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-label text-xs sm:text-sm font-bold flex items-center gap-1.5 sm:gap-2 shadow-2xl border border-white/20">
+                  <span class="material-symbols-outlined text-[16px] sm:text-[20px]">edit_note</span>
+                  <span>4. Digite: never-land.rocks e porta 19132</span>
+                  <span class="material-symbols-outlined text-[16px] sm:text-[20px]">arrow_back</span>
+                </div>
+              </div>
+              <div class="absolute top-2 sm:top-3 right-2 sm:right-3 bg-black/75 text-white px-2 py-0.5 sm:px-2.5 sm:py-1 rounded text-[10px] sm:text-xs font-code flex items-center gap-1 opacity-90 group-hover:opacity-100 transition-opacity">
+                <span class="material-symbols-outlined text-[14px]">zoom_in</span>
+                <span>Ampliar</span>
+              </div>
+            </div>
+            <div class="p-3 sm:p-4 bg-dark-surface rounded-lg border border-dark-outline flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <h4 class="font-label text-label-sm sm:text-label-md font-bold text-dark-on-surface">Passo 4: Inserir as Credenciais</h4>
+                <p class="font-body text-xs sm:text-body-sm text-dark-on-surface-container mt-0.5">
+                  Nome: <code class="text-dark-on-surface font-bold">Never Land</code> | Endereço: <code class="text-accent font-bold">never-land.rocks</code> | Porta: <code class="text-gold font-bold">19132</code>
+                </p>
+              </div>
+              <div class="flex items-center gap-2 self-start sm:self-center">
+                <button onclick="setDesktopHelpStep(3)" class="px-3 py-2 rounded bg-dark-surface border border-dark-outline font-label text-xs text-dark-on-surface-container">Voltar</button>
+                <button onclick="setDesktopHelpStep(5)" class="px-3.5 sm:px-4 py-2 rounded bg-dark-primary text-dark-on-primary font-label text-xs font-bold flex items-center gap-1.5 shadow">
+                  <span>Passo 5</span>
+                  <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Desktop Step 5 -->
+          <div id="d-slide-5" class="d-step-view space-y-3 hidden">
+            <div class="relative rounded-lg border-2 border-success/70 overflow-hidden bg-black shadow-2xl group cursor-zoom-in" onclick="zoomImage(&#39;../../uploads/captura-de-tela-2026-11-09-123641-7160c6.png&#39;, &#39;Passo 5: Salvar alterações ou Jogar&#39;)">
+              <img src="assets/images/tutorial/passo5_salvar_jogar.png" data-fallback-src="https://lh3.googleusercontent.com/aida/ALJJyrDFDUdsJK1PUDKfyY4cCYBftkQomBpSLfdnnZWW_Aa5Aznr5Hu5CgY6Sw9GMqCIsLtc9YDHm96T2Q9FInL4NfdPpcyPb2Myp13GubzAqTD2c5Ktj8H60EOePzltErUEgXaxSRz9anEaNpNzcqC6DPwJeddyBa1yi-woZF4HTB8weZ7oUwxqbay3HorefIa3hJSyn-DW7cr4mPZFU3kbZNqexzZR0FVrQFJaH4RFTbfPFQ0yaQ09CYjGctBTZsJX0aEpwduwiQ" alt="Passo 5" class="w-full h-44 sm:h-72 lg:h-[380px] object-contain" data-stitch-original-src="f6d66e16180b41ff===../../uploads/captura-de-tela-2026-11-09-123641-7160c6.png">
+              <!-- Visual Indicator Arrow pointing to Save / Play -->
+              <div class="absolute bottom-6 sm:bottom-10 right-6 sm:right-14 pointer-events-none">
+                <div class="bg-success text-on-success px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-label text-xs sm:text-sm font-bold flex items-center gap-1.5 sm:gap-2 shadow-2xl border border-white/20 animate-pulse">
+                  <span class="material-symbols-outlined text-[16px] sm:text-[20px]">check_circle</span>
+                  <span>5. Clique em &#34;Salvar alterações&#34; ou &#34;Jogar&#34;!</span>
+                </div>
+              </div>
+              <div class="absolute top-2 sm:top-3 right-2 sm:right-3 bg-black/75 text-white px-2 py-0.5 sm:px-2.5 sm:py-1 rounded text-[10px] sm:text-xs font-code flex items-center gap-1 opacity-90 group-hover:opacity-100 transition-opacity">
+                <span class="material-symbols-outlined text-[14px]">zoom_in</span>
+                <span>Ampliar</span>
+              </div>
+            </div>
+            <div class="p-3 sm:p-4 bg-dark-surface rounded-lg border border-dark-outline flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <h4 class="font-label text-label-sm sm:text-label-md font-bold text-dark-on-surface">Passo 5: Conectar ao Reino</h4>
+                <p class="font-body text-xs sm:text-body-sm text-dark-on-surface-container mt-0.5">
+                  Clique no botão verde <strong>Salvar alterações</strong> ou <strong>Jogar</strong>. O jogo fará o download de todos os 10 addons automaticamente!
+                </p>
+              </div>
+              <button onclick="closeDesktopHelpModal()" class="px-4 sm:px-5 py-2 sm:py-2.5 rounded bg-dark-primary text-dark-on-primary font-label text-xs font-bold flex items-center gap-1.5 shadow whitespace-nowrap self-start sm:self-center">
+                <span>Pronto para Conectar!</span>
+                <span class="material-symbols-outlined text-[16px]">check</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FULLSCREEN LIGHTBOX ZOOM MODAL FOR SCREENSHOTS -->
+  <div id="image-zoom-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col items-center justify-center p-3 sm:p-6 opacity-0 pointer-events-none transition-all duration-300">
+    <button onclick="closeZoomModal()" class="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-dark-surface border border-dark-outline text-dark-on-surface flex items-center justify-center hover:text-dark-primary text-[22px] sm:text-[24px] cursor-pointer shadow-2xl z-10">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    <div class="max-w-5xl w-full flex flex-col items-center space-y-3 relative p-2" onclick="event.stopPropagation()">
+      <div class="relative max-h-[82vh] max-w-full flex items-center justify-center bg-black/50 rounded-lg overflow-hidden border border-dark-outline shadow-2xl">
+        <img id="zoom-img-target" src alt="Captura ampliada" class="max-h-[75vh] w-auto max-w-full object-contain rounded-md" onerror="handleZoomError(this)">
+      </div>
+      <p id="zoom-caption" class="text-xs sm:text-sm font-label text-dark-on-surface bg-dark-surface-container/90 px-4 py-2 rounded-full border border-dark-outline text-center max-w-xl truncate"></p>
+    </div>
+  </div>
+
+  <script>
+    /* ==========================================================================
+       Controles do Modal de Ajuda Interativo e Carrossel em Passos
+       ========================================================================== */
+    let currentDesktopHelpStep = 1;
+    const totalDesktopSteps = 5;
+
+    function openDesktopHelpModal() {
+      const modal = document.getElementById('desktop-help-modal');
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.add('opacity-100');
+      setDesktopHelpStep(1);
+    }
+
+    function closeDesktopHelpModal() {
+      const modal = document.getElementById('desktop-help-modal');
+      modal.classList.remove('opacity-100');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    function setDesktopHelpStep(stepNum) {
+      currentDesktopHelpStep = stepNum;
+      for (let i = 1; i <= totalDesktopSteps; i++) {
+        const slide = document.getElementById(`d-slide-${i}`);
+        const pill = document.getElementById(`d-step-pill-${i}`);
+        if (slide) {
+          if (i === stepNum) slide.classList.remove('hidden');
+          else slide.classList.add('hidden');
+        }
+        if (pill) {
+          if (i === stepNum) {
+            pill.className = 'd-step-btn px-4 py-2 rounded-md font-label text-xs font-bold bg-dark-primary text-dark-on-primary';
+          } else {
+            pill.className = 'd-step-btn px-4 py-2 rounded-md font-label text-xs font-semibold bg-dark-surface border border-dark-outline text-dark-on-surface-container hover:text-dark-on-surface';
+          }
+        }
+      }
+
+      const indicator = document.getElementById('d-step-indicator');
+      if (indicator) indicator.textContent = `Passo ${stepNum} de ${totalDesktopSteps}`;
+    }
+
+    function zoomImage(src, caption) {
+      const zoomModal = document.getElementById('image-zoom-modal');
+      const zoomImg = document.getElementById('zoom-img-target');
+      const zoomCap = document.getElementById('zoom-caption');
+
+      if (zoomImg && zoomCap && zoomModal) {
+        // Se houver uma imagem visível no slide atual do carrossel, aproveita sua fonte já renderizada com sucesso
+        const activeSlideImg = document.querySelector(`#d-slide-${currentDesktopHelpStep} img`);
+        const targetSrc = (activeSlideImg && activeSlideImg.src) ? activeSlideImg.src : src;
+
+        zoomImg.src = targetSrc;
+        zoomImg.alt = caption || 'Captura ampliada';
+        zoomCap.textContent = caption || '';
+        zoomModal.classList.remove('opacity-0', 'pointer-events-none');
+        zoomModal.classList.add('opacity-100');
+      }
+    }
+
+    function handleZoomError(imgEl) {
+      // Fallback dinâmico: tenta caminho alternativo caso o iframe mude a base de resolução
+      if (!imgEl) return;
+      const currentSrc = imgEl.src || '';
+      if (currentSrc.includes('captura-de-tela-')) {
+        const filename = currentSrc.substring(currentSrc.lastIndexOf('/') + 1);
+        if (!currentSrc.includes('/images/tutorial/')) {
+          imgEl.src = `../../images/tutorial/step${currentDesktopHelpStep}.png`;
+        }
+      }
+    }
+
+    function closeZoomModal() {
+      const zoomModal = document.getElementById('image-zoom-modal');
+      if (zoomModal) {
+        zoomModal.classList.remove('opacity-100');
+        zoomModal.classList.add('opacity-0', 'pointer-events-none');
+      }
+    }
+    /* ==========================================================================
+       Dicionário de Guias Completos dos Addons e Texturas Ativos
+       ========================================================================== */
+    const addonDetails = {
+      'f3-panel': {
+        title: 'F3 Panel',
+        tag: 'HUD Java & Coordenadas',
+        icon: 'terminal',
+        desc: 'Traz o famoso menu de depuração (F3) do Minecraft Java diretamente para o Bedrock. Exibe coordenadas X/Y/Z sem ativar coordenadas na tela (mantendo conquistas limpas), FPS estimado, luz do bloco e direção cardeal (Norte, Sul, Leste, Oeste).',
+        url: 'https://www.curseforge.com/minecraft-bedrock/addons/f3-panel'
+      },
+      'advanced-minimap': {
+        title: 'Advanced Minimap',
+        tag: 'Navegação & Exploração',
+        icon: 'map',
+        desc: 'Renderiza um minimapa circular dinâmico no canto superior da tela. Jogadores podem marcar waypoints de suas casas, portais do Nether e vilarejos para nunca mais se perderem pelo reino.',
+        url: 'https://www.curseforge.com/minecraft-bedrock/addons/advanced-minimap'
+      },
+      'dls-vein-miner-tree-capitator': {
+        title: 'DLS Vein Miner & Tree Capitator',
+        tag: 'Mineração & Coleta',
+        icon: 'construction',
+        desc: 'Ao agachar e quebrar a base de uma árvore com machado, todo o tronco cai de uma vez. Da mesma forma, veios de carvão, ferro ou diamante são minerados em cadeia com picareta. Economiza tempo para projetos comunitários.',
+        url: 'https://www.curseforge.com/minecraft-bedrock/addons/dls-vein-miner-tree-capitator'
+      },
+      'auto-replant-exterleo': {
+        title: 'Auto Replant Exterleo',
+        tag: 'Agricultura Comunitária',
+        icon: 'agriculture',
+        desc: 'Clique com o botão direito ou toque para colher plantações totalmente maduras (trigo, cenoura, batata, beterraba). O addon colhe os frutos e replanta a semente imediatamente, mantendo as plantações sempre produtivas.',
+        url: 'https://www.curseforge.com/minecraft-bedrock/addons/auto-replant-exterleo'
+      },
+      'effortless-building': {
+        title: 'Effortless Building',
+        tag: 'Construção & Obras',
+        icon: 'architecture',
+        desc: 'Permite criar linhas de blocos, paredes contínuas e pisos inteiros com muito menos esforço. Ideal para erguer os muros e estradas do grande reino sem cansar a mão.',
+        url: 'https://www.curseforge.com/minecraft-bedrock/addons/effortless-building'
+      },
+      'advanced-dynamic-lighting': {
+        title: 'Advanced Dynamic Lighting',
+        tag: 'Iluminação & Atmosfera',
+        icon: 'flare',
+        desc: 'Segurar tochas, lanternas ou blocos incandescentes ilumina automaticamente o raio ao redor do jogador enquanto ele caminha em cavernas ou durante a noite.',
+        url: 'https://www.curseforge.com/minecraft-bedrock/addons/advanced-dynamic-lighting'
+      },
+      'improved-campfire-smoke': {
+        title: 'Improved Campfire Smoke',
+        tag: 'Imersão & Sinalização',
+        icon: 'smoke_free',
+        desc: 'Aumenta significativamente a altura e a densidade da fumaça emitida por fogueiras com fardos de feno embaixo, funcionando como farol guia para viajantes distantes.',
+        url: 'https://www.curseforge.com/minecraft-bedrock/addons/improved-campfire-smoke'
+      },
+      'colourful-containers-be-mixed': {
+        title: 'Colourful Containers BE Mixed',
+        tag: 'Texturas de Baús',
+        icon: 'inventory_2',
+        desc: 'Textura refinada que altera a interface gráfica interna dos recipientes de acordo com a madeira fabricada (baú de carvalho, bétula, cerejeira, barris e caixas de shulker).',
+        url: 'https://www.curseforge.com/minecraft-bedrock/texture-packs/colourful-containers-be-mixed'
+      },
+      'brewing-guide-ui': {
+        title: 'Brewing Guide UI',
+        tag: 'Alquimia & Poções',
+        icon: 'science',
+        desc: 'Adiciona um diagrama intuitivo de todas as receitas de poções dentro da própria interface do Suporte de Poções (Brewing Stand), acabando com a necessidade de abrir navegadores externos.',
+        url: 'https://www.curseforge.com/minecraft-bedrock/addons/brewing-guide-ui'
+      },
+      'the-ty-els-ui-pack': {
+        title: "The Ty-el's UI Pack",
+        tag: 'Interface Otimizada',
+        icon: 'dashboard_customize',
+        desc: 'Reformulação ergonômica de menus, telas de inventário rápido e botões mais nítidos pensados especificamente para a versão Bedrock moderna.',
+        url: 'https://www.curseforge.com/minecraft-bedrock/texture-packs/the-ty-els-ui-pack'
+      }
+    };
+
+    function openAddonModal(key) {
+      const data = addonDetails[key];
+      if (!data) return;
+
+      document.getElementById('modal-title').textContent = data.title;
+      document.getElementById('modal-tag').textContent = data.tag;
+      document.getElementById('modal-icon').textContent = data.icon;
+      document.getElementById('modal-desc').textContent = data.desc;
+      document.getElementById('modal-link').href = data.url;
+
+      const modal = document.getElementById('addon-modal');
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.add('opacity-100');
+    }
+
+    function closeAddonModal() {
+      const modal = document.getElementById('addon-modal');
+      modal.classList.remove('opacity-100');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    /* ==========================================================================
+       Verificador de Status do Servidor em Tempo Real (Bedrock Dedicated Server)
+       Implementação assíncrona genuína sem credenciais, consultando telemetria pública
+       com suporte a fallback resiliente, cálculo de latência RTT e tratamento de erros.
+       ========================================================================== */
+
+    // Flag de controle de concorrência para evitar requisições sobrepostas
+    let isCheckingServerStatus = false;
+
+    /**
+     * Consulta assíncrona do status em tempo real do servidor Bedrock (never-land.rocks:19132).
+     * Utiliza o endpoint primário api.mcstatus.io e recorre a api.mcsrvstat.us como fallback gracioso.
+     * Atualiza os componentes visuais do Hero (latência, status, jogadores, versão) e do Header.
+     */
+    async function testServerPing() {
+      // Previne disparos concorrentes enquanto uma verificação já estiver em andamento
+      if (isCheckingServerStatus) return;
+      isCheckingServerStatus = true;
+
+      // Elementos visuais do card de conexão no Hero
+      const icon = document.getElementById('ping-icon');
+      const latencyText = document.getElementById('ping-latency');
+      const statusPill = document.getElementById('server-status-pill');
+      const statusDot = document.getElementById('server-status-dot');
+      const statusText = document.getElementById('server-status-text');
+      const playersEl = document.getElementById('server-players-count');
+      const versionEl = document.getElementById('server-version');
+
+      // Elementos visuais de status na barra de navegação superior (Header)
+      const headerDot = document.getElementById('header-status-dot');
+      const headerMobile = document.getElementById('header-status-mobile');
+
+      // Feedback visual imediato: ativa rotação do ícone e indica checagem em andamento
+      if (icon) icon.classList.add('animate-spin');
+      if (latencyText) latencyText.textContent = 'Verificando...';
+      if (statusText) statusText.textContent = 'Checando';
+      if (statusPill) {
+        statusPill.className = 'px-2 py-0.5 rounded bg-warning/15 border border-warning/30 text-warning text-xs font-code font-bold inline-flex items-center gap-1.5';
+      }
+      if (statusDot) {
+        statusDot.className = 'w-1.5 h-1.5 rounded-full bg-warning animate-pulse';
+      }
+
+      // Parâmetros de rede públicos do servidor Never Land Bedrock
+      const serverHost = 'never-land.rocks';
+      const serverPort = 19132;
+      const primaryUrl = `https://api.mcstatus.io/v2/status/bedrock/${serverHost}:${serverPort}`;
+      const fallbackUrl = `https://api.mcsrvstat.us/bedrock/3/${serverHost}:${serverPort}`;
+
+      const startTime = performance.now();
+      let serverData = null;
+      let latencyMs = 0;
+
+      try {
+        // Tentativa 1: Consulta à API primária dedicada ao Minecraft Bedrock (api.mcstatus.io)
+        const primaryController = new AbortController();
+        const primaryTimeout = setTimeout(() => primaryController.abort(), 6000);
+
+        try {
+          const response = await fetch(primaryUrl, {
+            signal: primaryController.signal,
+            headers: { 'Accept': 'application/json' }
+          });
+          clearTimeout(primaryTimeout);
+
+          if (response.ok) {
+            const json = await response.json();
+            latencyMs = Math.round(performance.now() - startTime);
+            serverData = {
+              online: !!json.online,
+              playersOnline: json.players ? (json.players.online ?? 0) : 0,
+              playersMax: json.players ? (json.players.max ?? 10) : 10,
+              version: json.version ? (json.version.name || 'Bedrock 1.21+') : 'Bedrock 1.21+'
+            };
+          }
+        } catch (primaryErr) {
+          clearTimeout(primaryTimeout);
+          console.warn('Endpoint primário (api.mcstatus.io) falhou ou atingiu timeout. Tentando fallback...', primaryErr);
+        }
+
+        // Tentativa 2: Recurso ao endpoint secundário (api.mcsrvstat.us) caso a primária não responda
+        if (!serverData) {
+          const fallbackController = new AbortController();
+          const fallbackTimeout = setTimeout(() => fallbackController.abort(), 6000);
+
+          try {
+            const fbResponse = await fetch(fallbackUrl, {
+              signal: fallbackController.signal,
+              headers: { 'Accept': 'application/json' }
+            });
+            clearTimeout(fallbackTimeout);
+
+            if (fbResponse.ok) {
+              const fbJson = await fbResponse.json();
+              latencyMs = Math.round(performance.now() - startTime);
+              serverData = {
+                online: !!fbJson.online,
+                playersOnline: fbJson.players ? (fbJson.players.online ?? 0) : 0,
+                playersMax: fbJson.players ? (fbJson.players.max ?? 10) : 10,
+                version: fbJson.version || 'Bedrock 1.21+'
+              };
+            }
+          } catch (fallbackErr) {
+            clearTimeout(fallbackTimeout);
+            console.warn('Endpoint secundário (api.mcsrvstat.us) também falhou:', fallbackErr);
+          }
+        }
+
+        // Atualização reativa da interface com os dados reais obtidos
+        if (serverData && serverData.online) {
+          // ================= ESTADO ONLINE =================
+          if (latencyText) latencyText.textContent = `${latencyMs}ms (Latência)`;
+          if (statusText) statusText.textContent = 'Online';
+          if (statusPill) {
+            statusPill.className = 'px-2 py-0.5 rounded bg-success/15 border border-success/30 text-success text-xs font-code font-bold inline-flex items-center gap-1.5';
+          }
+          if (statusDot) {
+            statusDot.className = 'w-1.5 h-1.5 rounded-full bg-success animate-pulse';
+          }
+          if (playersEl) {
+            playersEl.textContent = `${serverData.playersOnline} / ${serverData.playersMax}`;
+            playersEl.className = 'font-bold text-accent';
+          }
+          if (versionEl) {
+            versionEl.textContent = serverData.version;
+          }
+          if (headerDot) {
+            headerDot.className = 'w-2 h-2 rounded-full bg-success animate-pulse';
+          }
+          if (headerMobile) {
+            headerMobile.textContent = 'Bedrock BDS Online';
+          }
+        } else {
+          // ================= ESTADO OFFLINE =================
+          if (latencyText) latencyText.textContent = 'Servidor Offline';
+          if (statusText) statusText.textContent = 'Offline';
+          if (statusPill) {
+            statusPill.className = 'px-2 py-0.5 rounded bg-error/15 border border-error/30 text-error text-xs font-code font-bold inline-flex items-center gap-1.5';
+          }
+          if (statusDot) {
+            statusDot.className = 'w-1.5 h-1.5 rounded-full bg-error';
+          }
+          if (playersEl) {
+            playersEl.textContent = '0 / 10';
+            playersEl.className = 'font-bold text-dark-on-surface-container/60';
+          }
+          if (versionEl) {
+            versionEl.textContent = 'Bedrock BDS';
+          }
+          if (headerDot) {
+            headerDot.className = 'w-2 h-2 rounded-full bg-error';
+          }
+          if (headerMobile) {
+            headerMobile.textContent = 'Bedrock BDS Offline';
+          }
+        }
+      } catch (generalErr) {
+        // ================= ESTADO DE ERRO INESPERADO / INDISPONÍVEL =================
+        console.error('Falha geral na verificação de status do servidor:', generalErr);
+        if (latencyText) latencyText.textContent = 'Indisponível';
+        if (statusText) statusText.textContent = 'Erro';
+        if (statusPill) {
+          statusPill.className = 'px-2 py-0.5 rounded bg-warning/15 border border-warning/30 text-warning text-xs font-code font-bold inline-flex items-center gap-1.5';
+        }
+        if (statusDot) {
+          statusDot.className = 'w-1.5 h-1.5 rounded-full bg-warning';
+        }
+        if (playersEl) playersEl.textContent = '-- / --';
+        if (headerDot) headerDot.className = 'w-2 h-2 rounded-full bg-warning';
+        if (headerMobile) headerMobile.textContent = 'Status Indisponível';
+      } finally {
+        // Encerra a animação de rotação e libera a flag de requisição ativa
+        if (icon) icon.classList.remove('animate-spin');
+        isCheckingServerStatus = false;
+      }
+    }
+
+    // Inicialização da verificação no carregamento do DOM com polling a cada 60s
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        testServerPing();
+        setInterval(testServerPing, 60000);
+      });
+    } else {
+      testServerPing();
+      setInterval(testServerPing, 60000);
+    }
+
+    /* ==========================================================================
+       Lógica de Filtragem e Busca em Tempo Real dos Addons
+       ========================================================================== */
+    let currentDesktopFilter = 'all';
+    function filterDesktopAddons(cat) {
+      currentDesktopFilter = cat;
+      const buttons = {
+        'all': document.getElementById('d-btn-all'),
+        'util': document.getElementById('d-btn-util'),
+        'ui': document.getElementById('d-btn-ui')
+      };
+
+      Object.keys(buttons).forEach(k => {
+        if (k === cat) {
+          buttons[k].className = 'd-filter-btn px-4 py-2 rounded text-xs font-label bg-dark-primary text-dark-on-primary font-bold transition-all';
+        } else {
+          buttons[k].className = 'd-filter-btn px-4 py-2 rounded text-xs font-label bg-dark-surface-container border border-dark-outline text-dark-on-surface-container font-semibold hover:text-dark-on-surface transition-all';
+        }
+      });
+
+      searchDesktopAddons();
+    }
+
+    function searchDesktopAddons() {
+      const searchInput = document.getElementById('desktop-addon-search');
+      const query = (searchInput ? searchInput.value : '').toLowerCase().trim();
+      const items = document.querySelectorAll('.d-addon');
+      let visibleCount = 0;
+
+      items.forEach(it => {
+        const cat = it.getAttribute('data-cat');
+        const text = it.innerText.toLowerCase();
+        const matchesCategory = (currentDesktopFilter === 'all' || cat === currentDesktopFilter);
+        const matchesSearch = query === '' || text.includes(query);
+
+        if (matchesCategory && matchesSearch) {
+          it.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          it.classList.add('hidden');
+        }
+      });
+
+      const countEl = document.getElementById('count-all');
+      if (countEl && currentDesktopFilter === 'all' && query === '') {
+        countEl.textContent = '10';
+      }
+    }
+
+    /* ==========================================================================
+       Votação Interativa de Projetos Comunitários
+       ========================================================================== */
+    const votes = { 1: 42, 2: 29 };
+    const userVoted = { 1: false, 2: false };
+
+    function voteProject(id) {
+      const countEl = document.getElementById(`vote-count-${id}`);
+      const btn = document.getElementById(`vote-btn-${id}`);
+
+      if (!userVoted[id]) {
+        votes[id]++;
+        userVoted[id] = true;
+        countEl.textContent = votes[id];
+        btn.classList.add('border-gold', 'text-gold', 'bg-gold/15');
+      } else {
+        votes[id]--;
+        userVoted[id] = false;
+        countEl.textContent = votes[id];
+        btn.classList.remove('border-gold', 'text-gold', 'bg-gold/15');
+      }
+    }
+
+    /**
+     * Copia as credenciais do servidor (IP e Porta) para a área de transferência do usuário.
+     * Utiliza primariamente a API moderna navigator.clipboard, com fallback resiliente para
+     * ambientes sem permissão ou contextos não seguros.
+     */
+    function copyServerDetails() {
+      const text = 'never-land.rocks:19132';
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text)
+          .then(() => {
+            showDesktopToast();
+          })
+          .catch(() => {
+            fallbackCopyText(text);
+          });
+      } else {
+        fallbackCopyText(text);
+      }
+    }
+
+    /**
+     * Fallback de cópia usando textarea temporário para máxima compatibilidade entre navegadores.
+     * @param {string} text - Texto a ser copiado para a área de transferência.
+     */
+    function fallbackCopyText(text) {
+      try {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.top = '-9999px';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        showDesktopToast();
+      } catch (err) {
+        console.error('Falha ao copiar texto:', err);
+      }
+    }
+
+    function showDesktopToast() {
+      const toast = document.getElementById('desktop-copy-toast');
+      const headerLabel = document.getElementById('header-copy-label');
+      if (headerLabel) headerLabel.textContent = 'Copiado!';
+
+      toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-3');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-3');
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        if (headerLabel) headerLabel.textContent = 'Copiar IP';
+      }, 3000);
+    }
+
+    /* ==========================================================================
+       Navegação Suave com Compensação de Altura do Header Fixo
+       ========================================================================== */
+    function scrollToSection(sectionId) {
+      const target = document.getElementById(sectionId);
+      if (!target) return;
+
+      const headerOffset = 80;
+      const elementPosition = target.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+
+      // Update active nav styling
+      document.querySelectorAll('.desktop-nav-link').forEach(link => {
+        link.classList.remove('text-dark-primary', 'font-bold');
+        link.classList.add('text-dark-on-surface-container');
+      });
+
+      const activeLink = document.getElementById(`nav-link-${sectionId}`);
+      if (activeLink) {
+        activeLink.classList.remove('text-dark-on-surface-container');
+        activeLink.classList.add('text-dark-primary', 'font-bold');
+      }
+    }
+
+    /* ==========================================================================
+       Scroll Spy: Atualização do link ativo no menu durante a rolagem
+       ========================================================================== */
+    window.addEventListener('scroll', () => {
+      const sections = ['inicio', 'addons', 'reino', 'como-entrar'];
+      const scrollPos = window.pageYOffset + 120;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const sec = document.getElementById(sections[i]);
+        if (sec && sec.offsetTop <= scrollPos) {
+          document.querySelectorAll('.desktop-nav-link').forEach(link => {
+            link.classList.remove('text-dark-primary', 'font-bold');
+            link.classList.add('text-dark-on-surface-container');
+          });
+          const currentLink = document.getElementById(`nav-link-${sections[i]}`);
+          if (currentLink) {
+            currentLink.classList.remove('text-dark-on-surface-container');
+            currentLink.classList.add('text-dark-primary', 'font-bold');
+          }
+          break;
+        }
+      }
+    });
+  </script>
+
+</body></html>

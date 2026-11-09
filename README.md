@@ -3,6 +3,7 @@
 # ⚔️ Never Land — Minecraft Bedrock Ecosystem
 
 ### Servidor Dedicado de Alta Performance & Add-on Moderno em TypeScript
+
 **Minecraft Bedrock Edition 1.21+ • Render Dragon PBR • Oracle Cloud Infrastructure • Model Context Protocol (MCP)**
 
 ---
@@ -146,6 +147,7 @@ flowchart LR
 
 ---
 
+
 ## 📦 Módulos e Estrutura do Repositório
 
 O projeto é organizado de forma modular e declarativa para manter alta legibilidade, separando pacotes do jogo, código-fonte, automações de servidor e ferramental de IA:
@@ -180,6 +182,12 @@ O projeto é organizado de forma modular e declarativa para manter alta legibili
 │   ├── painel_gui/               # Painel Desktop de Gestão (mc_gui.py, assets e spec)
 │   └── vm_credentials/           # (Protegido/Gitignore) Chaves SSH e IPs da VM
 │
+├── site/                         # 🌐 Portal Web Oficial do Servidor (https://neverland-bedrock.vercel.app)
+│   ├── index.html                # Aplicação web estática com Tailwind CSS e Voxel Dark Theme
+│   ├── vercel.json               # Configurações de rotas limpas e cache estático
+│   ├── README.md                 # Documentação técnica do portal e guia de execução
+│   └── assets/images/            # Imagens do reino e capturas passo a passo para o tutorial
+│
 ├── tests/                        # 🧪 Baterias de Testes e Validação Empírica
 │   ├── integridade_uidx/         # Testes de integridade de layout, quick craft e durabilidade
 │   └── testes_empiricos/         # Testes empíricos adversariais e sensibilidade a mutações
@@ -208,10 +216,10 @@ O projeto é organizado de forma modular e declarativa para manter alta legibili
 
 Toda a documentação aprofundada foi centralizada na pasta [`docs/`](file:///a:/BackupDesktopFileBruno/Estudos/Projetos-pessoais/Minecraft%20Server/docs):
 
-* **[Manual Operacional do Servidor](file:///a:/BackupDesktopFileBruno/Estudos/Projetos-pessoais/Minecraft%20Server/docs/DOCUMENTACAO_SERVIDOR.md)**: Guia completo de administração, rede, firewall duplo, systemd, swap e rotina de hot-backup.
-* **[Guia Operacional e Relatório de Implantação](file:///a:/BackupDesktopFileBruno/Estudos/Projetos-pessoais/Minecraft%20Server/docs/GUIA_OPERACIONAL.md)**: Ficha técnica da instância, auditorias de entrega dos marcos M1 a M5 e guia de conexão multiplataforma.
-* **[Plano Mestre de Arquitetura](file:///a:/BackupDesktopFileBruno/Estudos/Projetos-pessoais/Minecraft%20Server/docs/PLANO_MESTRE_ARQUITETURA.md)**: Arquitetura do ecossistema híbrido, desenvolvimento assistido por IA e governança de BDS.
-* **[Especificação de Interface UI](file:///a:/BackupDesktopFileBruno/Estudos/Projetos-pessoais/Minecraft%20Server/docs/ESPECIFICACAO_INTERFACE_UI.md)**: Detalhes da fusão Colourful Containers BE + Ty-el's UI Pack, contratos de interface e bindings UIDX.
+- **[Manual Operacional do Servidor](file:///a:/BackupDesktopFileBruno/Estudos/Projetos-pessoais/Minecraft%20Server/docs/DOCUMENTACAO_SERVIDOR.md)**: Guia completo de administração, rede, firewall duplo, systemd, swap e rotina de hot-backup.
+- **[Guia Operacional e Relatório de Implantação](file:///a:/BackupDesktopFileBruno/Estudos/Projetos-pessoais/Minecraft%20Server/docs/GUIA_OPERACIONAL.md)**: Ficha técnica da instância, auditorias de entrega dos marcos M1 a M5 e guia de conexão multiplataforma.
+- **[Plano Mestre de Arquitetura](file:///a:/BackupDesktopFileBruno/Estudos/Projetos-pessoais/Minecraft%20Server/docs/PLANO_MESTRE_ARQUITETURA.md)**: Arquitetura do ecossistema híbrido, desenvolvimento assistido por IA e governança de BDS.
+- **[Especificação de Interface UI](file:///a:/BackupDesktopFileBruno/Estudos/Projetos-pessoais/Minecraft%20Server/docs/ESPECIFICACAO_INTERFACE_UI.md)**: Detalhes da fusão Colourful Containers BE + Ty-el's UI Pack, contratos de interface e bindings UIDX.
 
 ---
 
@@ -253,9 +261,9 @@ O projeto suporta o *Deferred Technical Preview* do Bedrock Engine, utilizando c
 }
 ```
 
-* **Canal Vermelho (R)**: *Metallic* (0 = Dielétrico, 255 = Metálico puro).
-* **Canal Verde (G)**: *Emissive* (intensidade de autoiluminação no escuro).
-* **Canal Azul (B)**: *Roughness* (0 = Especular/Espelhado, 255 = Rugoso/Fosco).
+- **Canal Vermelho (R)**: *Metallic* (0 = Dielétrico, 255 = Metálico puro).
+- **Canal Verde (G)**: *Emissive* (intensidade de autoiluminação no escuro).
+- **Canal Azul (B)**: *Roughness* (0 = Especular/Espelhado, 255 = Rugoso/Fosco).
 
 ---
 
@@ -263,9 +271,9 @@ O projeto suporta o *Deferred Technical Preview* do Bedrock Engine, utilizando c
 
 ### Pré-requisitos
 
-* **Node.js**: v20.x ou superior.
-* **Python**: 3.11 ou superior (com ambiente virtual configurado).
-* **Minecraft Bedrock Edition**: 1.21.x ou superior com *Recursos Experimentais* habilitados.
+- **Node.js**: v20.x ou superior.
+- **Python**: 3.11 ou superior (com ambiente virtual configurado).
+- **Minecraft Bedrock Edition**: 1.21.x ou superior com *Recursos Experimentais* habilitados.
 
 ### Scripts Disponíveis
 
@@ -346,10 +354,10 @@ sudo /opt/bedrock/backup.sh
 
 O projeto conta com um painel de controle para desktop desenvolvido em Python ([`Server/painel_gui/mc_gui.py`](file:///a:/BackupDesktopFileBruno/Estudos/Projetos-pessoais/Minecraft%20Server/Server/painel_gui/mc_gui.py)), que permite:
 
-* Visualizar o status online e latência do servidor.
-* Enviar comandos administrativos com 1 clique (kick, ban, whitelist, tp, give).
-* Reiniciar o serviço e disparar rotinas de backup sem abrir o terminal SSH.
-* Compilar standalone via PyInstaller através de [`Server/painel_gui/build_mc_gui.bat`](file:///a:/BackupDesktopFileBruno/Estudos/Projetos-pessoais/Minecraft%20Server/Server/painel_gui/build_mc_gui.bat).
+- Visualizar o status online e latência do servidor.
+- Enviar comandos administrativos com 1 clique (kick, ban, whitelist, tp, give).
+- Reiniciar o serviço e disparar rotinas de backup sem abrir o terminal SSH.
+- Compilar standalone via PyInstaller através de [`Server/painel_gui/build_mc_gui.bat`](file:///a:/BackupDesktopFileBruno/Estudos/Projetos-pessoais/Minecraft%20Server/Server/painel_gui/build_mc_gui.bat).
 
 ---
 
@@ -392,6 +400,7 @@ graph TD
 ## 📚 Referências e Links Oficiais
 
 ### 🎮 Minecraft Bedrock & Desenvolvedor Oficial
+
 - [Minecraft Bedrock Script API — Documentação Oficial Microsoft](https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/)
 - [Minecraft Creator Portal — Guias e Tutoriais Mojang](https://learn.microsoft.com/en-us/minecraft/creator/)
 - [Download Oficial do Bedrock Dedicated Server (BDS)](https://www.minecraft.net/en-us/download/server/bedrock)
@@ -399,6 +408,7 @@ graph TD
 - [Mecanismo de Pacotes e Manifests no Bedrock](https://learn.microsoft.com/en-us/minecraft/creator/documents/packaginganaddon)
 
 ### 🧩 UI Engine, Schemas & Comunidade
+
 - [Blockception Bedrock JSON Schemas (GitHub)](https://github.com/Blockception/Minecraft-bedrock-json-schemas)
 - [Bedrock Wiki — Enciclopédia Técnica da Comunidade](https://wiki.bedrock.dev/)
 - [Bedrock.dev — Referência de Componentes e Documentação](https://bedrock.dev/)
@@ -407,17 +417,20 @@ graph TD
 - [Regolith — Compilador e Esteira de Filtros para Add-ons](https://bedrock-dot-dev.github.io/regolith/)
 
 ### 🛠️ Modelagem 3D & Texturização
+
 - [Blockbench — Modelagem 3D e Animações para Minecraft](https://www.blockbench.net/)
 - [Aseprite — Software de Animação e Pixel Art](https://www.aseprite.org/)
 - [Guia PBR Textures para Render Dragon](https://wiki.bedrock.dev/visuals/pbr.html)
 
 ### ☁️ Infraestrutura, Linux & Automação
+
 - [Documentação Oficial da Oracle Cloud Infrastructure (OCI)](https://docs.oracle.com/en-us/iaas/)
 - [Guia do Administrador do Oracle Linux 9](https://docs.oracle.com/en/operating-systems/oracle-linux/9/)
 - [Documentação Oficial do Systemd (systemd.io)](https://systemd.io/)
 - [Kernel Linux Cgroups v2 & Gerenciamento de Memória](https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v2.html)
 
 ### 🤖 Inteligência Artificial & Tooling Moderno
+
 - [Especificação Oficial do Model Context Protocol (MCP)](https://modelcontextprotocol.io/)
 - [Google Stitch — Plataforma de Prototipagem e UI com IA](https://stitch.withgoogle.com/)
 - [TypeScript — Documentação da Linguagem](https://www.typescriptlang.org/docs/)
@@ -428,8 +441,7 @@ graph TD
 
 ## 📄 Licença e Créditos
 
-* **Never Land Addon & Scripts**: Desenvolvido pela equipe Never Land sob licença proprietária/MIT para uso do servidor.
-* **Colourful Containers BE: Mixed**: Criado originalmente por **CrisXolt** sob licença Creative Commons Attribution.
-* **The Ty-el's UI Pack**: Criado por **The Ty-el**.
-* **Minecraft**: Marca registrada da **Mojang Studios / Microsoft Corporation**. Este projeto não possui afiliação oficial com a Mojang ou Microsoft.
-
+- **Never Land Addon & Scripts**: Desenvolvido pela equipe Never Land sob licença proprietária/MIT para uso do servidor.
+- **Colourful Containers BE: Mixed**: Criado originalmente por **CrisXolt** sob licença Creative Commons Attribution.
+- **The Ty-el's UI Pack**: Criado por **The Ty-el**.
+- **Minecraft**: Marca registrada da **Mojang Studios / Microsoft Corporation**. Este projeto não possui afiliação oficial com a Mojang ou Microsoft.

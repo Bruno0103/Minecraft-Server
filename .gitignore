@@ -183,3 +183,16 @@ $RECYCLE.BIN/
 *.sublime-workspace
 .idea/
 
+# ------------------------------------------------------------------------------
+# 7. VERCEL & HOSPEDAGEM WEB (PORTAL NEVER LAND)
+# ------------------------------------------------------------------------------
+# Metadados e identificadores de projeto Vercel (evita vazamento de project.json)
+.vercel/
+**/.vercel/
+.vercelignore
+
+# Caches de compilação e diretórios de saída web
+.output/
+.turbo/
+
+
