@@ -16,10 +16,9 @@ const fs = require('fs');
 
 const isWatch = process.argv.includes('--watch');
 
-// Garante a existência dos diretórios de saída para os pacotes de comportamento
+// Garante a existência do diretório de saída para o pacote de comportamento
 const outputDirs = [
-  path.join(__dirname, 'BP', 'scripts'),
-  path.join(__dirname, 'behavior_pack', 'scripts')
+  path.join(__dirname, 'addon', 'behavior_pack', 'scripts')
 ];
 
 outputDirs.forEach(dir => {
@@ -31,9 +30,9 @@ outputDirs.forEach(dir => {
 /** @type {esbuild.BuildOptions} */
 const buildOptions = {
   // Ponto de entrada do código-fonte em TypeScript
-  entryPoints: [path.join(__dirname, 'src', 'main.ts')],
+  entryPoints: [path.join(__dirname, 'addon', 'src', 'main.ts')],
   bundle: true,
-  outfile: path.join(__dirname, 'BP', 'scripts', 'main.js'),
+  outfile: path.join(__dirname, 'addon', 'behavior_pack', 'scripts', 'main.js'),
   // Módulos internos providos nativamente pela engine do Minecraft Bedrock:
   // Devem ser mantidos como externos para NÃO serem embutidos no pacote compilado!
   external: [
@@ -56,13 +55,10 @@ async function run() {
     if (isWatch) {
       const ctx = await esbuild.context(buildOptions);
       await ctx.watch();
-      console.log('👀 [esbuild] Modo watch ativo em src/ para recompilação contínua...');
+      console.log('👀 [esbuild] Modo watch ativo em addon/src/ para recompilação contínua...');
     } else {
       await esbuild.build(buildOptions);
-      // Sincroniza também para behavior_pack/scripts/main.js caso a pasta exista
-      const bpTarget = path.join(__dirname, 'behavior_pack', 'scripts', 'main.js');
-      fs.copyFileSync(buildOptions.outfile, bpTarget);
-      console.log('✅ [esbuild] Compilação do Script API concluída com sucesso em BP/scripts/main.js e behavior_pack/scripts/main.js!');
+      console.log('✅ [esbuild] Compilação do Script API concluída com sucesso em addon/behavior_pack/scripts/main.js!');
     }
   } catch (error) {
     console.error('❌ [esbuild] Falha fatal na compilação:', error);

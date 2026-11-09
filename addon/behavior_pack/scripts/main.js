@@ -1,4 +1,4 @@
-// src/main.ts
+// addon/src/main.ts
 import {
   world,
   system,

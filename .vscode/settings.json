@@ -8,6 +8,8 @@
     {
       "description": "Validação de Manifestos de Pacotes Bedrock (Behavior e Resource Packs)",
       "fileMatch": [
+        "addon/behavior_pack/manifest.json",
+        "addon/resource_pack/manifest.json",
         "BP/manifest.json",
         "RP/manifest.json",
         "behavior_pack/manifest.json",
@@ -20,6 +22,7 @@
     {
       "description": "Validação de Entidades de Behavior Pack",
       "fileMatch": [
+        "addon/behavior_pack/entities/*.json",
         "BP/entities/*.json",
         "behavior_pack/entities/*.json",
         "behavior_packs/*/entities/*.json"
@@ -29,6 +32,7 @@
     {
       "description": "Validação de Blocos Customizados (Behavior Pack)",
       "fileMatch": [
+        "addon/behavior_pack/blocks/*.json",
         "BP/blocks/*.json",
         "behavior_pack/blocks/*.json",
         "behavior_packs/*/blocks/*.json"
@@ -38,6 +42,7 @@
     {
       "description": "Validação de Itens Customizados (Behavior Pack)",
       "fileMatch": [
+        "addon/behavior_pack/items/*.json",
         "BP/items/*.json",
         "behavior_pack/items/*.json",
         "behavior_packs/*/items/*.json"
@@ -47,6 +52,7 @@
     {
       "description": "Validação de Efeitos de Partículas Bedrock (Resource Pack)",
       "fileMatch": [
+        "addon/resource_pack/particles/*.json",
         "RP/particles/*.json",
         "resource_pack/particles/*.json",
         "resource_packs/*/particles/*.json"
@@ -56,6 +62,7 @@
     {
       "description": "Validação de Animações Bedrock (Resource Pack)",
       "fileMatch": [
+        "addon/resource_pack/animations/*.json",
         "RP/animations/*.json",
         "resource_pack/animations/*.json",
         "resource_packs/*/animations/*.json"
@@ -65,6 +72,7 @@
     {
       "description": "Validação de Controladores de Renderização (Resource Pack)",
       "fileMatch": [
+        "addon/resource_pack/render_controllers/*.json",
         "RP/render_controllers/*.json",
         "resource_pack/render_controllers/*.json",
         "resource_packs/*/render_controllers/*.json"

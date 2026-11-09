@@ -458,6 +458,8 @@ class MinecraftGui(tk.Tk):
 
     def _load_config(self) -> None:
         default_keys = (
+            application_directory().parent / "vm_credentials" / "SSH keys" / "ssh-key-2026-11-03.key",
+            application_directory() / "vm_credentials" / "SSH keys" / "ssh-key-2026-11-03.key",
             application_directory() / "VM" / "SSH keys" / "ssh-key-2026-11-03.key",
             application_directory().parent / "VM" / "SSH keys" / "ssh-key-2026-11-03.key",
         )

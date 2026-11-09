@@ -1,4 +1,4 @@
-# ==============================================================================
+﻿# ==============================================================================
 # SCRIPT DE ENVIO E INSTALAÇÃO AUTOMATIZADA DE ADDONS (WINDOWS -> SERVIDOR OCI)
 # ==============================================================================
 # Autor: Equipe de Engenharia / Antigravity
@@ -37,7 +37,16 @@ $HostRemoto = "157.151.2.91"
 $Usuario = "opc"
 
 # Caminho absoluto da chave privada RSA 2048-bit utilizada para autenticação SSH/SCP
-$ChaveSSH = "$PSScriptRoot\VM\SSH keys\ssh-key-2026-11-03.key"
+$PossiveisCaminhosChave = @(
+    "$PSScriptRoot\..\vm_credentials\SSH keys\ssh-key-2026-11-03.key",
+    "$PSScriptRoot\VM\SSH keys\ssh-key-2026-11-03.key",
+    "$PSScriptRoot\..\..\Server\vm_credentials\SSH keys\ssh-key-2026-11-03.key"
+)
+
+$ChaveSSH = $PossiveisCaminhosChave | Where-Object { Test-Path -Path $_ } | Select-Object -First 1
+if (-not $ChaveSSH) {
+    $ChaveSSH = "$PSScriptRoot\..\vm_credentials\SSH keys\ssh-key-2026-11-03.key"
+}
 
 # Diretório remoto no servidor Linux onde os pacotes brutos são recebidos para processamento
 $PastaDestinoRemota = "/home/opc/minecraft/addons_inbox/"
@@ -47,8 +56,8 @@ $PastaDestinoRemota = "/home/opc/minecraft/addons_inbox/"
 # ------------------------------------------------------------------------------
 # Verifica se a chave privada existe no caminho esperado antes de tentar qualquer conexão de rede
 if (-not (Test-Path -Path $ChaveSSH)) {
-    Write-Host "[ERRO CRÍTICO] Arquivo de chave privada SSH não encontrado em: $ChaveSSH" -ForegroundColor Red
-    Write-Host "[DICA] Certifique-se de que o arquivo da chave SSH está presente na subpasta 'Server\VM\SSH keys\'." -ForegroundColor Yellow
+    Write-Host "[ERRO CRÍTICO] Arquivo de chave privada SSH não encontrado em nenhum dos locais esperados." -ForegroundColor Red
+    Write-Host "[DICA] Certifique-se de que o arquivo da chave SSH está presente em 'Server\vm_credentials\SSH keys\'." -ForegroundColor Yellow
     pause
     exit 1
 }

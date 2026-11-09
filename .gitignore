@@ -14,6 +14,8 @@ keys/
 [Kk]eys/
 
 # Chaves SSH e informações sensíveis da máquina virtual (Oracle Cloud / BDS)
+[Ss]erver/vm_credentials/
+[Ss]erver/VM/
 Server/VM/SSH keys/
 Server/VM/Instance/
 *.key
@@ -52,7 +54,12 @@ token.json
 *.token
 
 # Configurações de conexão local geradas em runtime (ex: IP e chaves da VM)
+[Ss]erver/painel_gui/mc-gui.json
+[Ss]erver/painel_gui/build/
+[Ss]erver/painel_gui/dist/
 Server/dist/mc-gui.json
+Server/dist/
+Server/build/
 
 
 # ------------------------------------------------------------------------------
@@ -133,6 +140,7 @@ lerna-debug.log*
 
 # Saída de bundling de scripts TS/JS se gerada fora dos pacotes
 BP/scripts/**/*.js.map
+addon/behavior_pack/scripts/**/*.js.map
 
 
 # ------------------------------------------------------------------------------

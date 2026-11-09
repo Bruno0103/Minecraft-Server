@@ -2,12 +2,12 @@
   "name": "neverland-script-addon",
   "version": "1.0.0",
   "description": "Addon moderno para Minecraft Bedrock desenvolvido em TypeScript com esbuild e validacao Ajv",
-  "main": "behavior_pack/scripts/main.js",
+  "main": "addon/behavior_pack/scripts/main.js",
   "scripts": {
     "build": "node esbuild.config.js",
     "watch": "node esbuild.config.js --watch",
     "type-check": "tsc --noEmit",
-    "validate": "node tools/validate_addon.js"
+    "validate": "node tools/utilitarios/validate_addon.js"
   },
   "devDependencies": {
     "@types/node": "^20.11.0",

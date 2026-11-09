@@ -28,13 +28,12 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": [
-    "src/**/*"
+    "addon/src/**/*"
   ],
   "exclude": [
     "node_modules",
     "dist",
-    "BP/scripts",
-    "behavior_pack/scripts"
+    "addon/behavior_pack/scripts"
   ]
 }
 

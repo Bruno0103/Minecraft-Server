@@ -8,9 +8,9 @@
   "name": "NeverLandAddon",
   "author": "Never Land Engineering Team",
   "packs": {
-    "behaviorPack": "BP",
-    "resourcePack": "RP",
-    "dataPath": "data"
+    "behaviorPack": "addon/behavior_pack",
+    "resourcePack": "addon/resource_pack",
+    "dataPath": "addon/data"
   },
   "profiles": {
     // ------------------------------------------------------------------------
@@ -26,7 +26,7 @@
           "filter": "rolldown",
           "settings": {
             "entryPoints": [
-              "BP/scripts/main.ts"
+              "addon/src/main.ts"
             ],
             "sourceMap": true
           }
@@ -61,7 +61,7 @@
           "filter": "rolldown",
           "settings": {
             "entryPoints": [
-              "BP/scripts/main.ts"
+              "addon/src/main.ts"
             ],
             "minify": true,
             "sourceMap": false

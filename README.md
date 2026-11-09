@@ -107,7 +107,7 @@ flowchart TD
 ```mermaid
 flowchart LR
     subgraph CodigoFonte [" 📝 Código Fonte "]
-        TS["src/main.ts
+        TS["addon/src/main.ts
         TypeScript"]
         JSON["BP & RP JSONs
         Itens, Blocos, Partículas"]
@@ -146,42 +146,72 @@ flowchart LR
 
 ---
 
-## 📦 Módulos do Repositório
+## 📦 Módulos e Estrutura do Repositório
+
+O projeto é organizado de forma modular e declarativa para manter alta legibilidade, separando pacotes do jogo, código-fonte, automações de servidor e ferramental de IA:
 
 ```text
-├── .github/workflows/          # Automações de CI/CD (GitHub Actions para compilação Regolith)
-├── .vscode/settings.json       # Mapeamento oficial de schemas Blockception para autocompletion
-├── assets/                     # Modelos 3D originais, texturas e mapas PBR brutos
-│   └── textures/test/          # Texturas de teste (Albedo, MER, Normal maps)
-├── behavior_pack/ (BP/)        # Behavior Pack com definições de itens, blocos e manifests
-│   ├── blocks/                 # Blocos customizados (ex: minerio_rubi.json)
-│   ├── items/                  # Itens customizados (ex: espada_rubi.json)
-│   └── scripts/                # Código transpilado e empacotado para o BDS
-├── resource_pack/ (RP/)        # Resource Pack com texturas, animações e partículas
-│   ├── animations/             # Animações Molang para entidades
-│   ├── particles/              # Efeitos de partículas Bedrock
-│   └── texts/                  # Dicionários de localização (pt_BR.lang)
-├── Server/                     # Scripts operacionais e infraestrutura da VM Linux
-│   ├── systemd/                # Unidades systemd (bedrock.service, bedrock.socket) e mc CLI
-│   ├── backup.sh               # Rotina segura de hot-backup (sem corrupção de LevelDB)
-│   ├── deploy_to_server.py     # Deploy automatizado de addons via SCP/SSH
-│   ├── mc_gui.py               # Interface gráfica de monitoramento e controle remoto
-│   └── remote_ops.py           # Operações remotas de migração e status da instância
-├── src/                        # Código-fonte TypeScript nativo do Add-on
-│   └── main.ts                 # Ponto de entrada com eventos do @minecraft/server
-├── tests/                      # Bateria de testes empíricos e validação de integridade UIDX
-├── tools/                      # Utilitários auxiliares e servidores MCP integrados
-│   ├── aseprite-mcp-studio/    # Servidor MCP para edição de sprites pixel art
-│   ├── blockbench-mcp/         # Servidor MCP para modelagem 3D no Blockbench
-│   ├── minecraft-bedrock-mcp/  # Ponte WebSocket de debug em tempo real
-│   ├── minecraft-structure-mcp/# Manipulação de estruturas .mcstructure e NBT
-│   ├── pbr_generator.py        # Gerador automatizado de mapas MER (Metallic, Emissive, Roughness)
-│   └── validate_addon.js       # Validador de esquemas e manifests via Ajv
-├── config.json                 # Arquivo de configuração de perfis do compilador Regolith
-├── esbuild.config.js           # Configuração de bundling rápido para TypeScript
-├── package.json                # Dependências Node.js (@minecraft/server, esbuild, TypeScript)
-└── requirements.txt            # Dependências Python para ferramentas e servidores MCP
+├── docs/                         # 📚 Documentação Técnica e Operacional Completa
+│   ├── DOCUMENTACAO_SERVIDOR.md  # Manual completo de operação do BDS na OCI
+│   ├── GUIA_OPERACIONAL.md       # Relatório de implantação, entrega e walkthrough
+│   ├── PLANO_MESTRE_ARQUITETURA.md # Plano mestre de arquitetura e desenvolvimento
+│   └── ESPECIFICACAO_INTERFACE_UI.md # Especificações de interface (ColourfulC + Ty-el's)
+│
+├── addon/                        # 🎮 Desenvolvimento do Add-on Minecraft Bedrock
+│   ├── src/                      # Código-fonte TypeScript nativo (main.ts)
+│   ├── behavior_pack/            # Behavior Pack unificado (manifest, blocks, items, scripts)
+│   │   ├── blocks/               # Definições de blocos customizados
+│   │   ├── items/                # Definições de itens customizados
+│   │   ├── scripts/              # Bundle JavaScript compilado pelo esbuild
+│   │   └── manifest.json         # Manifesto oficial do Behavior Pack
+│   ├── resource_pack/            # Resource Pack unificado (manifest, animations, particles, texts, textures)
+│   │   ├── animations/           # Animações Molang para entidades
+│   │   ├── particles/            # Efeitos de partículas Bedrock
+│   │   ├── texts/                # Dicionários de localização (pt_BR.lang)
+│   │   ├── textures/             # Mapeamentos e atlas de texturas
+│   │   └── manifest.json         # Manifesto oficial do Resource Pack
+│   └── assets/                   # Assets brutos, texturas PBR MER e modelos 3D
+│       └── textures/test/        # Texturas de teste (Albedo, MER, Normal maps)
+│
+├── Server/                       # ☁️ Servidor Bedrock & Infraestrutura de Nuvem (OCI Always Free)
+│   ├── systemd/                  # Serviços Linux (bedrock.service, bedrock.socket, mc, mc.py)
+│   ├── scripts_automacao/        # Scripts de automação, backup e instalação (backup.sh, deploy, etc.)
+│   ├── auditoria_diagnostico/    # Diagnóstico, inspeção NBT e status de packs do BDS
+│   ├── painel_gui/               # Painel Desktop de Gestão (mc_gui.py, assets e spec)
+│   └── vm_credentials/           # (Protegido/Gitignore) Chaves SSH e IPs da VM
+│
+├── tests/                        # 🧪 Baterias de Testes e Validação Empírica
+│   ├── integridade_uidx/         # Testes de integridade de layout, quick craft e durabilidade
+│   └── testes_empiricos/         # Testes empíricos adversariais e sensibilidade a mutações
+│
+├── tools/                        # 🛠️ Ferramentas, Utilitários e Servidores MCP
+│   ├── utilitarios/              # Scripts de suporte (pbr_generator.py, validate_addon.js)
+│   ├── aseprite-mcp-studio/      # (Submódulo MCP) Pixel Art Studio
+│   ├── blockbench-mcp/           # (Submódulo MCP) Modelagem 3D
+│   ├── minecraft-bedrock-mcp/    # (Submódulo MCP) Ponte WebSocket
+│   ├── minecraft-structure-mcp/  # (Submódulo MCP) Parser NBT / .mcstructure
+│   ├── pixel-mcp/                # (Submódulo MCP) CLI de Pixel Art
+│   └── regolith/                 # (Submódulo MCP) Compilador Bedrock
+│
+├── .github/workflows/            # Automações de CI/CD (GitHub Actions para compilação Regolith)
+├── .vscode/settings.json         # Mapeamento oficial de schemas Blockception para autocompletion
+├── config.json                   # Configuração de perfis do compilador Regolith
+├── esbuild.config.js             # Configuração de bundling rápido para TypeScript
+├── package.json                  # Dependências e scripts npm (@minecraft/server, esbuild, TypeScript)
+├── tsconfig.json                 # Configuração estrita do compilador TypeScript
+└── requirements.txt              # Dependências Python para ferramentas e servidores MCP
 ```
+
+---
+
+## 📑 Documentação Detalhada
+
+Toda a documentação aprofundada foi centralizada na pasta [`docs/`](file:///a:/BackupDesktopFileBruno/Estudos/Projetos-pessoais/Minecraft%20Server/docs):
+
+* **[Manual Operacional do Servidor](file:///a:/BackupDesktopFileBruno/Estudos/Projetos-pessoais/Minecraft%20Server/docs/DOCUMENTACAO_SERVIDOR.md)**: Guia completo de administração, rede, firewall duplo, systemd, swap e rotina de hot-backup.
+* **[Guia Operacional e Relatório de Implantação](file:///a:/BackupDesktopFileBruno/Estudos/Projetos-pessoais/Minecraft%20Server/docs/GUIA_OPERACIONAL.md)**: Ficha técnica da instância, auditorias de entrega dos marcos M1 a M5 e guia de conexão multiplataforma.
+* **[Plano Mestre de Arquitetura](file:///a:/BackupDesktopFileBruno/Estudos/Projetos-pessoais/Minecraft%20Server/docs/PLANO_MESTRE_ARQUITETURA.md)**: Arquitetura do ecossistema híbrido, desenvolvimento assistido por IA e governança de BDS.
+* **[Especificação de Interface UI](file:///a:/BackupDesktopFileBruno/Estudos/Projetos-pessoais/Minecraft%20Server/docs/ESPECIFICACAO_INTERFACE_UI.md)**: Detalhes da fusão Colourful Containers BE + Ty-el's UI Pack, contratos de interface e bindings UIDX.
 
 ---
 
@@ -314,12 +344,12 @@ sudo /opt/bedrock/backup.sh
 
 ### Interface Gráfica de Controle (GUI)
 
-O projeto conta com um painel de controle para desktop desenvolvido em Python ([`Server/mc_gui.py`](file:///a:/BackupDesktopFileBruno/Estudos/Projetos-pessoais/Minecraft%20Server/Server/mc_gui.py)), que permite:
+O projeto conta com um painel de controle para desktop desenvolvido em Python ([`Server/painel_gui/mc_gui.py`](file:///a:/BackupDesktopFileBruno/Estudos/Projetos-pessoais/Minecraft%20Server/Server/painel_gui/mc_gui.py)), que permite:
 
 * Visualizar o status online e latência do servidor.
 * Enviar comandos administrativos com 1 clique (kick, ban, whitelist, tp, give).
 * Reiniciar o serviço e disparar rotinas de backup sem abrir o terminal SSH.
-* Compilar standalone via PyInstaller através de [`Server/build_mc_gui.bat`](file:///a:/BackupDesktopFileBruno/Estudos/Projetos-pessoais/Minecraft%20Server/Server/build_mc_gui.bat).
+* Compilar standalone via PyInstaller através de [`Server/painel_gui/build_mc_gui.bat`](file:///a:/BackupDesktopFileBruno/Estudos/Projetos-pessoais/Minecraft%20Server/Server/painel_gui/build_mc_gui.bat).
 
 ---
 
@@ -402,3 +432,4 @@ graph TD
 * **Colourful Containers BE: Mixed**: Criado originalmente por **CrisXolt** sob licença Creative Commons Attribution.
 * **The Ty-el's UI Pack**: Criado por **The Ty-el**.
 * **Minecraft**: Marca registrada da **Mojang Studios / Microsoft Corporation**. Este projeto não possui afiliação oficial com a Mojang ou Microsoft.
+

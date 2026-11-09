@@ -25,10 +25,16 @@ import os
 import sys
 from pathlib import Path
 
-KEY = r"Server\VM\SSH keys\ssh-key-2026-11-03.key"
+POSSIBLE_KEYS = [
+    Path(__file__).parent.parent / "vm_credentials" / "SSH keys" / "ssh-key-2026-11-03.key",
+    Path(r"Server\vm_credentials\SSH keys\ssh-key-2026-11-03.key"),
+    Path(r"Server\VM\SSH keys\ssh-key-2026-11-03.key"),
+]
+KEY_PATH = next((p for p in POSSIBLE_KEYS if p.is_file()), POSSIBLE_KEYS[0])
+KEY = str(KEY_PATH)
 HOST = "157.151.2.91"
 USER = "opc"
-TEMP_DIR = Path(r"Server\temp_deploy")
+TEMP_DIR = Path(__file__).parent / "temp_deploy"
 
 REMOTE_MIGRATION_SCRIPT = r"""
 import json

@@ -16,3 +16,4 @@
 [submodule "tools/regolith"]
 	path = tools/regolith
 	url = https://github.com/Bedrock-OSS/regolith.git
+

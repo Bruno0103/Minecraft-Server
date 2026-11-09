@@ -17,7 +17,7 @@ import shutil
 from pathlib import Path
 
 DOWNLOADS_DIR = Path(r"C:\Users\Bruno\Downloads")
-TEMP_DIR = Path(r"Server\temp_deploy")
+TEMP_DIR = Path(__file__).parent / "temp_deploy"
 
 ESSENCIAL_MCPACK = DOWNLOADS_DIR / "Never-Land-Essencial.mcpack"
 LIGHTING_MCADDON = DOWNLOADS_DIR / "Advanced Dynamic Lighting v6.1.mcaddon"
