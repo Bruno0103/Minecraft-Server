@@ -53,7 +53,10 @@ const ITENS_DE_MENU_PROTEGIDOS = new Set<string>([
   'minecraft:compass',            // Bússola padrão do menu de navegação
   'minecraft:recovery_compass',   // Bússola de recuperação
   'minecraft:clock',              // Relógio de operações
-  'minecraft:nether_star'         // Estrela do Nether para painéis avançados
+  'minecraft:nether_star',        // Estrela do Nether para painéis avançados
+  'mm:compass',                   // Bússola interativa do Advanced Minimap
+  'eb:building_book',             // Livro de menus flutuantes do Effortless Building
+  'eb:tutorial_book'              // Livro tutorial do Effortless Building
 ]);
 
 /**
