@@ -10,6 +10,44 @@ import {
   MessageFormData,
   FormCancelationReason
 } from "@minecraft/server-ui";
+var registroCooldownGlobal = /* @__PURE__ */ new Map();
+var COOLDOWN_GLOBAL_TICKS = 10;
+var ITENS_DE_MENU_PROTEGIDOS = /* @__PURE__ */ new Set([
+  "minecraft:compass",
+  // Bússola padrão do menu de navegação
+  "minecraft:recovery_compass",
+  // Bússola de recuperação
+  "minecraft:clock",
+  // Relógio de operações
+  "minecraft:nether_star"
+  // Estrela do Nether para painéis avançados
+]);
+world.beforeEvents.itemUse.subscribe((event) => {
+  const jogador = event.source;
+  const item = event.itemStack;
+  if (item && ITENS_DE_MENU_PROTEGIDOS.has(item.typeId)) {
+    const tickAtual = system.currentTick;
+    const ultimoTick = registroCooldownGlobal.get(jogador.id) ?? 0;
+    if (tickAtual - ultimoTick < COOLDOWN_GLOBAL_TICKS) {
+      event.cancel = true;
+      return;
+    }
+    registroCooldownGlobal.set(jogador.id, tickAtual);
+  }
+});
+world.beforeEvents.playerInteractWithEntity.subscribe((event) => {
+  const jogador = event.player;
+  const tickAtual = system.currentTick;
+  const ultimoTick = registroCooldownGlobal.get(jogador.id) ?? 0;
+  if (tickAtual - ultimoTick < COOLDOWN_GLOBAL_TICKS) {
+    event.cancel = true;
+    return;
+  }
+  registroCooldownGlobal.set(jogador.id, tickAtual);
+});
+world.afterEvents.playerLeave.subscribe((event) => {
+  registroCooldownGlobal.delete(event.playerId);
+});
 world.afterEvents.worldLoad.subscribe(() => {
   console.warn("\u{1F680} [Never Land BDS] Script API inicializada com sucesso no servidor dedicado!");
 });
@@ -24,6 +62,12 @@ system.afterEvents.scriptEventReceive.subscribe((event) => {
   if (event.id === "neverland:menu") {
     const player = event.sourceEntity;
     if (player && player instanceof Player) {
+      const tickAtual = system.currentTick;
+      const ultimoTick = registroCooldownGlobal.get(player.id) ?? 0;
+      if (tickAtual - ultimoTick < COOLDOWN_GLOBAL_TICKS) {
+        return;
+      }
+      registroCooldownGlobal.set(player.id, tickAtual);
       system.run(() => {
         abrirMenuPrincipal(player);
       });

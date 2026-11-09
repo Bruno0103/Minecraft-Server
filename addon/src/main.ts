@@ -14,6 +14,8 @@ import {
   system,
   Player,
   ItemUseAfterEvent,
+  ItemUseBeforeEvent,
+  PlayerInteractWithEntityBeforeEvent,
   ScriptEventCommandMessageAfterEvent
 } from '@minecraft/server';
 
@@ -23,6 +25,95 @@ import {
   MessageFormData,
   FormCancelationReason
 } from '@minecraft/server-ui';
+
+// ==============================================================================
+// 1. GUARDIÃO GLOBAL DE CLIQUES E COOLDOWN DO SERVIDOR (FIREWALL DE INTERAÇÕES)
+// ==============================================================================
+
+/**
+ * Tabela hash de memória que rastreia o último tick da engine em que cada jogador
+ * executou uma interação no servidor (uso de item ou clique em entidade).
+ * Chave: ID único do jogador (player.id) | Valor: Tick numérico do servidor (system.currentTick)
+ */
+const registroCooldownGlobal = new Map<string, number>();
+
+/**
+ * Intervalo de segurança anti-spam e debounce para todo o servidor.
+ * 10 ticks = 500 milissegundos (meio segundo).
+ * Esse intervalo elimina 100% dos cliques duplicados e do lag momentâneo (micro-stutter)
+ * sem prejudicar a responsividade ou fluidez sentida pelo jogador.
+ */
+const COOLDOWN_GLOBAL_TICKS = 10;
+
+/**
+ * Conjunto de identificadores de itens que disparam menus, janelas modais ou
+ * interfaces gráficas no ecossistema do servidor.
+ */
+const ITENS_DE_MENU_PROTEGIDOS = new Set<string>([
+  'minecraft:compass',            // Bússola padrão do menu de navegação
+  'minecraft:recovery_compass',   // Bússola de recuperação
+  'minecraft:clock',              // Relógio de operações
+  'minecraft:nether_star'         // Estrela do Nether para painéis avançados
+]);
+
+/**
+ * INTERCEPTADOR GLOBAL DE ITENS (world.beforeEvents.itemUse)
+ * Executa na camada mais profunda do motor nativo C++ ANTES que o clique seja repassado
+ * aos demais subsistemas e addons.
+ * Se o jogador disparar cliques em rápida sucessão (ex: segurar botão direito do mouse),
+ * a ação é cancelada na raiz (event.cancel = true), impedindo picos de CPU no BDS.
+ */
+world.beforeEvents.itemUse.subscribe((event: ItemUseBeforeEvent) => {
+  const jogador = event.source;
+  const item = event.itemStack;
+
+  // Filtra apenas itens catalogados que disparam menus e interfaces
+  if (item && ITENS_DE_MENU_PROTEGIDOS.has(item.typeId)) {
+    const tickAtual = system.currentTick;
+    const ultimoTick = registroCooldownGlobal.get(jogador.id) ?? 0;
+
+    // Se o clique ocorreu dentro da janela de meio segundo (10 ticks):
+    if (tickAtual - ultimoTick < COOLDOWN_GLOBAL_TICKS) {
+      // 🛡️ MÁGICA ARQUITETURAL: Cancela o uso do item.
+      // Nenhum outro addon ou script de terceiros receberá o evento deste clique redundante!
+      event.cancel = true;
+      return;
+    }
+
+    // Registra o novo tick válido do jogador
+    registroCooldownGlobal.set(jogador.id, tickAtual);
+  }
+});
+
+/**
+ * INTERCEPTADOR GLOBAL DE ENTIDADES FLUTUANTES / MENUS 3D (playerInteractWithEntity)
+ * Intercepta cliques e toques em NPCs, suportes de armaduras ou entidades invisíveis
+ * que exibem hologramas ou menus flutuantes no espaço tridimensional do mundo.
+ */
+world.beforeEvents.playerInteractWithEntity.subscribe((event: PlayerInteractWithEntityBeforeEvent) => {
+  const jogador = event.player;
+  const tickAtual = system.currentTick;
+  const ultimoTick = registroCooldownGlobal.get(jogador.id) ?? 0;
+
+  // Se o jogador interagiu com entidades flutuantes há menos de 10 ticks:
+  if (tickAtual - ultimoTick < COOLDOWN_GLOBAL_TICKS) {
+    // Cancela a interação repetida na raiz do motor C++
+    event.cancel = true;
+    return;
+  }
+
+  // Atualiza o registro de tempo para a interação com entidade
+  registroCooldownGlobal.set(jogador.id, tickAtual);
+});
+
+/**
+ * LIMPEZA PROATIVA DE MEMÓRIA (Garbage Collection de Sessão)
+ * Quando um jogador se desconecta do servidor, seu identificador é removido da tabela
+ * de cooldown para prevenir qualquer tipo de vazamento de memória (Memory Leak).
+ */
+world.afterEvents.playerLeave.subscribe((event) => {
+  registroCooldownGlobal.delete(event.playerId);
+});
 
 // ==============================================================================
 // 1. INICIALIZAÇÃO DO SERVIDOR E BOAS-VINDAS AO JOGADOR
@@ -43,7 +134,7 @@ world.afterEvents.playerSpawn.subscribe((event) => {
 });
 
 // ==============================================================================
-// 2. RECEBIMENTO DE COMANDOS CUSTOMIZADOS VIA SCRIPTEVENT
+// 3. RECEBIMENTO DE COMANDOS CUSTOMIZADOS VIA SCRIPTEVENT
 // ==============================================================================
 
 // Intercepta comandos de script disparados por chat, blocos de comando ou NPCs
@@ -51,6 +142,15 @@ system.afterEvents.scriptEventReceive.subscribe((event: ScriptEventCommandMessag
   if (event.id === 'neverland:menu') {
     const player = event.sourceEntity;
     if (player && player instanceof Player) {
+      const tickAtual = system.currentTick;
+      const ultimoTick = registroCooldownGlobal.get(player.id) ?? 0;
+
+      // Proteção contra chamadas duplicadas via comando ou macros rápidas
+      if (tickAtual - ultimoTick < COOLDOWN_GLOBAL_TICKS) {
+        return;
+      }
+      registroCooldownGlobal.set(player.id, tickAtual);
+
       // REGRA DE OURO ARQUITETURAL DA BEDROCK SCRIPT API:
       // O agendamento via system.run garante a execução segura no próximo tick da engine:
       system.run(() => {
@@ -61,7 +161,7 @@ system.afterEvents.scriptEventReceive.subscribe((event: ScriptEventCommandMessag
 });
 
 // ==============================================================================
-// 3. ATIVAÇÃO DE MENU POR ITEM COM AFTEREVENTS
+// 4. ATIVAÇÃO DE MENU POR ITEM COM AFTEREVENTS
 // ==============================================================================
 
 // Detecta quando o jogador aciona o uso de um item (ex: clique direito com a bússola)
@@ -70,6 +170,7 @@ world.afterEvents.itemUse.subscribe((event: ItemUseAfterEvent) => {
   const item = event.itemStack;
 
   // Se o jogador acionar o uso empunhando uma bússola de navegação
+  // Nota: Os cliques repetidos já foram filtrados pelo Guardião Global em beforeEvents!
   if (item && item.typeId === 'minecraft:compass') {
     system.run(() => {
       abrirMenuPrincipal(player);
@@ -78,7 +179,7 @@ world.afterEvents.itemUse.subscribe((event: ItemUseAfterEvent) => {
 });
 
 // ==============================================================================
-// 4. INTERFACE GRÁFICA DE BOTÕES E AÇÕES (ActionFormData)
+// 5. INTERFACE GRÁFICA DE BOTÕES E AÇÕES (ActionFormData)
 // ==============================================================================
 
 /**
@@ -125,7 +226,7 @@ function abrirMenuPrincipal(player: Player): void {
 }
 
 // ==============================================================================
-// 5. INTERFACE GRÁFICA DE FORMULÁRIO (ModalFormData)
+// 6. INTERFACE GRÁFICA DE FORMULÁRIO (ModalFormData)
 // ==============================================================================
 
 /**
@@ -155,7 +256,7 @@ function abrirModalConfiguracoes(player: Player): void {
 }
 
 // ==============================================================================
-// 6. CAIXA DE CONFIRMAÇÃO DIALÓGICA (MessageFormData)
+// 7. CAIXA DE CONFIRMAÇÃO DIALÓGICA (MessageFormData)
 // ==============================================================================
 
 /**
@@ -184,7 +285,7 @@ function confirmarChamadoSuporte(player: Player): void {
 }
 
 // ==============================================================================
-// 7. TAREFA PERIÓDICA DE TELEMETRIA EM SEGUNDO PLANO
+// 8. TAREFA PERIÓDICA DE TELEMETRIA EM SEGUNDO PLANO
 // ==============================================================================
 
 // Executa a cada 200 ticks (10 segundos) para telemetria leve
