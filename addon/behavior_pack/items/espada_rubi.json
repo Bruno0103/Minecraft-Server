@@ -5,7 +5,7 @@
       "identifier": "custom:espada_rubi",
       "menu_category": {
         "category": "equipment",
-        "group": "itemGroup.name.sword"
+        "group": "minecraft:itemGroup.name.sword"
       }
     },
     "components": {

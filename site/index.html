@@ -1286,6 +1286,16 @@ if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
       // Parâmetros de rede públicos do servidor Never Land Bedrock
       const serverHost = 'never-land.rocks';
       const serverPort = 19132;
+
+      // Endpoint de telemetria inteligente Never Land (Vercel Serverless Function com sonda TCP NetherNet direta)
+      // Se a página for executada localmente (file:// ou localhost), recorre ao endpoint de produção na Vercel
+      const isLocalEnvironment = window.location.protocol === 'file:' ||
+                                 window.location.hostname === 'localhost' ||
+                                 window.location.hostname === '127.0.0.1';
+      const nativeStatusUrl = isLocalEnvironment
+        ? 'https://neverland-bedrock.vercel.app/api/status'
+        : '/api/status';
+
       const primaryUrl = `https://api.mcstatus.io/v2/status/bedrock/${serverHost}:${serverPort}`;
       const fallbackUrl = `https://api.mcsrvstat.us/bedrock/3/${serverHost}:${serverPort}`;
 
@@ -1294,36 +1304,66 @@ if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
       let latencyMs = 0;
 
       try {
-        // Tentativa 1: Consulta à API primária dedicada ao Minecraft Bedrock (api.mcstatus.io)
-        const primaryController = new AbortController();
-        const primaryTimeout = setTimeout(() => primaryController.abort(), 6000);
-
+        // Tentativa 0 (Primária): Sonda direta no socket TCP NetherNet via Serverless Function
+        // Resolve o problema de servidores modernos 1.26+ (NetherNet WebRTC) aparecerem offline
         try {
-          const response = await fetch(primaryUrl, {
-            signal: primaryController.signal,
+          const nativeController = new AbortController();
+          const nativeTimeout = setTimeout(() => nativeController.abort(), 4000);
+
+          const nativeResponse = await fetch(nativeStatusUrl, {
+            signal: nativeController.signal,
             headers: { 'Accept': 'application/json' }
           });
-          clearTimeout(primaryTimeout);
+          clearTimeout(nativeTimeout);
 
-          if (response.ok) {
-            const json = await response.json();
-            latencyMs = Math.round(performance.now() - startTime);
-            serverData = {
-              online: !!json.online,
-              playersOnline: json.players ? (json.players.online ?? 0) : 0,
-              playersMax: json.players ? (json.players.max ?? 10) : 10,
-              version: json.version ? (json.version.name || 'Bedrock 1.21+') : 'Bedrock 1.21+'
-            };
+          if (nativeResponse.ok) {
+            const nativeJson = await nativeResponse.json();
+            if (nativeJson && nativeJson.online) {
+              latencyMs = nativeJson.latency || Math.round(performance.now() - startTime);
+              serverData = {
+                online: true,
+                playersOnline: nativeJson.players ? (nativeJson.players.online ?? 0) : 0,
+                playersMax: nativeJson.players ? (nativeJson.players.max ?? 10) : 10,
+                version: nativeJson.version || 'Bedrock 1.26+ (NetherNet)'
+              };
+            }
           }
-        } catch (primaryErr) {
-          clearTimeout(primaryTimeout);
-          console.warn('Endpoint primário (api.mcstatus.io) falhou ou atingiu timeout. Tentando fallback...', primaryErr);
+        } catch (nativeErr) {
+          console.warn('Endpoint nativo (/api/status) em transição ou indisponível. Tentando fallbacks públicos...', nativeErr);
         }
 
-        // Tentativa 2: Recurso ao endpoint secundário (api.mcsrvstat.us) caso a primária não responda
+        // Tentativa 1: Consulta à API dedicada ao Minecraft Bedrock (api.mcstatus.io) caso a sonda nativa não retorne
+        if (!serverData) {
+          const primaryController = new AbortController();
+          const primaryTimeout = setTimeout(() => primaryController.abort(), 5000);
+
+          try {
+            const response = await fetch(primaryUrl, {
+              signal: primaryController.signal,
+              headers: { 'Accept': 'application/json' }
+            });
+            clearTimeout(primaryTimeout);
+
+            if (response.ok) {
+              const json = await response.json();
+              latencyMs = Math.round(performance.now() - startTime);
+              serverData = {
+                online: !!json.online,
+                playersOnline: json.players ? (json.players.online ?? 0) : 0,
+                playersMax: json.players ? (json.players.max ?? 10) : 10,
+                version: json.version ? (json.version.name || 'Bedrock 1.26+') : 'Bedrock 1.26+'
+              };
+            }
+          } catch (primaryErr) {
+            clearTimeout(primaryTimeout);
+            console.warn('Endpoint primário (api.mcstatus.io) falhou ou atingiu timeout. Tentando fallback secundário...', primaryErr);
+          }
+        }
+
+        // Tentativa 2: Recurso ao endpoint secundário (api.mcsrvstat.us) caso as anteriores não respondam
         if (!serverData) {
           const fallbackController = new AbortController();
-          const fallbackTimeout = setTimeout(() => fallbackController.abort(), 6000);
+          const fallbackTimeout = setTimeout(() => fallbackController.abort(), 5000);
 
           try {
             const fbResponse = await fetch(fallbackUrl, {
@@ -1339,7 +1379,7 @@ if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
                 online: !!fbJson.online,
                 playersOnline: fbJson.players ? (fbJson.players.online ?? 0) : 0,
                 playersMax: fbJson.players ? (fbJson.players.max ?? 10) : 10,
-                version: fbJson.version || 'Bedrock 1.21+'
+                version: fbJson.version || 'Bedrock 1.26+'
               };
             }
           } catch (fallbackErr) {

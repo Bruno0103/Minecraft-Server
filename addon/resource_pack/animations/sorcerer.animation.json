@@ -22,16 +22,8 @@
               "lerp_mode": "catmullrom"
             },
             "0.8": {
-              "pre": [
-                "-110.0 + (math.sin(query.anim_time * 1800) * 4.0)",
-                "20.0 + (math.cos(query.anim_time * 1800) * 3.0)",
-                "-15.0"
-              ],
-              "post": [
-                "-110.0 + (math.sin(query.anim_time * 1800) * 4.0)",
-                "20.0 + (math.cos(query.anim_time * 1800) * 3.0)",
-                "-15.0"
-              ],
+              "pre": [ -110.0, 20.0, -15.0 ],
+              "post": [ -110.0, 20.0, -15.0 ],
               "lerp_mode": "catmullrom"
             },
             "1.2": {
@@ -57,22 +49,18 @@
           }
         }
       },
-      "timeline": {
+      "sound_effects": {
         "0.2": {
-          "sound_effects": [
-            { "effect": "spell.charge" }
-          ]
+          "effect": "spell.charge"
         },
         "0.8": {
-          "particle_effects": [
-            {
-              "effect": "custom:arcane_magic_burst",
-              "locator": "right_hand_locator"
-            }
-          ],
-          "sound_effects": [
-            { "effect": "spell.blast" }
-          ]
+          "effect": "spell.blast"
+        }
+      },
+      "particle_effects": {
+        "0.8": {
+          "effect": "custom:arcane_magic_burst",
+          "locator": "right_hand_locator"
         }
       }
     }
