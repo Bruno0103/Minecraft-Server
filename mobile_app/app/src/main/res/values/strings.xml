@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ==============================================================================
+    Never Land Server Manager - Arquivo de Strings (strings.xml)
+    ==============================================================================
+    Catálogo de textos da aplicação em Português do Brasil (pt-BR).
+    Contém todos os rótulos de navegação, status de servidor, métricas,
+    diálogos de confirmação, comandos rápidos e mensagens de feedback.
+    ==============================================================================
+-->
+<resources>
+
+    <!-- ====================================================================== -->
+    <!-- 1. Identificação Geral da Aplicação                                     -->
+    <!-- ====================================================================== -->
+    <string name="app_name">Never Land Server</string>
+    <string name="app_full_title">Never Land Server Manager</string>
+    <string name="app_subtitle">Bedrock Dedicated Server Remote Control</string>
+    <string name="app_version_label">Versão 1.0.0 (Build M1)</string>
+
+    <!-- ====================================================================== -->
+    <!-- 2. Barra de Navegação Inferior (Bottom Navigation)                      -->
+    <!-- ====================================================================== -->
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_console">Console</string>
+    <string name="nav_players">Jogadores</string>
+    <string name="nav_settings">Configurações</string>
+
+    <!-- ====================================================================== -->
+    <!-- 3. Status de Conexão e do Serviço BDS                                   -->
+    <!-- ====================================================================== -->
+    <string name="status_connected">Conectado via SSH</string>
+    <string name="status_connecting">Conectando ao servidor…</string>
+    <string name="status_disconnected">Desconectado</string>
+    <string name="status_server_online">ONLINE / ATIVO</string>
+    <string name="status_server_offline">OFFLINE / PARADO</string>
+    <string name="status_server_starting">INICIANDO…</string>
+    <string name="status_server_stopping">ENCERRANDO…</string>
+    <string name="status_server_restarting">REINICIANDO…</string>
+    <string name="status_server_unknown">DESCONHECIDO</string>
+
+    <!-- ====================================================================== -->
+    <!-- 4. Métricas de Telemetria (Dashboard Cards)                             -->
+    <!-- ====================================================================== -->
+    <string name="metric_ram_title">Consumo de Memória RAM</string>
+    <string name="metric_ram_limit_format">%1$.1f MiB / %2$.1f MiB</string>
+    <string name="metric_uptime_title">Tempo de Atividade (Uptime)</string>
+    <string name="metric_players_title">Jogadores Online</string>
+    <string name="metric_players_format">%1$d / %2$d</string>
+    <string name="metric_latency_title">Latência SSH</string>
+    <string name="metric_latency_format">%1$d ms</string>
+    <string name="metric_pid_format">PID: %1$s</string>
+    <string name="metric_restarts_format">Reinícios: %1$d</string>
+    <string name="metric_fifo_status_title">Canal Console (FIFO)</string>
+    <string name="metric_fifo_ready">Operacional (/run/bedrock.console)</string>
+    <string name="metric_fifo_down">Canal Fechado (Sem leitor ativo)</string>
+
+    <!-- ====================================================================== -->
+    <!-- 5. Ações de Ciclo de Vida e Operacionais                                -->
+    <!-- ====================================================================== -->
+    <string name="action_start">Iniciar Servidor</string>
+    <string name="action_stop">Parar Servidor</string>
+    <string name="action_restart">Reiniciar</string>
+    <string name="action_backup">Criar Backup Agora</string>
+    <string name="action_refresh">Atualizar Dados</string>
+    <string name="action_test_connection">Testar Conexão</string>
+    <string name="action_save_settings">Salvar Configurações</string>
+
+    <!-- ====================================================================== -->
+    <!-- 6. Console / Terminal Interativo                                        -->
+    <!-- ====================================================================== -->
+    <string name="console_title">Terminal Interativo</string>
+    <string name="console_hint_command">Digite um comando BDS (ex.: list, say Olá, time set day)…</string>
+    <string name="console_btn_send">Enviar</string>
+    <string name="console_btn_clear">Limpar Log</string>
+    <string name="console_autoscroll_on">Rolagem Automática Ativa</string>
+    <string name="console_autoscroll_off">Rolagem Pausada (Novas linhas disponíveis)</string>
+    <string name="console_empty_logs">Aguardando saída de comandos ou inicialização de logs…</string>
+    
+    <!-- Atalhos rápidos de comando (Chips do Console) -->
+    <string name="shortcut_list">/list</string>
+    <string name="shortcut_recursos">mc recursos</string>
+    <string name="shortcut_rede">mc rede</string>
+    <string name="shortcut_config">mc config</string>
+    <string name="shortcut_boot">mc boot</string>
+    <string name="shortcut_backups">mc backups</string>
+
+    <!-- ====================================================================== -->
+    <!-- 7. Gestão de Jogadores (Player Management)                              -->
+    <!-- ====================================================================== -->
+    <string name="players_title">Gestão de Jogadores</string>
+    <string name="tab_players_online">Online</string>
+    <string name="tab_players_whitelist">Whitelist (Allowlist)</string>
+    <string name="tab_players_history">Histórico &amp; XUIDs</string>
+    <string name="players_empty_online">Nenhum jogador conectado no momento.</string>
+    <string name="players_empty_whitelist">Nenhum jogador cadastrado na whitelist.</string>
+    <string name="players_empty_history">Nenhum evento recente registrado.</string>
+    <string name="btn_player_kick">Expulsar (Kick)</string>
+    <string name="btn_player_ban">Banir (Ban)</string>
+    <string name="btn_player_add_whitelist">Adicionar Gamertag</string>
+    <string name="btn_player_remove_whitelist">Remover da Whitelist</string>
+
+    <!-- ====================================================================== -->
+    <!-- 8. Configurações SSH & Credenciais                                      -->
+    <!-- ====================================================================== -->
+    <string name="settings_title">Configurações de Acesso SSH</string>
+    <string name="settings_section_connection">Parâmetros do Servidor Remoto</string>
+    <string name="settings_host_label">Endereço do Host (IP ou FQDN)</string>
+    <string name="settings_host_default">157.151.2.91</string>
+    <string name="settings_port_label">Porta SSH</string>
+    <string name="settings_port_default">22</string>
+    <string name="settings_user_label">Usuário de Login</string>
+    <string name="settings_user_default">opc</string>
+    <string name="settings_auth_type_label">Método de Autenticação</string>
+    <string name="settings_auth_type_key">Chave Privada (Ed25519 / RSA / OpenSSH)</string>
+    <string name="settings_auth_type_password">Senha SSH Convencional</string>
+    <string name="settings_key_pem_label">Conteúdo da Chave Privada (PEM)</string>
+    <string name="settings_key_pem_hint">Cole aqui o conteúdo da sua chave privada (—–BEGIN OPENSSH PRIVATE KEY—–)…</string>
+    <string name="settings_passphrase_label">Passphrase da Chave (Opcional)</string>
+    <string name="settings_password_label">Senha SSH</string>
+    <string name="settings_security_notice">Suas credenciais são protegidas com criptografia de hardware no Android KeyStore.</string>
+
+    <!-- ====================================================================== -->
+    <!-- 9. Diálogos de Confirmação e Modais                                     -->
+    <!-- ====================================================================== -->
+    <string name="dialog_stop_title">Parar Servidor Minecraft?</string>
+    <string name="dialog_stop_message">O servidor executará um salvamento gracioso do mundo LevelDB antes de encerrar o processo. Jogadores conectados serão desconectados.</string>
+    <string name="dialog_restart_title">Reiniciar Servidor?</string>
+    <string name="dialog_restart_message">Um aviso prévio de contagem regressiva será enviado no chat antes do reinício do processo.</string>
+    <string name="dialog_kick_title">Expulsar Jogador</string>
+    <string name="dialog_kick_message">Informe o motivo da expulsão do jogador %1$s:</string>
+    <string name="dialog_ban_title">Banir Jogador</string>
+    <string name="dialog_ban_message">Deseja realmente banir %1$s? O jogador será expulso imediatamente e removido da allowlist.</string>
+    <string name="dialog_backup_running_title">Criando Hot-Backup…</string>
+    <string name="dialog_backup_running_desc">Por favor, aguarde. O servidor está congelando e arquivando as pastas do mundo de forma segura.</string>
+    <string name="btn_confirm">Confirmar</string>
+    <string name="btn_cancel">Cancelar</string>
+
+    <!-- ====================================================================== -->
+    <!-- 10. Mensagens de Notificação, Sucesso e Erro                            -->
+    <!-- ====================================================================== -->
+    <string name="msg_connection_success">Conexão SSH estabelecida com sucesso!</string>
+    <string name="msg_settings_saved">Configurações salvas no armazenamento seguro.</string>
+    <string name="msg_backup_success">Backup concluído com sucesso: %1$s</string>
+    <string name="err_connection_failed">Falha ao conectar via SSH: %1$s</string>
+    <string name="err_empty_command">O comando não pode ser vazio.</string>
+    <string name="err_network_unavailable">Sem conexão com a internet. Verifique seu Wi-Fi ou dados móveis.</string>
+
+</resources>

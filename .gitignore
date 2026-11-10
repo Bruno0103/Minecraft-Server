@@ -196,3 +196,33 @@ $RECYCLE.BIN/
 .turbo/
 
 
+# ------------------------------------------------------------------------------
+# 8. APLICATIVO ANDROID NATIVO (mobile_app / Gradle / Kotlin / APK)
+# ------------------------------------------------------------------------------
+# Caches de compilação do Gradle, Kotlin Daemon e Android Studio
+.gradle/
+**/.gradle/
+.kotlin/
+**/.kotlin/
+**/build/
+captures/
+.externalNativeBuild/
+.cxx/
+local.properties
+**/local.properties
+
+# Pacotes compilados Android (APKs e App Bundles podem conter chaves embutidas em assets)
+*.apk
+*.aab
+*.ap_
+*.aab_
+*.dex
+output-metadata.json
+
+# Chaves privadas SSH ou credenciais empacotadas em assets locais do app Android
+mobile_app/app/src/main/assets/*.key
+mobile_app/app/src/main/assets/*.pem
+mobile_app/app/src/main/assets/*.ppk
+
+
+

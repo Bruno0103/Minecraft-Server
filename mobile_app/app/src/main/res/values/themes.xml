@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ==============================================================================
+    Never Land Server Manager - Tema Base XML (themes.xml)
+    ==============================================================================
+    Define o tema nativo do Android para a Activity principal antes da
+    inicialização e inflação do framework Jetpack Compose.
+    
+    Características:
+    - Sem ActionBar nativa (NoActionBar), delegando o controle de top bar e navegação
+      100% ao Jetpack Compose e Material 3.
+    - Janela inicial com fundo Bedrock Dark (#121212), evitando o clarão branco ("white flash")
+      durante a transição de inicialização do app (cold start).
+    - Barras de status e navegação transparentes/translúcidas para suporte pleno a Edge-to-Edge.
+    ==============================================================================
+-->
+<resources>
+
+    <style name="Theme.NeverLandServerManager" parent="android:Theme.Material.NoActionBar">
+        <!-- Cor de fundo da janela nativa antes do Compose carregar -->
+        <item name="android:windowBackground">#121212</item>
+
+        <!-- Suporte a barras de sistema translúcidas e borda a borda (Edge-to-Edge) -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+
+        <!-- Evita recriação desnecessária de janelas -->
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+</resources>

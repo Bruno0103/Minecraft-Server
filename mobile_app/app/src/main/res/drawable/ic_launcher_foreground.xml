@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Ícone adaptativo de primeiro plano com visual temático de servidor Never Land -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group
+        android:scaleX="1.6"
+        android:scaleY="1.6"
+        android:translateX="15"
+        android:translateY="15">
+        <!-- Caixa do Servidor (Grass Green) -->
+        <path
+            android:fillColor="#4CAF50"
+            android:pathData="M19,4H5C3.89,4 3,4.89 3,6v4c0,1.11 0.89,2 2,2h14c1.11,0 2,-0.89 2,-2V6C21,4.89 20.11,4 19,4zM6.5,9C5.67,9 5,8.33 5,7.5S5.67,6 6.5,6 8,6.67 8,7.5 7.33,9 6.5,9zM19,13H5c-1.11,0 -2,0.89 -2,2v4c0,1.11 0.89,2 2,2h14c1.11,0 2,-0.89 2,-2v-4C21,13.89 20.11,13 19,13zM6.5,18C5.67,18 5,17.33 5,16.5S5.67,15 6.5,15 8,15.67 8,16.5 7.33,18 6.5,18z" />
+        <!-- Indicador de Status Ativo (Diamond Blue) -->
+        <path
+            android:fillColor="#00BCD4"
+            android:pathData="M16.5,7.5m-1.5,0a1.5,1.5 0 1,0 3,0a1.5,1.5 0 1,0 -3,0" />
+        <path
+            android:fillColor="#00BCD4"
+            android:pathData="M16.5,16.5m-1.5,0a1.5,1.5 0 1,0 3,0a1.5,1.5 0 1,0 -3,0" />
+    </group>
+</vector>

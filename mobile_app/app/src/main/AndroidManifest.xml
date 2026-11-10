@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ==============================================================================
+    Never Land Server Manager - Android Manifest Principal (AndroidManifest.xml)
+    ==============================================================================
+    Configuração do manifesto da aplicação Android nativa para gerenciamento
+    remoto do servidor de Minecraft Bedrock Dedicated Server (Never Land BDS).
+    
+    Pacote Base: com.neverland.servermanager
+    Target API: 35 (Android 15) | Min API: 26 (Android 8.0 Oreo)
+    ==============================================================================
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- ====================================================================== -->
+    <!-- Permissões do Sistema Operacional                                      -->
+    <!-- ====================================================================== -->
+
+    <!-- Permissão obrigatória para abertura de sockets de rede TCP/IP.
+         Utilizada pelo cliente SSHJ (porta 22) para comunicação remota com a VM
+         Oracle Linux e para testes de socket/diagnóstico na porta UDP/TCP do BDS. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Permissão para monitoramento do estado da conectividade (Wi-Fi, Dados Móveis).
+         Permite ao aplicativo verificar se o aparelho possui acesso à rede antes
+         de iniciar o handshake SSH ou rotinas de polling de status, evitando
+         timeouts lentos e consumos desnecessários de bateria. -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Permissão para acionamento do motor de vibração tátil (Haptic Feedback).
+         Utilizada para fornecer resposta tátil instantânea em toques de botões,
+         confirmações de ações críticas (Stop, Restart, Kick, Ban) e alertas de conclusão. -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- ====================================================================== -->
+    <!-- Declaração do Aplicativo (Application)                                  -->
+    <!-- ====================================================================== -->
+    <application
+        android:name=".NeverLandApp"
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:theme="@style/Theme.NeverLandServerManager"
+        android:allowBackup="false"
+        android:supportsRtl="true">
+
+        <!-- ================================================================== -->
+        <!-- Activity Principal (MainActivity)                                  -->
+        <!-- ================================================================== -->
+        <!-- Declara a atividade de entrada do usuário.
+             - android:exported="true": Obrigatório a partir do Android 12 (API 31)
+               para atividades que contenham intent-filter de inicialização (LAUNCHER).
+             - android:windowSoftInputMode="adjustResize": Garante que o teclado
+               virtual redimensione o Scaffold do Jetpack Compose, mantendo o campo
+               de digitação do terminal do console visível acima do teclado. -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.NeverLandServerManager"
+            android:windowSoftInputMode="adjustResize">
+
+            <intent-filter>
+                <!-- Ponto de entrada padrão do aplicativo (Main) -->
+                <action android:name="android.intent.action.MAIN" />
+
+                <!-- Exibe o ícone do aplicativo no inicializador (Launcher) do sistema -->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+    </application>
+
+</manifest>
