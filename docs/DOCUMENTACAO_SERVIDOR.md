@@ -1462,4 +1462,36 @@ Abaixo encontra-se a referência rápida para operação diária do servidor uti
 | **Atualizar versão oficial do BDS**| `mc update` | `/home/opc/minecraft/install_or_update.sh` |
 
 ---
+
+## 14. Histórico de Atualizações e Patches de Produção (2026-11-18)
+
+Os scripts reproduzíveis utilizados para aplicar e validar as correções desta rodada estão versionados em `tools/patches_2026_11/`.
+
+### 📦 Versões Publicadas nos Resource Packs (Cache-Busting OCI)
+Para forçar a renovação automática de cache nos clientes ao conectar ao servidor `Never Land`, as versões dos pacotes modificados foram incrementadas em seus respectivos `manifest.json` e em `worlds/Never Land/world_resource_packs.json`:
+* **Colourful Containers BE (`ColourfulC`):** `[4, 4, 1]` → **`[4, 4, 2]`**
+* **Never Land Essencial (`NeverLandEssencial`):** `[1, 0, 0]` → **`[1, 0, 1]`**
+* **The Ty-el's UI Pack (`TheTy-els`):** `[1, 2, 5]` → **`[1, 2, 6]`**
+
+### ✨ Correções de Interface (HUD), Fontes e Áudio
+* **Exibição de XP e Nível Atual (`TheTy-els` — `patch_tyel_xp.py`):**
+  * Correção de visibilidade do nível sobre a barra de XP inclusive no Modo Criativo (`hud_screen.json`) e normalização numérica `#lvl_num` (`0..5000`) nos módulos `tyel_modules/yaGJwwiA3Jy=` e `tyel_modules/rEo71U9cEyA=`, exibindo **"Nível Atual"** em `pt_BR.lang` / `pt_PT.lang`.
+* **Bússola, Relógio e IDs 26.60 / 1.26.65 (`TheTy-els` — `fix_glyph_scale_and_tyel_utilities.py`):**
+  * Atualização da tabela `ui/tyel_lib/item_ids.json` para os IDs do Bedrock 26.60/1.26.65 (`minecraft:compass = 394`, `minecraft:clock = 396`, `minecraft:recovery_compass = 661`, além dos reagentes do Guia de Poções).
+  * Correção de parênteses excedentes em `tyel_modules/wPTYVhlZTkh=` (`dynamic_utility_item_renderer_template` e `arrows_counter_tool_label`), eliminação de deadlock circular de `#visible` movendo o controle de visibilidade para `utility_artifacts_bg`, ajuste de `padding_hack_middle` e atualização do fallback no modo *Legacy*.
+* **Glifos de Comida e Discos Musicais (`ColourfulC` / `NeverLandEssencial` — `fix_food_glyphs.py`, `fix_glyph_scale_and_tyel_utilities.py`):**
+  * Migração dos ícones de fome (`\uF400`, `\uF401`) e redstone (`\uF500`) de `glyph_F4.png`/`glyph_F5.png` (que colidiam com os tiles do `Advanced Minimap` em `glyph_E2..F8`) para os slots livres `\uE0F0`, `\uE0F1`, `\uE0F2` em `font/glyph_E0.png`.
+  * Ajuste da arte para escala nativa **1×** (`9×9` e `8×7` pixels) evitando a ampliação 2× indesejada nas tooltips.
+* **Áudio do Bogged (`NeverLandEssencial` — `sync_oci_fixes.py`):**
+  * Adição de `sounds/mob/bogged/step5.fsb` (cópia do `step4.fsb` vanilla FMOD `FSB5`), eliminando os 8 erros `Invalid asset path sounds/mob/bogged/step5` gerados pelo *Actions & Stuff*.
+
+### ⚡ Otimizações Anti-Watchdog nos Behavior Packs
+* **Vein Miner & Tree Capitator (`VeinMiner_BP` — `optimize_veinminer.mjs`):**
+  * Remoção das 17 IIFEs síncronas `while(!![])` de inicialização por pré-cálculo das **159 rotações** de array de strings em sandbox V8 (eliminando os Watchdog Spikes de ~347–374ms no QuickJS).
+  * Ajuste de `utils/Notifications.js` de `system.runInterval(..., 1)` para **4 ticks (200ms)**.
+* **Effortless Building (`EffortlessBuilding_BP` — `sync_oci_fixes.py`):**
+  * Escalonamento dos ciclos de `sweepStrays()` em `core/EntityPanel.js`, `core/GuideBook.js`, `core/LanguagePicker.js` e `core/Coach.js` para evitar 18 chamadas simultâneas de `getEntities()` no tick 0 e a cada 200 ticks.
+  * Alinhamento de `CLICK_COOLDOWN = 10` em `core/EntityPanel.js` e adição de *early exits* em `core/Preview.js` (`state.mode === "disable"`) e `main.js` (detector de *double-sneak* antes de consultar inventário).
+
+---
 *Documentação atualizada e auditada para a versão Oracle Linux 9.7 / Bedrock Dedicated Server 1.26+.*

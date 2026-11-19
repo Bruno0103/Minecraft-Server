@@ -1,12 +1,16 @@
 {
   // ==============================================================================
-  // .vscode/settings.json — Mapeamento Estático de Schemas Blockception
+  // .vscode/settings.json — Mapeamento Completo de Schemas Blockception (26.65+)
   // ==============================================================================
-  // Fornece autocompletion, validação estrutural de manifestos, blocos, itens,
-  // entidades e partículas no VS Code, impedindo alucinações e erros de sintaxe.
+  // Fornece autocompletion, IntelliSense e validação estrutural em tempo real
+  // no VS Code / Antigravity IDE para arquivos de Behavior Pack, Resource Pack,
+  // Vibrant Visuals (Render Dragon / PBR) e Worldgen compatíveis com Bedrock 1.26.65+.
   "json.schemas": [
+    // --------------------------------------------------------------------------
+    // 1. MANIFESTOS DE PACOTES (Behavior Pack e Resource Pack)
+    // --------------------------------------------------------------------------
     {
-      "description": "Validação de Manifestos de Pacotes Bedrock (Behavior e Resource Packs)",
+      "description": "Validação de Manifestos de Pacotes Bedrock (BP e RP, incluindo metadata.product_type)",
       "fileMatch": [
         "addon/behavior_pack/manifest.json",
         "addon/resource_pack/manifest.json",
@@ -15,70 +19,356 @@
         "behavior_pack/manifest.json",
         "resource_pack/manifest.json",
         "behavior_packs/*/manifest.json",
-        "resource_packs/*/manifest.json"
+        "resource_packs/*/manifest.json",
+        "tools/minecraft-bedrock-mcp/addon/manifest.json"
       ],
       "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/general/manifest.json"
     },
+
+    // --------------------------------------------------------------------------
+    // 2. ENTIDADES (Behavior Pack e Resource Pack / Client Entity)
+    // --------------------------------------------------------------------------
     {
-      "description": "Validação de Entidades de Behavior Pack",
+      "description": "Validação de Entidades de Behavior Pack (lógica, componentes, grupos e eventos)",
       "fileMatch": [
-        "addon/behavior_pack/entities/*.json",
-        "BP/entities/*.json",
-        "behavior_pack/entities/*.json",
-        "behavior_packs/*/entities/*.json"
+        "addon/behavior_pack/entities/**/*.json",
+        "BP/entities/**/*.json",
+        "behavior_pack/entities/**/*.json",
+        "behavior_packs/*/entities/**/*.json"
       ],
       "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/entities/entities.json"
     },
     {
-      "description": "Validação de Blocos Customizados (Behavior Pack)",
+      "description": "Validação de Client Entities de Resource Pack (geometria, materiais, texturas e render controllers)",
       "fileMatch": [
-        "addon/behavior_pack/blocks/*.json",
-        "BP/blocks/*.json",
-        "behavior_pack/blocks/*.json",
-        "behavior_packs/*/blocks/*.json"
+        "addon/resource_pack/entity/**/*.json",
+        "RP/entity/**/*.json",
+        "resource_pack/entity/**/*.json",
+        "resource_packs/*/entity/**/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/entity/entity.json"
+    },
+
+    // --------------------------------------------------------------------------
+    // 3. BLOCOS E ITENS (Behavior Pack e Resource Pack)
+    // --------------------------------------------------------------------------
+    {
+      "description": "Validação de Blocos Customizados no Behavior Pack (format_version 1.26.60)",
+      "fileMatch": [
+        "addon/behavior_pack/blocks/**/*.json",
+        "BP/blocks/**/*.json",
+        "behavior_pack/blocks/**/*.json",
+        "behavior_packs/*/blocks/**/*.json"
       ],
       "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/blocks/blocks.json"
     },
     {
-      "description": "Validação de Itens Customizados (Behavior Pack)",
+      "description": "Validação de Registro Visual e Sonoro de Blocos (RP/blocks.json)",
       "fileMatch": [
-        "addon/behavior_pack/items/*.json",
-        "BP/items/*.json",
-        "behavior_pack/items/*.json",
-        "behavior_packs/*/items/*.json"
+        "addon/resource_pack/blocks.json",
+        "RP/blocks.json",
+        "resource_pack/blocks.json",
+        "resource_packs/*/blocks.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/blocks.json"
+    },
+    {
+      "description": "Validação de Itens Customizados no Behavior Pack (format_version 1.26.60)",
+      "fileMatch": [
+        "addon/behavior_pack/items/**/*.json",
+        "BP/items/**/*.json",
+        "behavior_pack/items/**/*.json",
+        "behavior_packs/*/items/**/*.json"
       ],
       "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/items/items.json"
     },
+
+    // --------------------------------------------------------------------------
+    // 4. RECEITAS, TABELAS DE SAQUE, REGRAS DE SPAWN E TROCAS (Behavior Pack)
+    // --------------------------------------------------------------------------
     {
-      "description": "Validação de Efeitos de Partículas Bedrock (Resource Pack)",
+      "description": "Validação de Receitas de Criação, Fornalha e Mesa de Ferraria (Recipes)",
       "fileMatch": [
-        "addon/resource_pack/particles/*.json",
-        "RP/particles/*.json",
-        "resource_pack/particles/*.json",
-        "resource_packs/*/particles/*.json"
+        "addon/behavior_pack/recipes/**/*.json",
+        "BP/recipes/**/*.json",
+        "behavior_pack/recipes/**/*.json",
+        "behavior_packs/*/recipes/**/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/recipes/recipes.json"
+    },
+    {
+      "description": "Validação de Tabelas de Saque (Loot Tables)",
+      "fileMatch": [
+        "addon/behavior_pack/loot_tables/**/*.json",
+        "BP/loot_tables/**/*.json",
+        "behavior_pack/loot_tables/**/*.json",
+        "behavior_packs/*/loot_tables/**/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/loot_tables/loot_tables.json"
+    },
+    {
+      "description": "Validação de Regras de Surgimento Natural de Mobs (Spawn Rules)",
+      "fileMatch": [
+        "addon/behavior_pack/spawn_rules/**/*.json",
+        "BP/spawn_rules/**/*.json",
+        "behavior_pack/spawn_rules/**/*.json",
+        "behavior_packs/*/spawn_rules/**/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/spawn_rules/spawn_rules.json"
+    },
+    {
+      "description": "Validação de Tabelas de Comércio com Aldeões/NPCs (Trading)",
+      "fileMatch": [
+        "addon/behavior_pack/trading/**/*.json",
+        "BP/trading/**/*.json",
+        "behavior_pack/trading/**/*.json",
+        "behavior_packs/*/trading/**/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/trading/trading.json"
+    },
+
+    // --------------------------------------------------------------------------
+    // 5. ANIMAÇÕES, PARTÍCULAS, MODELOS, ATTACHABLES E RENDER CONTROLLERS
+    // --------------------------------------------------------------------------
+    {
+      "description": "Validação de Efeitos de Partículas Snowstorm (Resource Pack)",
+      "fileMatch": [
+        "addon/resource_pack/particles/**/*.json",
+        "RP/particles/**/*.json",
+        "resource_pack/particles/**/*.json",
+        "resource_packs/*/particles/**/*.json"
       ],
       "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/particles/particles.json"
     },
     {
-      "description": "Validação de Animações Bedrock (Resource Pack)",
+      "description": "Validação de Animações de Entidades no Resource Pack (format_version 1.10.0)",
       "fileMatch": [
-        "addon/resource_pack/animations/*.json",
-        "RP/animations/*.json",
-        "resource_pack/animations/*.json",
-        "resource_packs/*/animations/*.json"
+        "addon/resource_pack/animations/**/*.json",
+        "RP/animations/**/*.json",
+        "resource_pack/animations/**/*.json",
+        "resource_packs/*/animations/**/*.json"
       ],
-      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/animations/animations.json"
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/animations/actor_animation.json"
     },
     {
-      "description": "Validação de Controladores de Renderização (Resource Pack)",
+      "description": "Validação de Controladores de Animação no Resource Pack",
       "fileMatch": [
-        "addon/resource_pack/render_controllers/*.json",
-        "RP/render_controllers/*.json",
-        "resource_pack/render_controllers/*.json",
-        "resource_packs/*/render_controllers/*.json"
+        "addon/resource_pack/animation_controllers/**/*.json",
+        "RP/animation_controllers/**/*.json",
+        "resource_pack/animation_controllers/**/*.json",
+        "resource_packs/*/animation_controllers/**/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/animation_controllers/animation_controller.json"
+    },
+    {
+      "description": "Validação de Animações e Controladores no Behavior Pack",
+      "fileMatch": [
+        "addon/behavior_pack/animations/**/*.json",
+        "BP/animations/**/*.json",
+        "behavior_pack/animations/**/*.json",
+        "behavior_packs/*/animations/**/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/animations/animations.json"
+    },
+    {
+      "description": "Validação de Controladores de Animação no Behavior Pack",
+      "fileMatch": [
+        "addon/behavior_pack/animation_controllers/**/*.json",
+        "BP/animation_controllers/**/*.json",
+        "behavior_pack/animation_controllers/**/*.json",
+        "behavior_packs/*/animation_controllers/**/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/animation_controllers/animation_controller.json"
+    },
+    {
+      "description": "Validação de Controladores de Renderização (Render Controllers)",
+      "fileMatch": [
+        "addon/resource_pack/render_controllers/**/*.json",
+        "RP/render_controllers/**/*.json",
+        "resource_pack/render_controllers/**/*.json",
+        "resource_packs/*/render_controllers/**/*.json"
       ],
       "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/render_controllers/render_controllers.json"
+    },
+    {
+      "description": "Validação de Itens Vestíveis e Armaduras 3D (Attachables)",
+      "fileMatch": [
+        "addon/resource_pack/attachables/**/*.json",
+        "RP/attachables/**/*.json",
+        "resource_pack/attachables/**/*.json",
+        "resource_packs/*/attachables/**/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/attachables/attachables.json"
+    },
+    {
+      "description": "Validação de Modelos Geométricos 3D (.geo.json)",
+      "fileMatch": [
+        "addon/resource_pack/models/entity/**/*.geo.json",
+        "addon/resource_pack/models/blocks/**/*.geo.json",
+        "RP/models/**/*.geo.json",
+        "resource_pack/models/**/*.geo.json",
+        "resource_packs/*/models/**/*.geo.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/models/entity/model_entity.json"
+    },
+
+    // --------------------------------------------------------------------------
+    // 6. TEXTURAS, ATLAS PBR (MER / MERS) E DEFINIÇÕES DE ÁUDIO
+    // --------------------------------------------------------------------------
+    {
+      "description": "Validação de Conjuntos PBR (.texture_set.json — MER e MERS para Render Dragon)",
+      "fileMatch": [
+        "**/*.texture_set.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/textures/texture_set.json"
+    },
+    {
+      "description": "Validação do Atlas de Texturas de Itens (item_texture.json)",
+      "fileMatch": [
+        "addon/resource_pack/textures/item_texture.json",
+        "RP/textures/item_texture.json",
+        "resource_pack/textures/item_texture.json",
+        "resource_packs/*/textures/item_texture.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/textures/item_texture.json"
+    },
+    {
+      "description": "Validação do Atlas de Texturas de Terreno/Blocos (terrain_texture.json)",
+      "fileMatch": [
+        "addon/resource_pack/textures/terrain_texture.json",
+        "RP/textures/terrain_texture.json",
+        "resource_pack/textures/terrain_texture.json",
+        "resource_packs/*/textures/terrain_texture.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/textures/terrain_texture.json"
+    },
+    {
+      "description": "Validação de Texturas Animadas por Quadros (flipbook_textures.json)",
+      "fileMatch": [
+        "addon/resource_pack/textures/flipbook_textures.json",
+        "RP/textures/flipbook_textures.json",
+        "resource_pack/textures/flipbook_textures.json",
+        "resource_packs/*/textures/flipbook_textures.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/textures/flipbook_textures.json"
+    },
+    {
+      "description": "Validação de Definições de Áudio Customizado (sound_definitions.json)",
+      "fileMatch": [
+        "addon/resource_pack/sounds/sound_definitions.json",
+        "RP/sounds/sound_definitions.json",
+        "resource_pack/sounds/sound_definitions.json",
+        "resource_packs/*/sounds/sound_definitions.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/sounds/sound_definitions.json"
+    },
+
+    // --------------------------------------------------------------------------
+    // 7. VIBRANT VISUALS E ILUMINAÇÃO AVANÇADA (Bedrock 1.21.60+ / 1.26.65+)
+    // --------------------------------------------------------------------------
+    {
+      "description": "Validação de Configurações Globais PBR (Vibrant Visuals)",
+      "fileMatch": [
+        "addon/resource_pack/pbr/**/*.json",
+        "RP/pbr/**/*.json",
+        "resource_pack/pbr/**/*.json",
+        "resource_packs/*/pbr/**/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/pbr/pbr.json"
+    },
+    {
+      "description": "Validação de Luzes Pontuais Dinâmicas (Point Lights)",
+      "fileMatch": [
+        "addon/resource_pack/point_lights/**/*.json",
+        "RP/point_lights/**/*.json",
+        "resource_pack/point_lights/**/*.json",
+        "resource_packs/*/point_lights/**/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/point_lights/point_lights.json"
+    },
+    {
+      "description": "Validação de Iluminação Atmosférica e Direcional (Lighting)",
+      "fileMatch": [
+        "addon/resource_pack/lighting/**/*.json",
+        "RP/lighting/**/*.json",
+        "resource_pack/lighting/**/*.json",
+        "resource_packs/*/lighting/**/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/lighting/lighting.json"
+    },
+    {
+      "description": "Validação de Configuração de Sombras Dinâmicas (Shadows)",
+      "fileMatch": [
+        "addon/resource_pack/shadows/**/*.json",
+        "RP/shadows/**/*.json",
+        "resource_pack/shadows/**/*.json",
+        "resource_packs/*/shadows/**/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/shadows/shadows.json"
+    },
+    {
+      "description": "Validação de Propriedades Óticas de Água (Water — Vibrant Visuals)",
+      "fileMatch": [
+        "addon/resource_pack/water/**/*.json",
+        "RP/water/**/*.json",
+        "resource_pack/water/**/*.json",
+        "resource_packs/*/water/**/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/water/water.json"
+    },
+    {
+      "description": "Validação de Névoa Volumétrica e de Biomas (Fogs)",
+      "fileMatch": [
+        "addon/resource_pack/fogs/**/*.json",
+        "RP/fogs/**/*.json",
+        "resource_pack/fogs/**/*.json",
+        "resource_packs/*/fogs/**/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/fog/fog.json"
+    },
+
+    // --------------------------------------------------------------------------
+    // 8. GERAÇÃO PROCEDURAL DE MUNDO (Worldgen Jigsaw — Bedrock 1.21.60+ / 1.26.65+)
+    // --------------------------------------------------------------------------
+    {
+      "description": "Validação de Estruturas Jigsaw (Worldgen)",
+      "fileMatch": [
+        "addon/behavior_pack/worldgen/jigsaw_structures/**/*.json",
+        "BP/worldgen/jigsaw_structures/**/*.json",
+        "behavior_pack/worldgen/jigsaw_structures/**/*.json",
+        "behavior_packs/*/worldgen/jigsaw_structures/**/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/worldgen/jigsaw_structures/jigsaw.json"
+    },
+    {
+      "description": "Validação de Conjuntos de Estruturas (Structure Sets — Worldgen)",
+      "fileMatch": [
+        "addon/behavior_pack/worldgen/structure_sets/**/*.json",
+        "BP/worldgen/structure_sets/**/*.json",
+        "behavior_pack/worldgen/structure_sets/**/*.json",
+        "behavior_packs/*/worldgen/structure_sets/**/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/worldgen/structure_sets/structure_set.json"
+    },
+    {
+      "description": "Validação de Pools de Templates (Template Pools — Worldgen)",
+      "fileMatch": [
+        "addon/behavior_pack/worldgen/template_pools/**/*.json",
+        "BP/worldgen/template_pools/**/*.json",
+        "behavior_pack/worldgen/template_pools/**/*.json",
+        "behavior_packs/*/worldgen/template_pools/**/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/worldgen/template_pools/template_pool.json"
+    },
+    {
+      "description": "Validação de Listas de Processadores de Estruturas (Processors — Worldgen)",
+      "fileMatch": [
+        "addon/behavior_pack/worldgen/processors/**/*.json",
+        "BP/worldgen/processors/**/*.json",
+        "behavior_pack/worldgen/processors/**/*.json",
+        "behavior_packs/*/worldgen/processors/**/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/worldgen/processors/processor_list.json"
     }
   ]
 }
-

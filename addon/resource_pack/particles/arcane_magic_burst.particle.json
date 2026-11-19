@@ -30,7 +30,7 @@
       },
       "minecraft:particle_motion_collision": {
         "collision_radius": 0.08,
-        "collision_drag_coefficient": 2.0,
+        "collision_drag": 2.0,
         "expire_on_contact": true
       },
       "minecraft:particle_initial_spin": {

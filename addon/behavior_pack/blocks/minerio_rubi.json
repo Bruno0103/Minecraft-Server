@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.60",
+  "format_version": "1.26.60",
   "minecraft:block": {
     "description": {
       "identifier": "custom:minerio_rubi",

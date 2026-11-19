@@ -5,13 +5,13 @@
     "description": "Resource Pack de Modelos, Texturas e Sons para Never Land BDS",
     "uuid": "9c12e847-5a33-4f19-a1b8-223344556677",
     "version": [1, 0, 2],
-    "min_engine_version": [1, 21, 60]
+    "min_engine_version": [1, 26, 60]
   },
   "modules": [
     {
       "description": "Módulo de Recursos Visuais e Áudio",
       "type": "resources",
-      "uuid": "1d2e3f4a-5b6c-7d8e-9f0a-aabbccddeeff",
+      "uuid": "1d2e3f4a-5b6c-4d8e-9f0a-aabbccddeeff",
       "version": [1, 0, 2]
     }
   ]

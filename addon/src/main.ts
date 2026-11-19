@@ -6,7 +6,7 @@
  * agendamento de tarefas seguro via system.run e renderização de janelas gráficas
  * dinâmicas via @minecraft/server-ui.
  *
- * Compatibilidade: Minecraft Bedrock 1.21+ / @minecraft/server ^2.11.0 / @minecraft/server-ui ^2.3.0
+ * Compatibilidade: Minecraft Bedrock 1.26.65+ (26.65+) / @minecraft/server ^2.11.0 / @minecraft/server-ui ^2.3.0
  */
 
 import {
